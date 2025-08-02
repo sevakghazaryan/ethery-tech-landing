@@ -1,14 +1,10 @@
 "use client";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { headerData } from "../Header/Navigation/menuData";
 import Logo from "./Logo";
 import HeaderLink from "../Header/Navigation/HeaderLink";
 import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
-import Signin from "@/components/Auth/SignIn";
-import SignUp from "@/components/Auth/SignUp";
-import { Icon } from "@iconify/react";
 import { useTheme } from "next-themes";
 
 const Header: React.FC = () => {
@@ -77,7 +73,7 @@ const Header: React.FC = () => {
         sticky ? "shadow-lg bg-white dark:bg-darkheader" : "shadow-none"
       }`}
     >
-      <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md flex justify-between lg:items-center xl:gap-16 lg:gap-8 px-4 py-6">
+      <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md flex justify-between items-center xl:gap-16 lg:gap-8 px-4 py-6">
         <Logo />
         <nav className="hidden lg:flex flex-grow items-center xl:justify-start justify-center space-x-10 text-17 text-midnight_text">
           {headerData.map((item, index) => (
@@ -158,28 +154,7 @@ const Header: React.FC = () => {
           {headerData.map((item, index) => (
             <MobileHeaderLink key={index} item={item} />
           ))}
-          <div className="mt-4 flex flex-col space-y-4 w-full">
-            <Link
-              href="#"
-              className="bg-transparent border border-primary text-primary px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white"
-              onClick={() => {
-                setIsSignInOpen(true);
-                setNavbarOpen(false); // Close the mobile menu
-              }}
-            >
-              Sign In
-            </Link>
-            <Link
-              href="#"
-              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-              onClick={() => {
-                setIsSignUpOpen(true);
-                setNavbarOpen(false); // Close the mobile menu
-              }}
-            >
-              Sign Up
-            </Link>
-          </div>
+       
         </nav>
       </div>
     </header>

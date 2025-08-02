@@ -1,3 +1,4 @@
+// home page data
 export const ProductItems = [
   {
     image: "/images/products/product.webp",
@@ -41,8 +42,7 @@ export const SolutionsItems = [
       "Secure and rugged radio systems for mission-critical communication, including tactical handheld radios and encrypted base stations.",
   },
   {
-    
-      image:
+    image:
       "/images/solutions/mq9-reaper-predator-uav-drone-us-military-most-advanced-military-drone.webp",
     title: "Unmanned Aerial Vehicles (UAVs)",
     subTitle: "(400Mhz small radio)",
@@ -108,62 +108,52 @@ export const BeneifitImage = [
   },
 ];
 
-// Footer Links
-export const footerLinks: { link: string }[] = [
+// footer data
+
+export const companyLinks = [
   {
-    link: "Online Payments",
+    link: "About Us",
+    href: "/about",
   },
   {
-    link: "Financial Projections",
+    link: "Leadership",
+    href: "/leadership",
   },
   {
-    link: "Bookkeeping",
-  },
-  {
-    link: "Banking",
-  },
-  {
-    link: "Documentation",
-  },
-  {
-    link: "Integrations",
-  },
-  {
-    link: "API Reference",
-  },
-  {
-    link: "Support",
-  },
-  {
-    link: "Help",
-  },
-  {
-    link: "Infrastructure",
-  },
-  {
-    link: "Certifications",
-  },
-  {
-    link: "Licenses",
-  },
-  {
-    link: "Terms and conditions",
-  },
-  {
-    link: "Legal",
-  },
-  {
-    link: "Privacy",
-  },
-  {
-    link: "Cookies",
-  },
-  {
-    link: "Disclaimer",
+    link: "Careers",
+    href: "/careers",
   },
 ];
 
-// Perks
+export const featureLinks = [
+  {
+    link: "Home",
+    href: "/",
+  },
+  {
+    link: "Products",
+    href: "/products",
+  },
+  {
+    link: "Solutions",
+    href: "/solutions",
+  },
+  {
+    link: "Contact Us",
+    href: "/contact",
+  },
+];
+
+export const address =
+  "221b Baker St, London NW1 6XE, United Kingdom";
+export const phone = "+1 (123) 123 1234";
+export const email = "info@mobileapp.com";
+export const copyright = "© Copyright 2025. All rights reserved";
+export const facebook = "https://www.facebook.com/";
+export const twitter = "https://www.twitter.com/";
+export const linkedin = "https://www.linkedin.com/";
+
+
 export const perks = [
   {
     text: "When you pay with a debit or credit card, Mobile App doesn't keep transaction information that can be tied back to you.",
