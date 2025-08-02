@@ -154,15 +154,18 @@ export const twitter = "https://www.twitter.com/";
 export const linkedin = "https://www.linkedin.com/";
 
 
-export const perks = [
+export const aboutPerks = [
   {
-    text: "When you pay with a debit or credit card, Mobile App doesn't keep transaction information that can be tied back to you.",
+    title: "Built for Critical Operations",
+    text: "UAVs, tactical missions, and industrial systems demand stability — we deliver it.",
   },
   {
-    text: "Digital wallets are becoming more popular than ever before.",
+    title: "Reliable, Secure, and Lightweight",
+    text: "Our radios are portable, rugged, and ready for harsh conditions with minimal training.",
   },
   {
-    text: "You can also add your student ID card to Wallet to access places like your dorm and the library.",
+    title: "Customized to Your Environment",
+    text: "We tailor hardware, software, and protocols to match your exact safety requirements.",
   },
 ];
 

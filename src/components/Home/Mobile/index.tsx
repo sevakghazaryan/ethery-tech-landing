@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { perks } from "@/app/api/data";
 
 const Mobile = () => {
   const ref = useRef(null);
@@ -37,23 +36,7 @@ const Mobile = () => {
               Cards issued through us can easily be added to mobile wallets to
               be used to buy online, in store, and in-app.
             </p>
-            <div className="flex flex-col gap-6 mt-16">
-              {perks.map((item, index) => (
-                <div key={index} className="flex items-start gap-5">
-                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                    <Icon
-                      icon="solar:unread-outline"
-                      width="24"
-                      height="24"
-                      className="text-white"
-                    />
-                  </div>
-                  <p className="text-base text-muted dark:text-white dark:text-opacity-70">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
+      
             <div className="flex items-center justify-start">
               <Link
                 href="#"
