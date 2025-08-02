@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
-import Payment from "@/components/Home/Payment";
+import Products from "@/components/Home/Products";
 import Benefit  from "@/components/Home/Benefit";
 import Spend from "@/components/Home/Spend";
 import Method from "@/components/Home/Method";
@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Payment />
+      <Products />
       <Benefit />
       <Spend />
       <Method />

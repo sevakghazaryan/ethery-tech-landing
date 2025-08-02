@@ -1,5 +1,5 @@
 import HeroSub from "@/components/SharedComponents/HeroSub";
-import Payment from "@/components/Home/Payment";
+import Products from "@/components/Home/Products";
 import Benefit from "@/components/Home/Benefit";
 import Spend from "@/components/Home/Spend";
 import { Metadata } from "next";
@@ -19,7 +19,7 @@ const Services = () => {
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
         breadcrumbLinks={breadcrumbLinks}
       />
-      <Payment />
+      <Products />
       <Benefit />
       <Spend />
     </>

@@ -1,44 +1,33 @@
-import { text } from "stream/consumers";
-
-//hero
-export const Heroimage = [
+export const ProductItems = [
   {
-    lightimage: "/images/hero/google.png",
-    darkimage: "/images/hero/google_white.png",
+    image: "/images/products/product.webp",
+    title: "ET 101",
+    details: "Telemetry and control for UAVc",
   },
   {
-    lightimage: "/images/hero/pay.png",
-    darkimage: "/images/hero/pay_white.png",
+    image: "/images/products/product.webp",
+    title: "ET 102",
+    details: "Telemetry and control for UAVc",
   },
   {
-    lightimage: "/images/hero/stripe.png",
-    darkimage: "/images/hero/stripe_white.png",
+    image: "/images/products/product.webp",
+    title: "ET 103",
+    details: "Telemetry and control for UAVc",
   },
   {
-    lightimage: "/images/hero/wise.png",
-    darkimage: "/images/hero/wise_white.png",
-  },
-];
-
-// payment
-export const PaymentImage = [
-  {
-    image: "/images/payment/user.svg",
-    title: "Create an account",
-    details:
-      "Mobile app made easy check out across the web and in apps without having to enter any payment information.",
+    image: "/images/products/product.webp",
+    title: "ET 104",
+    details: "Telemetry and control for UAVc",
   },
   {
-    image: "/images/payment/user.svg",
-    title: "Verify your identity",
-    details:
-      "Mobile app made easy check out across the web and in apps without having to enter any payment information.",
+    image: "/images/products/product.webp",
+    title: "ET 105",
+    details: "Telemetry and control for UAVc",
   },
   {
-    image: "/images/payment/user.svg",
-    title: "Link your bank account",
-    details:
-      "Mobile app made easy check out across the web and in apps without having to enter any payment information.",
+    image: "/images/products/product.webp",
+    title: "ET 106",
+    details: "Telemetry and control for UAVc",
   },
 ];
 
@@ -152,4 +141,3 @@ export const review = [
     gplayrating: "4.5",
   },
 ];
-
