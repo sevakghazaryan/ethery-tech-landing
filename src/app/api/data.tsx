@@ -33,49 +33,54 @@ export const ProductItems = [
 
 export const SolutionsItems = [
   {
-    image: "/images/products/product.webp",
-    title: "ET 101 Long Range Radio System",
-    subTitle: "UAVs & Unmanned Systems",
-    details:
-      "Advanced telemetry and control system optimized for unmanned aerial vehicles and drones. Features real-time data transmission, secure encrypted communications, and extended range capabilities up to 100km line-of-sight. Ideal for surveillance, mapping, and autonomous operations.",
-  },
-  {
     image: "/images/solutions/high-angle-view-computer-chip.webp",
-    title: "ET 102 Long Range Radio System",
-    subTitle: "UAVs & Unmanned Systems",
+
+    title: "Defense & Military",
+    subTitle: "(EtheryNet)",
     details:
-      "Advanced telemetry and control system optimized for unmanned aerial vehicles and drones. Features real-time data transmission, secure encrypted communications, and extended range capabilities up to 100km line-of-sight. Ideal for surveillance, mapping, and autonomous operations.",
+      "Secure and rugged radio systems for mission-critical communication, including tactical handheld radios and encrypted base stations.",
   },
   {
-    image: "/images/solutions/man-electrical-technician-working-switchboard-with-fuses-uses-tablet.webp",
-    title: "ET 103 Long Range Radio System",
-    subTitle: "UAVs & Unmanned Systems",
+    
+      image:
+      "/images/solutions/mq9-reaper-predator-uav-drone-us-military-most-advanced-military-drone.webp",
+    title: "Unmanned Aerial Vehicles (UAVs)",
+    subTitle: "(400Mhz small radio)",
     details:
-      "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
+      "Real-time telemetry, control, and HD data transfer for drones and autonomous systems with long-range, lightweight radio modules.",
   },
   {
-    image: "/images/solutions/mq9-reaper-predator-uav-drone-us-military-most-advanced-military-drone.webp",
-    title: "ET 104 Long Range Radio System",
-    subTitle: "UAVs & Unmanned Systems",
+    image:
+      "/images/solutions/man-electrical-technician-working-switchboard-with-fuses-uses-tablet.webp",
+    title: "Industrial Automation",
+    subTitle: "(cc radio)",
     details:
-      "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
+      " Reliable wireless communication for industrial machines, control systems, and IoT-based automation with minimal latency and high durability.",
+  },
+  {
+    image:
+      "/images/solutions/digital-electric-meters-row-measuring-power-use.webp",
+    title: "Energy & Utilities / Smart Metering",
+    subTitle: "(cc radio ENA)",
+    details:
+      "Radio modules optimized for remote data collection from electricity meters, grid infrastructure monitoring, and smart energy systems.",
   },
 
   {
-    image: "/images/solutions/soldiers-special-forces-wars-desertthailand-peoplearmy-soldier-use-laptop-see-map-with-satelliteusing-radio-communication-military-operation.webp",
-    title: "ET 105 Long Range Radio System",
-    subTitle: "UAVs & Unmanned Systems",
+    image:
+      "/images/solutions/soldiers-special-forces-wars-desertthailand-peoplearmy-soldier-use-laptop-see-map-with-satelliteusing-radio-communication-military-operation.webp",
+    title: "Custom Applications / OEM Solutions ",
+    subTitle: "(3 band radio) or new eval board",
     details:
       "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
   },
-  
-
 ];
 
 // Beneifit
 export const BeneifitImage = [
   {
-    image: "/images/solutions/digital-electric-meters-row-measuring-power-use.webp",
+    image:
+      "/images/solutions/digital-electric-meters-row-measuring-power-use.webp",
     alt: "Trusted brand",
     details:
       "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
