@@ -4,7 +4,7 @@ import Hero from "@/components/Home/Hero";
 import Products from "@/components/Home/Products";
 import Benefit  from "@/components/Home/Benefit";
 import Spend from "@/components/Home/Spend";
-import Method from "@/components/Home/Method";
+import Solutions from "@/components/Home/Solutions";
 import Mobile from "@/components/Home/Mobile";
 import Search from "@/components/Home/Search";
 import Pricing from "@/components/Home/Pricing";
@@ -19,13 +19,14 @@ export default function Home() {
     <main>
       <Hero />
       <Products />
-      <Benefit />
+      <Solutions />
+
+      {/* <Benefit />
       <Spend />
-      <Method />
       <Mobile />
       <Search />
       <Pricing />
-      <Solution />
+      <Solution /> */}
     </main>
   );
 }

@@ -31,10 +31,51 @@ export const ProductItems = [
   },
 ];
 
+export const SolutionsItems = [
+  {
+    image: "/images/products/product.webp",
+    title: "ET 101 Long Range Radio System",
+    subTitle: "UAVs & Unmanned Systems",
+    details:
+      "Advanced telemetry and control system optimized for unmanned aerial vehicles and drones. Features real-time data transmission, secure encrypted communications, and extended range capabilities up to 100km line-of-sight. Ideal for surveillance, mapping, and autonomous operations.",
+  },
+  {
+    image: "/images/solutions/high-angle-view-computer-chip.webp",
+    title: "ET 102 Long Range Radio System",
+    subTitle: "UAVs & Unmanned Systems",
+    details:
+      "Advanced telemetry and control system optimized for unmanned aerial vehicles and drones. Features real-time data transmission, secure encrypted communications, and extended range capabilities up to 100km line-of-sight. Ideal for surveillance, mapping, and autonomous operations.",
+  },
+  {
+    image: "/images/solutions/man-electrical-technician-working-switchboard-with-fuses-uses-tablet.webp",
+    title: "ET 103 Long Range Radio System",
+    subTitle: "UAVs & Unmanned Systems",
+    details:
+      "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
+  },
+  {
+    image: "/images/solutions/mq9-reaper-predator-uav-drone-us-military-most-advanced-military-drone.webp",
+    title: "ET 104 Long Range Radio System",
+    subTitle: "UAVs & Unmanned Systems",
+    details:
+      "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
+  },
+
+  {
+    image: "/images/solutions/soldiers-special-forces-wars-desertthailand-peoplearmy-soldier-use-laptop-see-map-with-satelliteusing-radio-communication-military-operation.webp",
+    title: "ET 105 Long Range Radio System",
+    subTitle: "UAVs & Unmanned Systems",
+    details:
+      "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
+  },
+  
+
+];
+
 // Beneifit
 export const BeneifitImage = [
   {
-    image: "/images/benefit/pic.svg",
+    image: "/images/solutions/digital-electric-meters-row-measuring-power-use.webp",
     alt: "Trusted brand",
     details:
       "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
