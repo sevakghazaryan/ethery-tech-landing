@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
-import { Heroimage } from "@/app/api/data";
 
 const Hero = () => {
   const leftAnimation = {
@@ -48,44 +47,16 @@ const Hero = () => {
                 </Link>
               </div>
             </div>
-
-            <div className="lg:my-28 my-12">
-              <p className="text-20 text-muted dark:text-white dark:text-opacity-70 text-start mb-7">
-                Trusted by
-              </p>
-              <div className="flex space-x-6 justify-start w-full">
-                {Heroimage.map((item, index) => (
-                  <Link key={index} href="/">
-                    <Image
-                      src={item.lightimage}
-                      alt="image"
-                      width={115}
-                      height={30}
-                      className="block dark:hidden"
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                    <Image
-                      src={item.darkimage}
-                      alt="image"
-                      width={115}
-                      height={30}
-                      className="hidden dark:block"
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  </Link>
-                ))}
-              </div>
-            </div>
           </motion.div>
           <motion.div
             {...rightAnimation}
             className="lg:col-span-6 col-span-12 pl-20 lg:block hidden"
           >
             <Image
-              src="/images/hero/hero-image.png"
+              src="/images/hero/hero-image.webp"
               alt="image"
-              width={498}
-              height={651}
+              width={1260}
+              height={1260}
               style={{ width: "100%", height: "100%" }}
             />
           </motion.div>
