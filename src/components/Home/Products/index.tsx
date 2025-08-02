@@ -54,7 +54,7 @@ const Products = () => {
             breakpoints={{
               1024: { slidesPerView: 3.5 },
               768: { slidesPerView: 2.5 },
-              480: { slidesPerView: 1.5 },
+              0: { slidesPerView: 1.5 },
             }}
           >
             {ProductItems.map((item, index) => (
