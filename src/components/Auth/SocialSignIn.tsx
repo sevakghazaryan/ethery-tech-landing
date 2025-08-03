@@ -1,3 +1,8 @@
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
+import { Icon } from "@iconify/react";
+import Image from "next/image";
+import { aboutPerks } from "@/app/api/data";
 import React from "react";
 import { signIn } from "next-auth/react";
 
