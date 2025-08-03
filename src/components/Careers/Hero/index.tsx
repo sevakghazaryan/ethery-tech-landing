@@ -2,7 +2,7 @@ import { useInView, motion } from "motion/react";
 import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { aboutPerks } from "@/app/api/data";
+import { aboutPerks, careersPerks } from "@/app/api/data";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -21,32 +21,35 @@ const Hero = () => {
   };
 
   return (
-    <section
-     className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 py-14">
+    <section className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 py-14">
       <div
         ref={ref}
-        className="grid md:grid-cols-12 items-center lg:gap-12 gap-6"
+        className="grid md:grid-cols-12 items-start lg:gap-12 gap-6"
       >
         <motion.div {...leftAnimation} className="lg:col-span-6 col-span-12">
           <h2 className="lg:text-35 text-24 text-midnight_text font-semibold dark:text-white">
-            Solving for&nbsp;
+            We Grow People,&nbsp;
             <span className="lg:text-35 text-24 text-primary font-semibold lg:max-w-max">
-              Safer
+              Not Just Teams
             </span>
           </h2>
           <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
-            At <b>Ethery Tech</b>, safety means more than encryption or signal
-            strength — it’s about{" "}
-            <b>reliability under pressure, clarity in the field</b>, and{" "}
-            <b>control over every transmission.</b> Our radio communication
-            systems are engineered to keep people, processes, and missions safe
-            — no matter the environment.
+            <b>
+              Open to learners, dreamers, and builders — no matter your
+              background.
+            </b>
+          </p>
+          <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
+            At <b>Ethery Tech</b>, we believe that talent is not only found —
+            it's nurtured. Whether you're an engineer, a student, or someone
+            with zero technical experience but endless curiosity, we’re here to
+            help you grow, contribute, and thrive.
           </p>
           <div className="flex flex-col gap-6 mt-16">
             <h5 className="text-midnight_text font-semibold dark:text-white">
-              Key Highlights
+              Key values
             </h5>
-            {aboutPerks.map((item, index) => (
+            {careersPerks.map((item, index) => (
               <div key={index} className="flex items-start gap-5">
                 <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                   <Icon
@@ -70,7 +73,7 @@ const Hero = () => {
         <motion.div {...rightAnimation} className="lg:col-span-6 col-span-12">
           <div className="lg:max-w-full md:max-w-75% mx-auto">
             <Image
-              src="/images/about/about.webp"
+              src="/images/careers/careers.webp"
               alt="image"
               width={555}
               height={634}

@@ -1,6 +1,5 @@
 "use client";
-import Hero from "@/components/About/Hero";
-import CommunicationCTASection from "@/components/Careers/Hero";
+import Hero from "@/components/Careers/Hero";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Careers = () => {
@@ -17,7 +16,6 @@ const Careers = () => {
         breadcrumbLinks={breadcrumbLinks}
       />
       <Hero />
-      {/* <CommunicationCTASection /> */}
     </main>
   );
 };

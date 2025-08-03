@@ -29,26 +29,25 @@ const Hero = () => {
       >
         <motion.div {...leftAnimation} className="lg:col-span-6 col-span-12">
           <h2 className="lg:text-35 text-24 text-midnight_text font-semibold dark:text-white">
-            We Grow People,
+            Solving&nbsp;
             <span className="lg:text-35 text-24 text-primary font-semibold lg:max-w-max">
-              Not Just Teams
+              for Safer
             </span>
           </h2>
           <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
-            Open to learners, dreamers, and builders — no matter your
-            background.
+            At <b>Ethery Tech</b>, safety means more than encryption or signal
+            strength — it’s about{" "}
+            <b>reliability under pressure, clarity in the field</b>, and{" "}
+            <b>control over every transmission.</b> Our radio communication
+            systems are engineered to keep people, processes, and missions safe
+            — no matter the environment.
           </p>
-          <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
-            At <b>Ethery Tech</b>, we believe that talent is not only found —
-            it's nurtured. Whether you're an engineer, a student, or someone
-            with zero technical experience but endless curiosity, we’re here to
-            help you grow, contribute, and thrive.
-          </p>
+    
           <div className="flex flex-col gap-6 mt-16">
             <h5 className="text-midnight_text font-semibold dark:text-white">
-              Key values
+              Key Highlights
             </h5>
-            {careersPerks.map((item, index) => (
+            {aboutPerks.map((item, index) => (
               <div key={index} className="flex items-start gap-5">
                 <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                   <Icon
@@ -88,7 +87,7 @@ const Hero = () => {
         <motion.div {...rightAnimation} className="lg:col-span-6 col-span-12">
           <div className="lg:max-w-full md:max-w-75% mx-auto">
             <Image
-              src="/images/careers/careers.webp"
+              src="/images/about/about.webp"
               alt="image"
               width={555}
               height={634}
