@@ -169,6 +169,21 @@ export const aboutPerks = [
   },
 ];
 
+export const careersPerks = [
+  {
+    title: "Experience Optional, Motivation Required",
+    text: " We value passion, curiosity, and a willingness to learn over formal credentials.",
+  },
+  {
+    title: "Inclusive & Mission-Driven Hiring",
+    text: " Our hiring is part of a broader social mission — to open opportunities for all.",
+  },
+  {
+    title: "Grow With Purpose",
+    text: " You won’t just have a job — you’ll build skills, make impact, and shape the future of communication tech.",
+  },
+];
+
 // review
 export const review = [
   {
