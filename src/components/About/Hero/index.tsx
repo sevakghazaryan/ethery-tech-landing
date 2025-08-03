@@ -34,7 +34,7 @@ const Hero = () => {
               Safer
             </span>
           </h2>
-          <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 lg:max-w-full max-w-75%">
+          <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
             At <b>Ethery Tech</b>, safety means more than encryption or signal
             strength — it’s about{" "}
             <b>reliability under pressure, clarity in the field</b>, and{" "}
