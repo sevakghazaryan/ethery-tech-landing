@@ -2,10 +2,10 @@ import { useInView, motion } from "motion/react";
 import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { aboutPerks, careersPerks } from "@/app/api/data";
+import { productKeyFeaturePerks } from "@/app/api/data";
 import Link from "next/link";
 
-const Hero = () => {
+const KeyFeatures = () => {
   const ref = useRef(null);
   const inView = useInView(ref);
 
@@ -29,25 +29,11 @@ const Hero = () => {
       >
         <motion.div {...leftAnimation} className="lg:col-span-6 col-span-12">
           <h2 className="lg:text-35 text-24 text-midnight_text font-semibold dark:text-white">
-            Solving&nbsp;
-            <span className="lg:text-35 text-24 text-primary font-semibold lg:max-w-max">
-              for Safer
-            </span>
+            Key Features
           </h2>
-          <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
-            At <b>Ethery Tech</b>, safety means more than encryption or signal
-            strength - it’s about{" "}
-            <b>reliability under pressure, clarity in the field</b>, and{" "}
-            <b>control over every transmission.</b> Our radio communication
-            systems are engineered to keep people, processes, and missions safe
-            - no matter the environment.
-          </p>
 
           <div className="flex flex-col gap-6 mt-16">
-            <h5 className="text-midnight_text font-semibold dark:text-white">
-              Key Highlights
-            </h5>
-            {aboutPerks.map((item, index) => (
+            {productKeyFeaturePerks.map((item, index) => (
               <div key={index} className="flex items-start gap-5">
                 <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                   <Icon
@@ -58,11 +44,7 @@ const Hero = () => {
                   />
                 </div>
                 <div>
-                  <h6>{item.title}</h6>
-
-                  <p className="text-base text-muted dark:text-white dark:text-opacity-70">
-                    {item.text}
-                  </p>
+                  <h6>{item}</h6>
                 </div>
               </div>
             ))}
@@ -71,7 +53,7 @@ const Hero = () => {
         <motion.div {...rightAnimation} className="lg:col-span-6 col-span-12">
           <div className="lg:max-w-full md:max-w-75% mx-auto">
             <Image
-              src="/images/about/about.webp"
+              src="/images/careers/careers.webp"
               alt="image"
               width={555}
               height={634}
@@ -84,4 +66,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default KeyFeatures;

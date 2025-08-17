@@ -25,7 +25,7 @@ export const PackageStructure = () => {
           <li className="py-2">
             <div className="flex items-center gap-3">
               <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                |—
+                |-
               </p>
               <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                 <Icon
@@ -43,7 +43,7 @@ export const PackageStructure = () => {
                       <li className="py-2">
                         <div className="flex items-center gap-3">
                           <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                            |—
+                            |-
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                             <Icon
@@ -57,7 +57,7 @@ export const PackageStructure = () => {
                       <li className="py-2">
                         <div className="flex items-center gap-3">
                           <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                            |—
+                            |-
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                             <Icon
@@ -71,7 +71,7 @@ export const PackageStructure = () => {
                       <li className="py-2">
                         <div className="flex items-center gap-3">
                           <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                            |—
+                            |-
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                             <Icon
@@ -95,7 +95,7 @@ export const PackageStructure = () => {
                             <li className="py-2">
                               <div className="flex items-center gap-3">
                                 <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                  |—
+                                  |-
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                   <Icon
@@ -119,7 +119,7 @@ export const PackageStructure = () => {
                                   <li className="py-2">
                                     <div className="flex items-center gap-3">
                                       <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                        |—
+                                        |-
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                         <Icon
@@ -152,7 +152,7 @@ export const PackageStructure = () => {
                                         <li className="py-2">
                                           <div className="flex items-center gap-3">
                                             <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                              |—
+                                              |-
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                               <Icon
@@ -182,7 +182,7 @@ export const PackageStructure = () => {
                                                   </p>
                                                   <div className="flex items-center gap-3">
                                                     <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                                      |—
+                                                      |-
                                                     </p>
                                                     <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                                       <Icon
@@ -201,7 +201,7 @@ export const PackageStructure = () => {
                                                   </p>
                                                   <div className="flex items-center gap-3">
                                                     <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                                      |—
+                                                      |-
                                                     </p>
                                                     <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                                       <Icon
@@ -219,7 +219,7 @@ export const PackageStructure = () => {
                                         <li className="py-2">
                                           <div className="flex items-center gap-3">
                                             <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                              |—
+                                              |-
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                               <Icon
@@ -233,7 +233,7 @@ export const PackageStructure = () => {
                                         <li className="py-2">
                                           <div className="flex items-center gap-3">
                                             <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                              |—
+                                              |-
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                               <Icon
@@ -247,7 +247,7 @@ export const PackageStructure = () => {
                                         <li className="py-2">
                                           <div className="flex items-center gap-3">
                                             <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                              |—
+                                              |-
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                               <Icon
@@ -261,7 +261,7 @@ export const PackageStructure = () => {
                                         <li className="py-2">
                                           <div className="flex items-center gap-3">
                                             <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                              |—
+                                              |-
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                               <Icon
@@ -275,7 +275,7 @@ export const PackageStructure = () => {
                                         <li className="py-2">
                                           <div className="flex items-center gap-3">
                                             <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                              |—
+                                              |-
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                               <Icon
@@ -292,7 +292,7 @@ export const PackageStructure = () => {
                                   <li className="py-2">
                                     <div className="flex items-center gap-3">
                                       <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                        |—
+                                        |-
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                         <Icon
@@ -320,7 +320,7 @@ export const PackageStructure = () => {
                                             </p>
                                             <div className="flex items-center gap-3">
                                               <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                                |—
+                                                |-
                                               </p>
                                               <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                                 <Icon
@@ -339,7 +339,7 @@ export const PackageStructure = () => {
                                             </p>
                                             <div className="flex items-center gap-3">
                                               <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                                |—
+                                                |-
                                               </p>
                                               <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                                 <Icon
@@ -357,7 +357,7 @@ export const PackageStructure = () => {
                                   <li className="py-2">
                                     <div className="flex items-center gap-3">
                                       <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                        |—
+                                        |-
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                         <Icon
@@ -385,7 +385,7 @@ export const PackageStructure = () => {
                                             </p>
                                             <div className="flex items-center gap-3">
                                               <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                                |—
+                                                |-
                                               </p>
                                               <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50 flex items-center flex-wrap">
                                                 <Icon
@@ -405,7 +405,7 @@ export const PackageStructure = () => {
                                   <li className="py-2">
                                     <div className="flex items-center gap-3">
                                       <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                        |—
+                                        |-
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                         global.css
@@ -415,7 +415,7 @@ export const PackageStructure = () => {
                                   <li className="py-2">
                                     <div className="flex items-center gap-3">
                                       <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                        |—
+                                        |-
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                         layout.tsx
@@ -425,7 +425,7 @@ export const PackageStructure = () => {
                                   <li className="py-2">
                                     <div className="flex items-center gap-3">
                                       <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                        |—
+                                        |-
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                         not-found.tsx
@@ -435,7 +435,7 @@ export const PackageStructure = () => {
                                   <li className="py-2">
                                     <div className="flex items-center gap-3">
                                       <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                        |—
+                                        |-
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                         page.tsx
@@ -448,7 +448,7 @@ export const PackageStructure = () => {
                             <li className="py-2">
                               <div className="flex items-center flex-wrap gap-3">
                                 <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                  |—
+                                  |-
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                   <Icon
@@ -465,7 +465,7 @@ export const PackageStructure = () => {
                             <li className="py-2">
                               <div className="flex items-center gap-3">
                                 <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                  |—
+                                  |-
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                   <Icon
@@ -479,7 +479,7 @@ export const PackageStructure = () => {
                             <li className="py-2">
                               <div className="flex items-center gap-3">
                                 <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                  |—
+                                  |-
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                   <Icon
@@ -493,7 +493,7 @@ export const PackageStructure = () => {
                             <li className="py-2">
                               <div className="flex items-center gap-3">
                                 <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                                  |—
+                                  |-
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                                   <Icon
@@ -510,7 +510,7 @@ export const PackageStructure = () => {
                       <li className="py-2">
                         <div className="flex items-center gap-3">
                           <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                            |—
+                            |-
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                             <i className="ti ti-file me-2 text-primary font-bold" />
@@ -521,7 +521,7 @@ export const PackageStructure = () => {
                       <li className="py-2">
                         <div className="flex items-center gap-3">
                           <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                            |—
+                            |-
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                             <i className="ti ti-file me-2 text-primary font-bold" />
@@ -532,7 +532,7 @@ export const PackageStructure = () => {
                       <li className="py-2">
                         <div className="flex items-center gap-3">
                           <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                            |—
+                            |-
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                             <i className="ti ti-file me-2 text-primary font-bold" />
@@ -543,7 +543,7 @@ export const PackageStructure = () => {
                       <li className="py-2">
                         <div className="flex items-center gap-3">
                           <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                            |—
+                            |-
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                             <i className="ti ti-file me-2 text-primary font-bold" />
@@ -554,7 +554,7 @@ export const PackageStructure = () => {
                       <li className="py-2">
                         <div className="flex items-center gap-3">
                           <p className="text-xl text-black dark:text-white dark:text-opacity-50">
-                            |—
+                            |-
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
                             <i className="ti ti-file me-2 text-primary font-bold" />

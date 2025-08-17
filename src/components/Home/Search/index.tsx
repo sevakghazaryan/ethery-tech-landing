@@ -171,7 +171,7 @@ const Search = () => {
                           <span className="text-midnight_text dark:text-white font-bold">
                             {item.appstorerating}
                           </span>
-                          /5 — From 1800+ ratings
+                          /5 - From 1800+ ratings
                         </p>
                       </div>
                       <div>
@@ -194,7 +194,7 @@ const Search = () => {
                           <span className="text-midnight_text dark:text-white font-bold">
                             {item.gplayrating}
                           </span>
-                          /5 — From 1800+ ratings
+                          /5 - From 1800+ ratings
                         </p>
                       </div>
                       <div>

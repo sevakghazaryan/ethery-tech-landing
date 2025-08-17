@@ -32,7 +32,7 @@ const Solutions = () => {
               </span>
             </h2>
             <p className="font-medium xl:max-w-45% lg:max-w-50% md:max-w-75% text-17 mx-auto text-muted dark:text-white dark:text-opacity-70">
-              From airborne systems to fixed infrastructure—take control of how
+              From airborne systems to fixed infrastructure-take control of how
               and where you connect.
             </p>
           </motion.div>

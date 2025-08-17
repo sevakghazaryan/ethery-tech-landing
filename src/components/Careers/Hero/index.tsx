@@ -2,7 +2,8 @@ import { useInView, motion } from "motion/react";
 import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { aboutPerks, careersPerks } from "@/app/api/data";
+import { careersPerks } from "@/app/api/data";
+import Link from "next/link";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -35,12 +36,12 @@ const Hero = () => {
           </h2>
           <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
             <b>
-              Open to learners, dreamers, and builders — no matter your
+              Open to learners, dreamers, and builders - no matter your
               background.
             </b>
           </p>
           <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
-            At <b>Ethery Tech</b>, we believe that talent is not only found —
+            At <b>Ethery Tech</b>, we believe that talent is not only found -
             it's nurtured. Whether you're an engineer, a student, or someone
             with zero technical experience but endless curiosity, we’re here to
             help you grow, contribute, and thrive.
@@ -69,6 +70,22 @@ const Hero = () => {
               </div>
             ))}
           </div>
+          <div className="flex items-center justify-start">
+            <Link
+              href="/careers"
+              className="lg:text-17 flex gap-4 items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
+            >
+              Join Us
+              <Icon
+                icon="solar:alt-arrow-right-linear"
+                width="13"
+                height="13"
+              />
+            </Link>
+          </div>
+          <p className="mt-2 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
+            Let’s build something meaningful together.
+          </p>
         </motion.div>
         <motion.div {...rightAnimation} className="lg:col-span-6 col-span-12">
           <div className="lg:max-w-full md:max-w-75% mx-auto">

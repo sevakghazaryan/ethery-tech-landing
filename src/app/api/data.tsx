@@ -144,8 +144,7 @@ export const featureLinks = [
   },
 ];
 
-export const address =
-  "221b Baker St, London NW1 6XE, United Kingdom";
+export const address = "221b Baker St, London NW1 6XE, United Kingdom";
 export const phone = "+1 (123) 123 1234";
 export const email = "info@mobileapp.com";
 export const copyright = "© Copyright 2025. All rights reserved";
@@ -153,11 +152,10 @@ export const facebook = "https://www.facebook.com/";
 export const twitter = "https://www.twitter.com/";
 export const linkedin = "https://www.linkedin.com/";
 
-
 export const aboutPerks = [
   {
     title: "Built for Critical Operations",
-    text: "UAVs, tactical missions, and industrial systems demand stability — we deliver it.",
+    text: "UAVs, tactical missions, and industrial systems demand stability - we deliver it.",
   },
   {
     title: "Reliable, Secure, and Lightweight",
@@ -176,12 +174,34 @@ export const careersPerks = [
   },
   {
     title: "Inclusive & Mission-Driven Hiring",
-    text: " Our hiring is part of a broader social mission — to open opportunities for all.",
+    text: " Our hiring is part of a broader social mission - to open opportunities for all.",
   },
   {
     title: "Grow With Purpose",
-    text: " You won’t just have a job — you’ll build skills, make impact, and shape the future of communication tech.",
+    text: " You won’t just have a job - you’ll build skills, make impact, and shape the future of communication tech.",
   },
+];
+
+export const productPerks = [
+  {
+    title: "Base Station Unit",
+    text: " Secure, rugged coordination hub for fixed deployment and communication routing.",
+  },
+  {
+    title: "Handheld Radio",
+    text: "Portable, lightweight, and designed for mobility during tactical operations.",
+  },
+  {
+    title: "Control Software Suite",
+    text: "Intuitive UI for system setup, real-time monitoring, and encrypted network management.",
+  },
+];
+
+export const productKeyFeaturePerks = [
+  "End-to-end encryption",
+  "Long-range secure radio links",
+  "Minimal training required",
+  "Flexible across mission types",
 ];
 
 // review
