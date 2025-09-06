@@ -1,7 +1,15 @@
 "use client";
+
+import Hero from "@/components/Home/Hero";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Leadership = () => {
+
+
+  /**
+   * Leadership Page
+   */
+
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/leadership", text: "Leadership" },
@@ -14,6 +22,10 @@ const Leadership = () => {
         description="Meet the visionary team driving innovation and growth"
         breadcrumbLinks={breadcrumbLinks}
       />
+      <div className="">
+
+        
+      </div>
     </main>
   );
 };

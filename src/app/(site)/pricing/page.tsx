@@ -2,11 +2,19 @@ import Pricing from "@/components/Home/Pricing";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import React from "react";
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "Pricing | Nicktio",
 };
 
-const page = () => {
+const PricingPage = () => {
+
+  /**
+   * Pricing Page
+   * 
+   */
+
+
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/pricing", text: "Pricing" },
@@ -23,4 +31,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default PricingPage;

@@ -3,6 +3,12 @@ import Hero from "@/components/Careers/Hero";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Careers = () => {
+
+  /**
+   * 
+   * Careers Page
+   */
+
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/careers", text: "Careers" },

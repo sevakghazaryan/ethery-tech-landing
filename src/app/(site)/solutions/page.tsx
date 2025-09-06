@@ -2,6 +2,12 @@
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Solutions = () => {
+
+  /**
+   * 
+   * Solutions Page
+   */
+  
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/solutions", text: "Solutions" },

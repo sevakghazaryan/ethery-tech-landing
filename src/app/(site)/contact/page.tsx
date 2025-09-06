@@ -4,15 +4,23 @@ import Location from "@/components/Contact/OfficeLocation";
 import React from "react";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "Contact | Nicktio",
 };
 
-const page = () => {
+const Contact = () => {
+
+  /**
+   * 
+   * Contact Page
+   */
+
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/contact", text: "Contact" },
   ];
+
   return (
     <>
       <HeroSub
@@ -27,4 +35,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Contact;
