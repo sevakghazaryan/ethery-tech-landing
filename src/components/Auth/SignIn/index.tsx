@@ -1,7 +1,7 @@
 "use client";
+
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import SocialSignIn from "../SocialSignIn";
 import Logo from "@/components/Layout/Header/Logo";
@@ -10,6 +10,11 @@ import toast, { Toaster } from "react-hot-toast";
 import AuthDialogContext from "@/app/context/AuthDialogContext";
 
 const Signin = ({ signInOpen }: { signInOpen?: any }) => {
+
+  /**
+   * Sign In Component
+   */
+
   const { data: session } = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +24,7 @@ const Signin = ({ signInOpen }: { signInOpen?: any }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true when submitting
+    setLoading(true); 
 
     const result = await signIn("credentials", {
       redirect: false,

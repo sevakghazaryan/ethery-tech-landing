@@ -3,6 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 const ContactForm = () => {
+
+  /**
+   * 
+   * Contact Form Component
+   */
+
+
   return (
     <>
       <section className="dark:bg-darkmode pb-24">

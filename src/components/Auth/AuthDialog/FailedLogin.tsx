@@ -1,7 +1,5 @@
-import SocialSignIn from "@/components/Auth/SocialSignIn"
-import Logo from "@/components/Layout/Header/Logo"
+import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js"
-import Link from "next/link"
 
 
 

@@ -1,3 +1,5 @@
+/*  Style  */
+
 .margin_top{
     @apply md:mt-[6.25rem] mt-[0];
 }

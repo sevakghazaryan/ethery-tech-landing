@@ -3,11 +3,18 @@ import Products from "@/components/Home/Products";
 import Benefit from "@/components/Home/Benefit";
 import Spend from "@/components/Home/Spend";
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "Services | Nicktio",
 };
 
 const Services = () => {
+
+  /**
+   * Services Page
+   */
+
+
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/services", text: "Services" },

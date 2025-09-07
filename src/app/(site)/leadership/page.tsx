@@ -1,6 +1,5 @@
 "use client";
 
-import Hero from "@/components/Home/Hero";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Leadership = () => {

@@ -1,4 +1,12 @@
 export const ColorConfiguration = () => {
+
+
+  /**
+   * 
+   * Color Configuration Component
+   */
+
+
   return (
     <>
       <h3 className=" text-black text-xl font-semibold mt-8 dark:text-white">

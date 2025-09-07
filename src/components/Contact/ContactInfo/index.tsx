@@ -2,6 +2,13 @@ import React from "react";
 import Link from "next/link";
 
 const ContactInfo = () => {
+
+  /**
+   * 
+   * Contact Info Component
+   */
+
+
   return (
     <>
       <section className="dark:bg-darkmode pt-8 pb-24">

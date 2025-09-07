@@ -3,6 +3,12 @@ import { signIn } from "next-auth/react";
 
 
 const SocialSignUp = () => {
+
+    /**
+     * 
+     * Social Sign Up Component
+     */
+
     return (
         <>
             <div className="flex gap-4">

@@ -1,4 +1,5 @@
 "use client";
+
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Solutions = () => {

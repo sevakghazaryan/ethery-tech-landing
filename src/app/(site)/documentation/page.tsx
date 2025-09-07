@@ -7,6 +7,13 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+
+  /**
+   * 
+   * Documentation Page Component.
+   */
+
+
   return (
     <>
       <Documentation />

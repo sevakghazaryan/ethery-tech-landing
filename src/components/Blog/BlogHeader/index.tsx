@@ -60,6 +60,12 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function BlogHead({ params }: Props) {
+
+    /**
+     * Blog Header Component
+     */
+
+
     const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
     const post = getPostBySlug(params.slug, [
         "title",

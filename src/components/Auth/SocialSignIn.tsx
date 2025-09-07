@@ -6,8 +6,13 @@ import { aboutPerks } from "@/app/api/data";
 import React from "react";
 import { signIn } from "next-auth/react";
 
-
 const SocialSignIn = () => {
+
+  /**
+   * 
+   * Social Sign In Component
+   */
+
   return (
     <>
       <div className="flex gap-4">

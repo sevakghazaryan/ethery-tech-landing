@@ -1,6 +1,5 @@
-
+import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js"
-
 
 export const SuccessfullLogin = () => {
     return (

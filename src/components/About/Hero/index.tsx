@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { aboutPerks, careersPerks } from "@/app/api/data";
-import Link from "next/link";
 
 const Hero = () => {
   const ref = useRef(null);

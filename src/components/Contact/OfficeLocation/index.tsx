@@ -2,10 +2,21 @@ import React from "react";
 import Link from "next/link";
 
 const Location = () => {
+
+
+  /**
+   * 
+   * Office Location Component
+   */
+
+
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/contact", text: "Contact" },
   ];
+
+
+
   return (
     <>
       <section className="bg-primary py-24">

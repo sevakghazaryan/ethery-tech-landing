@@ -1,4 +1,11 @@
 export const QuickStart = () => {
+
+  /**
+   * 
+   * Quick Start Component
+   */
+
+
     return (
         <div className="pb-10 md:scroll-m-[180px] scroll-m-28" id="start" >
           <h3 className=" text-black text-2xl font-semibold mt-8 dark:text-white" >Quick Start</h3>

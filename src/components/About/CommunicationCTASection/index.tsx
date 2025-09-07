@@ -5,6 +5,12 @@ import {  useInView,motion } from "motion/react";
 import { useRef } from "react";
 
 const CommunicationCTASection = () => {
+
+  /**
+   * Communication CTA Section
+   */
+
+
   const ref = useRef(null);
   const inView = useInView(ref);
 

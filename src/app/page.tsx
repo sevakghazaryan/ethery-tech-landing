@@ -9,6 +9,11 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+
+  /**
+   * Home Page
+   */
+
   return (
     <main>
       <Hero />

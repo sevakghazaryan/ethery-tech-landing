@@ -4,6 +4,14 @@ import { useEffect, useState } from "react"
 
 export const DocNavigation = () => {
 
+
+    /**
+     * 
+     * Documentation Navigation Component
+     */
+
+
+
     const [navItem, setNavItem] = useState("version");
 
     function getNavItem(item:string){

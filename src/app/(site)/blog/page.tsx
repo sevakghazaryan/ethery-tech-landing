@@ -7,6 +7,15 @@ export const metadata: Metadata = {
 };
 
 const Page = () => {
+
+
+  /**
+   * 
+   * Blog Page
+   */
+
+
+
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/blog", text: "Blog" },

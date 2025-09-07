@@ -1,10 +1,10 @@
 "use client";
+
 import Hero from "@/components/About/Hero";
 import CommunicationCTASection from "@/components/About/CommunicationCTASection";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const AboutUs = () => {
-
 
   /**
    * 

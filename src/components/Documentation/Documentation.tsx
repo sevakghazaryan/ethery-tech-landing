@@ -5,6 +5,12 @@ import { PackageStructure } from "./PackageStructure";
 import { QuickStart } from "./QuickStart";
 
 export const Documentation = () => {
+
+  /**
+   * 
+   * Documentation Component
+   */
+
   return (
     <div className="dark:bg-darkmode lg:pt-28 pt-16">
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md p-6 !pt-10">

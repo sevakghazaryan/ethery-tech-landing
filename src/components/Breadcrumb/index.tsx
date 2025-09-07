@@ -6,6 +6,12 @@ interface BreadcrumbProps {
 }
 
 const Breadcrumb: FC<BreadcrumbProps> = ({ links }) => {
+
+    /**
+     * 
+     * Breadcrumb Component
+     */
+
     const lastIndex = links.length - 1;
     return (
         <div className="flex items-baseline flex-wrap justify-center my-[0.9375rem] mx-0">

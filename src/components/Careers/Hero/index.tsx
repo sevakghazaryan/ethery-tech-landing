@@ -6,6 +6,13 @@ import { careersPerks } from "@/app/api/data";
 import Link from "next/link";
 
 const Hero = () => {
+
+  /**
+   * 
+   * Careers Hero Component
+   */
+
+
   const ref = useRef(null);
   const inView = useInView(ref);
 
