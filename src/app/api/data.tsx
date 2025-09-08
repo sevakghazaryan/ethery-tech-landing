@@ -1,31 +1,39 @@
+import { url } from "inspector";
+
 // home page data
 export const ProductItems = [
   {
+    id: "et-101",
     image: "/images/products/product.webp",
     title: "ET 101",
     details: "Telemetry and control for UAVc",
   },
   {
+    id: "et-102",
     image: "/images/products/product.webp",
     title: "ET 102",
     details: "Telemetry and control for UAVc",
   },
   {
+    id: "et-103",
     image: "/images/products/product.webp",
     title: "ET 103",
     details: "Telemetry and control for UAVc",
   },
   {
+    id: "et-104",
     image: "/images/products/product.webp",
     title: "ET 104",
     details: "Telemetry and control for UAVc",
   },
   {
+    id: "et-105",
     image: "/images/products/product.webp",
     title: "ET 105",
     details: "Telemetry and control for UAVc",
   },
   {
+    id: "et-106",
     image: "/images/products/product.webp",
     title: "ET 106",
     details: "Telemetry and control for UAVc",
@@ -34,43 +42,51 @@ export const ProductItems = [
 
 export const SolutionsItems = [
   {
+    id: "defense-military",
     image: "/images/solutions/high-angle-view-computer-chip.webp",
-
     title: "Defense & Military",
     subTitle: "(EtheryNet)",
+    link: "https://etherynet.com/product/et-101/",
     details:
       "Secure and rugged radio systems for mission-critical communication, including tactical handheld radios and encrypted base stations.",
   },
   {
+    id: "uav-drone",
     image:
       "/images/solutions/mq9-reaper-predator-uav-drone-us-military-most-advanced-military-drone.webp",
     title: "Unmanned Aerial Vehicles (UAVs)",
     subTitle: "(400Mhz small radio)",
+    link: "https://etherynet.com/product/et-102/",
     details:
       "Real-time telemetry, control, and HD data transfer for drones and autonomous systems with long-range, lightweight radio modules.",
   },
   {
+    id: "industrial-automation",
     image:
       "/images/solutions/man-electrical-technician-working-switchboard-with-fuses-uses-tablet.webp",
     title: "Industrial Automation",
     subTitle: "(cc radio)",
+    link: "https://etherynet.com/product/et-103/",
     details:
       " Reliable wireless communication for industrial machines, control systems, and IoT-based automation with minimal latency and high durability.",
   },
   {
+    id: "energy-utilities",
     image:
       "/images/solutions/digital-electric-meters-row-measuring-power-use.webp",
     title: "Energy & Utilities / Smart Metering",
     subTitle: "(cc radio ENA)",
+    link: "https://etherynet.com/product/et-104/",
     details:
       "Radio modules optimized for remote data collection from electricity meters, grid infrastructure monitoring, and smart energy systems.",
   },
-
   {
+    id: "oem-solutions",
     image:
       "/images/solutions/soldiers-special-forces-wars-desertthailand-peoplearmy-soldier-use-laptop-see-map-with-satelliteusing-radio-communication-military-operation.webp",
     title: "Custom Applications / OEM Solutions ",
     subTitle: "(3 band radio) or new eval board",
+    link: "https://etherynet.com/product/et-105/",
     details:
       "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
   },

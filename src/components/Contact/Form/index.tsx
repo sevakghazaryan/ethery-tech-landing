@@ -17,7 +17,8 @@ const ContactForm = () => {
           <div className="grid md:grid-cols-12 grid-cols-1 gap-8">
             <div className="col-span-6">
               <h2 className="max-w-72 text-40 font-bold mb-9">
-                Get Online Consultation
+                {/* Get Online Consultation */}
+                Request Demo
               </h2>
               <form className="flex flex-wrap w-full m-auto justify-between">
                 <div className="sm:flex gap-3 w-full">

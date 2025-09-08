@@ -5,6 +5,7 @@ import { ProductItems } from "@/app/api/data";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import Link from "next/link";
 
 const Products = () => {
   const ref = useRef(null);
@@ -71,14 +72,19 @@ const Products = () => {
                     </p>
                   </div>
                   <div className="rounded-full mt-2">
-                    <Image
-                      src={item.image}
-                      alt={`Brand: ${item.title}`}
-                      width={80}
-                      height={80}
-                      style={{ width: "100%", height: "100%" }}
-                      className="bg-white dark:bg-midnight_text"
-                    />
+                    <Link
+                      href={`/product-Item/${item.id}`}
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={item.image}
+                        alt={`Brand: ${item.title}`}
+                        width={80}
+                        height={80}
+                        style={{ width: "100%", height: "100%" }}
+                        className="bg-white dark:bg-midnight_text"
+                      />
+                    </Link>
                   </div>
                 </motion.div>
               </SwiperSlide>

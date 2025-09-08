@@ -51,12 +51,12 @@ const CommunicationCTASection = () => {
               </Link>
             </div>
             <div className="flex justify-center">
-              <Image
-                src="/images/solution/solution.png"
+              {/* <Image
+                src="/images/about/radio.svg"
                 alt="image"
-                width={531}
-                height={200}
-              />
+                width={155}
+                height={155}
+              /> */}
             </div>
           </div>
         </motion.div>

@@ -5,6 +5,13 @@ import Image from "next/image";
 import { aboutPerks, careersPerks } from "@/app/api/data";
 
 const Hero = () => {
+
+  /**
+   * 
+   * Hero Component
+   */
+
+
   const ref = useRef(null);
   const inView = useInView(ref);
 

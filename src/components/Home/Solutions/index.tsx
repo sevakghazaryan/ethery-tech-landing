@@ -39,30 +39,44 @@ const Solutions = () => {
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 mt-11">
             {SolutionsItems.map((item, index) => (
               <motion.div {...TopAnimation} className="col-span-2" key={index}>
-                <div className="bg-white dark:bg-darkmode rounded-2xl overflow-hidden py-8 xl:py-0">
+                <Link href={`/solution-item/${item.id}`} className="transition-transform duration-300 hover:scale-[1.02] hover:shadow-md">
+                <div className="bg-white dark:bg-darkmode rounded-2xl overflow-hidden py-8 xl:py-0 hover:scale-[1.02] hover:shadow-md">
                   <div className="grid xl:grid-cols-2 xl:gap-10">
                     <div className="xl:px-9 px-4  py-4 flex flex-col">
                       <h3 className="md:text-25 text-20 font-medium text-midnight_text dark:text-white">
                         {item.title}
                       </h3>
-                      <h4 className="text-muted dark:text-white dark:text-opacity-70 md:text-18 text-16 text-primary mt-2 mb-4">
+                      <h4 className="text-primary dark:text-white dark:text-opacity-70 md:text-18 text-16  mt-2 mb-4">
                         {item.subTitle}
                       </h4>
                       <p className="text-muted dark:text-white dark:text-opacity-70 md:text-18 text-16 md:mb-14 mb-8">
                         {item.details}
                       </p>
                     </div>
-                    <div className="xl:px-0 px-4">
+                    {/* <div className="xl:px-0 px-4">
                       <Image
                         src={item.image}
                         alt={item.title}
                         width={459}
-                        height={289}
+                        height={339}
+                        
                         className="mx-auto w-full h-full object-cover object-center"
                       />
-                    </div>
+                    </div> */}
+
+                    <div className="relative w-full h-64"> 
+  <Image
+    src={item.image}
+    alt={item.title}
+    fill
+    className="object-cover object-center rounded-lg"
+  />
+</div>
+
+                    
                   </div>
                 </div>
+                </Link>
               </motion.div>
             ))}
             {/* <div className="h-full flex flex-col gap-4 lg:col-span-1 col-span-2">
