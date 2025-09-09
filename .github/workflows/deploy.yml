@@ -29,21 +29,12 @@ jobs:
       - name: Build application
         run: npm run build
 
-      # 🔍 Preflight: prove FTPS auth & directory access from the runner
-      - name: Preflight FTPS login (PWD + list target dir)
+      - name: Preflight FTPS login (hardcoded test)
         run: |
-          set -eu
-          echo "Testing FTPS login to ${FTP_HOST} as ${FTP_USERNAME} ..."
-          # Ask server for current directory and try to list target dir
           curl -v --ssl-reqd \
-            --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
-            "ftp://${FTP_HOST}:21/${FTP_TARGET_DIR}/" \
-            --quote "PWD" || exit 1
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          FTP_TARGET_DIR: ${{ secrets.FTP_TARGET_DIR }}
+            --user "etheryadmin:Ethernity1." \
+            "ftp://host23.name.am:21/dev/" \
+            --quote "PWD"
 
       - name: Deploy to cPanel via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
