@@ -29,25 +29,41 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Preflight FTPS login (hardcoded test)
+      # (Optional) Show runner IP to whitelist if server blocks FTP (cPHulk/Imunify)
+      - name: Show runner public IP
         run: |
+          echo "IPv4: $(curl -s https://api.ipify.org)"
+          echo "IPv6: $(curl -s https://api64.ipify.org)"
+
+      # Preflight: verify FTPS auth + dir access from the runner
+      - name: Preflight FTPS login (PWD + list target dir)
+        run: |
+          set -eu
+          echo "Testing FTPS login to ${FTP_HOST} as ${FTP_USERNAME} ..."
           curl -v --ssl-reqd \
-            --user "etheryadmin:Ethernity1." \
-            "ftp://host23.name.am:21/dev/" \
+            --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
+            "ftp://${FTP_HOST}:21/${FTP_TARGET_DIR}/" \
             --quote "PWD"
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}              # e.g., host23.name.am
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}      # main cPanel user (no @domain)
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}      # same as 2083 login
+          FTP_TARGET_DIR: ${{ secrets.FTP_TARGET_DIR }}  # e.g., /dev
 
       - name: Deploy to cPanel via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.FTP_HOST }}
+          server: ${{ secrets.FTP_HOST }}               # host23.name.am recommended
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
+          protocol: ftps                                # Explicit TLS
           port: 21
           local-dir: ./build/
-          server-dir: ${{ secrets.FTP_TARGET_DIR }}/
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}/    # /dev
           log-level: verbose
           timeout: 60000
+          # If you use ftp.ethery.tech and see TLS mismatch, uncomment the next line:
+          # security: loose
           exclude: |
             **/.git*
             **/.DS_Store
