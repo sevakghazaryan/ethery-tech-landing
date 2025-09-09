@@ -29,7 +29,7 @@ jobs:
       - name: Build application
         run: npm run build
         
-      - name: Deploy to server via FTP
+      - name: Deploy to server via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -37,6 +37,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          local-dir: ./build/
-          server-dir: ${{ secrets.FTP_TARGET_DIR }}/
+          local-dir: build/
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}
           log-level: verbose
+          timeout: 60000
