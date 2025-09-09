@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to cPanel via FTP
+    name: Deploy to cPanel via SFTP/SSH
     runs-on: ubuntu-latest
 
     steps:
@@ -27,43 +27,51 @@ jobs:
         run: npm ci
 
       - name: Build application
-        run: npm run build
+        run: npm run build    # change to `next build && next export` and upload ./out/ if using Next.js static export
 
-      # (Optional) Show runner IP to whitelist if server blocks FTP (cPHulk/Imunify)
-      - name: Show runner public IP
+      # Add server host key so SSH remains strict but non-interactive
+      - name: Add host to known_hosts
         run: |
-          echo "IPv4: $(curl -s https://api.ipify.org)"
-          echo "IPv6: $(curl -s https://api64.ipify.org)"
-
-      # Preflight: verify FTPS auth + dir access from the runner
-      - name: Preflight FTPS login (PWD + list target dir)
-        run: |
-          set -eu
-          echo "Testing FTPS login to ${FTP_HOST} as ${FTP_USERNAME} ..."
-          curl -v --ssl-reqd \
-            --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
-            "ftp://${FTP_HOST}:21/${FTP_TARGET_DIR}/" \
-            --quote "PWD"
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "${SSH_PORT}" "${SSH_HOST}" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
         env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}              # e.g., host23.name.am
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}      # main cPanel user (no @domain)
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}      # same as 2083 login
-          FTP_TARGET_DIR: ${{ secrets.FTP_TARGET_DIR }}  # e.g., /dev
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
 
-      - name: Deploy to cPanel via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_HOST }}               # host23.name.am recommended
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps                                # Explicit TLS
-          port: 21
-          local-dir: ./build/
-          server-dir: ${{ secrets.FTP_TARGET_DIR }}/    # /dev
-          log-level: verbose
-          timeout: 60000
-          # If you use ftp.ethery.tech and see TLS mismatch, uncomment the next line:
-          # security: loose
-          exclude: |
-            **/.git*
-            **/.DS_Store
+      # Preflight: confirm SSH works and target dir exists
+      - name: Preflight SSH
+        run: |
+          set -e
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${SSH_PRIVATE_KEY}"
+          ssh -o BatchMode=yes -p "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}" "\
+            echo 'Connected as:' \$(whoami) && \
+            echo 'Ensuring target dir…' && mkdir -p '${REMOTE_DEV_PATH}' && \
+            ls -lad '${REMOTE_DEV_PATH}'"
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_DEV_PATH: ${{ secrets.REMOTE_DEV_PATH }}
+
+      # Deploy using rsync over SSH (fast deltas, removes deleted files)
+      - name: Rsync deploy
+        run: |
+          set -e
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${SSH_PRIVATE_KEY}"
+          SRC_DIR="./build/"         # if using Next.js export, set to ./out/
+          TARGET="${REMOTE_DEV_PATH%/}"
+          rsync -az --delete \
+            --chmod=D755,F644 \
+            --exclude='.git*' --exclude='.DS_Store' \
+            -e "ssh -p ${SSH_PORT}" \
+            "$SRC_DIR" "${SSH_USER}@${SSH_HOST}:${TARGET}/"
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_DEV_PATH: ${{ secrets.REMOTE_DEV_PATH }}
