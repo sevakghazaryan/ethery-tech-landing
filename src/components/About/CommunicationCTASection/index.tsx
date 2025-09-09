@@ -50,14 +50,32 @@ const CommunicationCTASection = () => {
                 />
               </Link>
             </div>
-            <div className="flex justify-center">
-              {/* <Image
-                src="/images/about/radio.svg"
+            {/* <div className="flex justify-center">
+              <Image
+                src="/images/about/radio-phone-one.png"
                 alt="image"
-                width={155}
-                height={155}
-              /> */}
-            </div>
+                width={255}
+                height={255}
+              />
+            </div> */}
+
+            <div className="relative flex justify-center">
+  {/* Wrapper with glow effect */}
+  <div className="relative before:content-[''] before:absolute before:inset-0 before:rounded-full before:bg-[radial-gradient(circle,rgba(4,64,188,0.6)_0%,rgba(5,75,129,0)_70%)] before:blur-[120px] before:z-0">
+    
+    {/* radio-phone-one.png */}
+
+    {/* radio-two-transparent.png */}
+    <Image
+      src="/images/about/radio-two-transparent.png"
+      alt="image"
+      width={335}
+      height={335}
+      className="relative z-10"
+    />
+  </div>
+</div>
+
           </div>
         </motion.div>
       </div>

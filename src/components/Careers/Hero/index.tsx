@@ -1,17 +1,18 @@
 import { useInView, motion } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { careersPerks } from "@/app/api/data";
+import FormHero from "../FormHero";
 import Link from "next/link";
 
 const Hero = () => {
-
   /**
-   * 
+   *
    * Careers Hero Component
    */
 
+  const [showForm, setShowForm] = useState(false);
 
   const ref = useRef(null);
   const inView = useInView(ref);
@@ -27,6 +28,11 @@ const Hero = () => {
     animate: inView ? { x: 0, opacity: 1 } : { x: "100%", opacity: 0 },
     transition: { duration: 1, delay: 0.4 },
   };
+
+  const handleCancel = () => {
+
+    setShowForm(false);
+  }
 
   return (
     <section className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 py-14">
@@ -78,7 +84,7 @@ const Hero = () => {
             ))}
           </div>
           <div className="flex items-center justify-start">
-            <Link
+            {/* <Link
               href="/careers"
               className="lg:text-17 flex gap-4 items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
             >
@@ -88,7 +94,19 @@ const Hero = () => {
                 width="13"
                 height="13"
               />
-            </Link>
+            </Link> */}
+
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className="lg:text-17 flex gap-4 items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
+            >
+              Join Us
+              <Icon
+                icon="solar:alt-arrow-right-linear"
+                width="13"
+                height="13"
+              />
+            </button>
           </div>
           <p className="mt-2 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
             Let’s build something meaningful together.
@@ -106,6 +124,14 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
+
+      <div className="border-b border-solid border-border dark:border-dark_border mt-16"></div>
+
+      {showForm && (
+        <div className="mt-16">
+          <FormHero  onCancel={handleCancel}/>
+        </div>
+      )}
     </section>
   );
 };
