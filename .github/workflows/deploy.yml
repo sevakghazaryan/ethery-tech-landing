@@ -21,25 +21,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build application
-        run: npm run build   # For Next.js static export: next build && next export (then change build/ to out/ below)
+        run: npm run build  # If Next.js static export: next build && next export, and set LOCAL_DIR=./out below
 
-      # Add server host key so SFTP is strict but non-interactive
-      - name: Add host to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p "${SSH_PORT}" "${SSH_HOST}" >> ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/known_hosts
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-
-      # Write the private key (no passphrase) for SFTP
       - name: Prepare SSH key
         run: |
           mkdir -p ~/.ssh
@@ -48,35 +36,16 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      # 🔍 Preflight: SFTP can list the target dir (note: unquoted EOF so ${...} expands)
-      - name: Preflight SFTP (list target dir)
-        run: |
-          sftp -i ~/.ssh/id_ci -oBatchMode=yes -P "${SSH_PORT}" \
-               -oStrictHostKeyChecking=yes -oUserKnownHostsFile=~/.ssh/known_hosts \
-               "${SSH_USER}@${SSH_HOST}" <<EOF
-          ls -la ${REMOTE_DEV_PATH}
-          EOF
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          REMOTE_DEV_PATH: ${{ secrets.REMOTE_DEV_PATH }}
-
-      # 🚀 Upload build/ recursively via pure SFTP (no shell)
       - name: Deploy via SFTP (recursive put)
         run: |
-          # change LOCAL_DIR to ./out if you used next export
-          LOCAL_DIR="./build"
-          # ensure path exists (mkdir will error if it exists, that's fine)
-          sftp -i ~/.ssh/id_ci -oBatchMode=yes -P "${SSH_PORT}" \
-               -oStrictHostKeyChecking=yes -oUserKnownHostsFile=~/.ssh/known_hosts \
-               "${SSH_USER}@${SSH_HOST}" <<EOF
-          mkdir ${REMOTE_DEV_PATH}
-          cd ${REMOTE_DEV_PATH}
-          put -r ${LOCAL_DIR}/*
-          EOF
+          LOCAL_DIR="./build"   # change to ./out if you used Next.js export
+          {
+            echo "mkdir ${REMOTE_DEV_PATH}";
+            echo "cd ${REMOTE_DEV_PATH}";
+            echo "put -r ${LOCAL_DIR}/*";
+          } | sftp -i ~/.ssh/id_ci -oBatchMode=yes -oStrictHostKeyChecking=no -P "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}"
         env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          REMOTE_DEV_PATH: ${{ secrets.REMOTE_DEV_PATH }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}                 # e.g., host23.name.am
+          SSH_PORT: ${{ secrets.SSH_PORT }}                 # 22
+          SSH_USER: ${{ secrets.SSH_USER }}                 # cPanel username (e.g., etheryadmin)
+          REMOTE_DEV_PATH: ${{ secrets.REMOTE_DEV_PATH }}   # absolute docroot, e.g., /home2/etheryadmin/dev
