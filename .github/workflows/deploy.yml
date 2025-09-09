@@ -1,4 +1,4 @@
-name: Deploy to Dev Server
+name: Deploy to Dev Server (SFTP/SSH)
 
 on:
   workflow_dispatch:
@@ -27,9 +27,9 @@ jobs:
         run: npm ci
 
       - name: Build application
-        run: npm run build    # change to `next build && next export` and upload ./out/ if using Next.js static export
+        run: npm run build   # change to `next build && next export` and upload ./out/ if using Next.js export
 
-      # Add server host key so SSH remains strict but non-interactive
+      # Trust the server host key so SSH is strict but non-interactive
       - name: Add host to known_hosts
         run: |
           mkdir -p ~/.ssh
@@ -39,13 +39,19 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
 
-      # Preflight: confirm SSH works and target dir exists
+      # Write the private key (no passphrase) to a file for ssh/rsync
+      - name: Prepare SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_ci
+          chmod 600 ~/.ssh/id_ci
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Preflight: verify SSH works and target dir exists
       - name: Preflight SSH
         run: |
-          set -e
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${SSH_PRIVATE_KEY}"
-          ssh -o BatchMode=yes -p "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}" "\
+          ssh -i ~/.ssh/id_ci -o BatchMode=yes -p "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}" "\
             echo 'Connected as:' \$(whoami) && \
             echo 'Ensuring target dir…' && mkdir -p '${REMOTE_DEV_PATH}' && \
             ls -lad '${REMOTE_DEV_PATH}'"
@@ -53,25 +59,19 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
           SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_DEV_PATH: ${{ secrets.REMOTE_DEV_PATH }}
 
       # Deploy using rsync over SSH (fast deltas, removes deleted files)
       - name: Rsync deploy
         run: |
-          set -e
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${SSH_PRIVATE_KEY}"
-          SRC_DIR="./build/"         # if using Next.js export, set to ./out/
-          TARGET="${REMOTE_DEV_PATH%/}"
+          SRC_DIR="./build/"   # if using Next.js export, set to ./out/
           rsync -az --delete \
             --chmod=D755,F644 \
             --exclude='.git*' --exclude='.DS_Store' \
-            -e "ssh -p ${SSH_PORT}" \
-            "$SRC_DIR" "${SSH_USER}@${SSH_HOST}:${TARGET}/"
+            -e "ssh -i ~/.ssh/id_ci -p ${SSH_PORT}" \
+            "$SRC_DIR" "${SSH_USER}@${SSH_HOST}:${REMOTE_DEV_PATH%/}/"
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
           SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_DEV_PATH: ${{ secrets.REMOTE_DEV_PATH }}
