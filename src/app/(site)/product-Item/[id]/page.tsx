@@ -1,12 +1,10 @@
+
 import { ProductItems } from "@/app/api/data";
 import Image from "next/image";
+
 import Link from "next/link";
 
 import HeroSub from "@/components/SharedComponents/HeroSub";
-
-interface ProductPageProps {
-  params: { id: string };
-}
 
 const breadcrumbLinks = [
   { href: "/", text: "Home" },
@@ -19,8 +17,15 @@ export function generateStaticParams() {
   }));
 }
 
-export default function ProductItemPage({ params }: ProductPageProps) {
-  const product = ProductItems.find((p) => p.id === params.id);
+type ProductItemPageProps = {
+  params: { id: string } | Promise<{ id: string }>
+};
+
+export default async function ProductItemPage({ params }: ProductItemPageProps) {
+
+  const resolvedParams = await Promise.resolve(params);
+
+  const product = ProductItems.find((p) => p.id === resolvedParams.id);
 
   if (!product) {
     return (
