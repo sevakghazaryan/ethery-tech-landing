@@ -38,7 +38,7 @@ jobs:
           protocol: ftps
           port: 21
           local-dir: ./build/
-          server-dir: ${{ secrets.FTP_TARGET_DIR }}
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}/
           log-level: verbose
           timeout: 60000
           exclude: |
