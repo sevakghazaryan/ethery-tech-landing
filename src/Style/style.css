@@ -13,3 +13,15 @@
 .slick-dots li button:before{
     @apply !text-base !text-[#BBC8D5] !opacity-100;
 }
+
+
+/*  */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;     
+}

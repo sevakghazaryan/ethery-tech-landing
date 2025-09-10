@@ -8,6 +8,13 @@ import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
 import { useTheme } from "next-themes";
 
 const Header: React.FC = () => {
+
+  /**
+   * 
+   * Header Component
+   */
+
+
   const pathUrl = usePathname();
   const { theme, setTheme } = useTheme();
 

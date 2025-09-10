@@ -2,6 +2,7 @@
 
 import Intro from "@/components/Products/Intro";
 import KeyFeatures from "@/components/Products/KeyFeatures";
+import ProductInfo from "@/components/Products/ProductInfo";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Products = () => {
@@ -25,7 +26,10 @@ const Products = () => {
         breadcrumbLinks={breadcrumbLinks}
       />
       <Intro />
-      <KeyFeatures />
+      <div className="py-5"/>
+      {/* <KeyFeatures /> */}
+
+      <ProductInfo />
     </main>
   );
 };

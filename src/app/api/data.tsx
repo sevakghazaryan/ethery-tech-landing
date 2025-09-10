@@ -91,6 +91,60 @@ export const SolutionsItems = [
       "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
   },
 ];
+ 
+export const ProductSections = [
+  {
+    title: "Integrated Radio Systems",
+    description:
+      "Tactical Communication System is built to meet the highest standards of reliability, mobility, and security. Whether deployed in the field or integrated into command infrastructure, this modular system ensures seamless coordination across units, assets, and environments",
+    image: "/images/products/product.webp",
+    slice: [0, 2], 
+    reverse: false,
+  },
+  {
+    title: "UAV Radio Modules",
+    description:
+      "Designed specifically for unmanned aerial systems, this module supports real-time telemetry, control, and HD video transmission. Its lightweight and energy-efficient design makes it ideal for long-endurance drone operations and precise flight control",
+    image: "/images/products/product.webp",
+    slice: [0, 3],
+    reverse: true,
+  },
+  {
+    title: "Industrial Radios",
+    description:
+      "Built for industrial automation and machine-to-machine systems, this module delivers low-latency, robust communication even in the most demanding environments. It offers high configurability, making it suitable for smart factories and remote control applications",
+    image: "/images/products/product.webp",
+    slice: [0, 2],
+    reverse: false,
+  },
+
+  {
+    title: "Repeaters ",
+    description:
+      "Repeater devices seamlessly expand wireless coverage, enhance signal reliability, and deliver stable connections throughout large or complex environments",
+    image: "/images/products/product.webp",
+    slice: [0, 4],
+    reverse: true,
+  },
+  {
+    title: "Smart Metering",
+    description:
+      "This module is tailored for remote reporting of electricity and utility meter data. It supports long-range, low-power communication and is ideal for integration into smart energy systems and grid monitoring infrastructure",
+    image: "/images/products/product.webp",
+    slice: [0, 1],
+    reverse: false,
+  },
+
+  {
+    title: "OEM Solutions ",
+    description:
+      "A powerful, dual-frequency radio solution designed for developers and integrators who need flexibility across various applications. With full software configurability and wide-band support, it’s suitable for hybrid systems, advanced UAVs, and mobile surveillance platforms.",
+    image: "/images/products/product.webp",
+    slice: [0, 4],
+    reverse: true,
+  },
+
+];
 
 // Beneifit
 export const BeneifitImage = [

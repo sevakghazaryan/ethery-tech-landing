@@ -4,6 +4,13 @@ import { useRef } from "react";
 import { productPerks } from "@/app/api/data";
 
 const Intro = () => {
+
+  /**
+   * 
+   * Products Intro Component
+   */
+
+
   const ref = useRef(null);
   const inView = useInView(ref);
 
@@ -43,20 +50,14 @@ const Intro = () => {
           </p>
         </motion.div>
 
-        <div className="flex justify-start sm:mt-20 mt-10">
+        {/* <div className="flex justify-start sm:mt-20 mt-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-14 gap-8">
             {productPerks.map((item, index) => (
               <div key={index}>
                 <motion.div {...bottomAnimation(index)}>
-                  {/* <div className="rounded-full">
-                    <Image
-                      src={item.image}
-                      alt={`Brand: ${item.title}`}
-                      width={80}
-                      height={80}
-                      className="rounded-full bg-white p-4 shadow-lg dark:bg-midnight_text"
-                    />
-                  </div> */}
+                  <div className="rounded-full">
+                   
+                  </div>
                   <div className="py-4">
                     <p className="lg:text-25 text-22 font-medium text-midnight_text dark:text-white">
                       {item.title}
@@ -71,7 +72,7 @@ const Intro = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
