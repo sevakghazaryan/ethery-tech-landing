@@ -56,6 +56,8 @@ const Header: React.FC = () => {
     }
   };
 
+
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
@@ -159,7 +161,7 @@ const Header: React.FC = () => {
         </div>
         <nav className="flex flex-col items-start p-4">
           {headerData.map((item, index) => (
-            <MobileHeaderLink key={index} item={item} />
+            <MobileHeaderLink key={index} item={item} navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen}  />
           ))}
        
         </nav>

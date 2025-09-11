@@ -54,11 +54,11 @@ const ProductInfo = () => {
               {/* Right side */}
               <div
                 className={
-                  section.reverse ? "order-2 lg:order-1" : "order-1 lg:order-2"
+                  section.reverse ? " order-1 lg:order-1" : "order-2 lg:order-2"
                 }
               >
-                <div className="flex justify-center ml-20">
-                  <ul className="flex flex-col gap-6 w-full max-w-md">
+                <div className="flex justify-center w-full">
+                  <ul className="flex flex-col gap-6 ">
                     {ProductItems.slice(
                       section.slice[0],
                       section.slice[1]
