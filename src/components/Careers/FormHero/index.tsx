@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-
+import React, { Fragment, useState } from "react";
+import ModalApplay from "@/components/Modals/SuccesApplay";
+import emailjs from "@emailjs/browser";
 
 interface FormHeroProps {
   onCancel?: () => void;
-
 }
 
 const FormHero = ({ onCancel }: FormHeroProps) => {
@@ -22,6 +22,12 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState("");
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -52,97 +58,139 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+ const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log("Form Submitted ✅", formData);
-      alert("Form submitted successfully!");
+    if (!validateForm()) return;
+
+    setLoading(true);
+
+    try {
+      // Prepare FormData for EmailJS (supports attachments)
+      const templateParams = new FormData();
+      templateParams.append("name", formData.name);
+      templateParams.append("email", formData.email);
+      templateParams.append("phone", formData.phone);
+      templateParams.append("note", formData.note);
+      if (formData.cv) templateParams.append("cv", formData.cv);
+
+      await emailjs.send(
+        process.env.PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.APOLY_PUBLIC_EMAILJS_TAEMPLATE_ID!,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          note: formData.note,
+        },
+        process.env.PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        note: "",
+        cv: null,
+      });
+      setModalOpen(true); // Show success modal
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-lg mx-auto p-8 bg-white dark:bg-darkmode rounded-2xl shadow-xl">
-      <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-        Applay for Join
-      </h2>
-      <form className="space-y-6" onSubmit={handleSubmit}>
-        {/* Name, Surname */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Name, Surname <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
-              errors.name ? "border-red-500 ring-red-300" : "focus:ring-purple-500"
-            }`}
-            placeholder="John Doe"
-          />
-          {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-          )}
-        </div>
+    <Fragment>
+      <div className="max-w-lg mx-auto p-8 bg-white dark:bg-darkmode rounded-2xl shadow-xl">
+        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+          Applay for Join
+        </h2>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          {/* Name, Surname */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Name, Surname <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
+                errors.name
+                  ? "border-red-500 ring-red-300"
+                  : "focus:ring-purple-500"
+              }`}
+              placeholder="John Doe"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+            )}
+          </div>
 
-        {/* Email */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Mail <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
-              errors.email ? "border-red-500 ring-red-300" : "focus:ring-purple-500"
-            }`}
-            placeholder="example@mail.com"
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-          )}
-        </div>
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Mail <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
+                errors.email
+                  ? "border-red-500 ring-red-300"
+                  : "focus:ring-purple-500"
+              }`}
+              placeholder="example@mail.com"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
+          </div>
 
-        {/* Phone Number */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Phone Number <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
-              errors.phone ? "border-red-500 ring-red-300" : "focus:ring-purple-500"
-            }`}
-            placeholder="+1 234 567 890"
-          />
-          {errors.phone && (
-            <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-          )}
-        </div>
+          {/* Phone Number */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Phone Number <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
+                errors.phone
+                  ? "border-red-500 ring-red-300"
+                  : "focus:ring-purple-500"
+              }`}
+              placeholder="+1 234 567 890"
+            />
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+            )}
+          </div>
 
-        {/* Note */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Note (Optional)
-          </label>
-          <textarea
-            name="note"
-            value={formData.note}
-            onChange={handleChange}
-            rows={4}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-            placeholder="Write something..."
-          ></textarea>
-        </div>
+          {/* Note */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Note (Optional)
+            </label>
+            <textarea
+              name="note"
+              value={formData.note}
+              onChange={handleChange}
+              rows={4}
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              placeholder="Write something..."
+            ></textarea>
+          </div>
 
-        {/* CV Upload */}
-        {/* <div>
+          {/* CV Upload */}
+          {/* <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             CV Attachment <span className="text-red-500">*</span>
           </label>
@@ -157,60 +205,80 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
           {errors.cv && <p className="text-red-500 text-sm mt-1">{errors.cv}</p>}
         </div> */}
 
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              CV Attachment <span className="text-red-500">*</span>
+            </label>
 
-        <div>
-  <label className="block text-sm font-medium text-gray-700 mb-2">
-    CV Attachment <span className="text-red-500">*</span>
-  </label>
+            {/* Custom File Upload */}
+            <div className="relative">
+              <input
+                id="cv-upload"
+                type="file"
+                name="cv"
+                onChange={handleChange}
+                className="hidden" // hide default
+              />
+              <label
+                htmlFor="cv-upload"
+                className={`flex items-center justify-center w-full px-4 py-3 rounded-lg border-2 border-dashed cursor-pointer transition 
+        ${
+          errors.cv
+            ? "border-red-500 bg-red-50 text-red-600"
+            : "border-gray-300 hover:border-purple-500 text-gray-600"
+        }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 mr-2 text-gray-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 16V4m0 0L3 8m4-4l4 4m6 12h2a2 2 0 002-2V7a2 2 0 00-2-2h-2m-4 12h-4m0 0V4m0 12l-4-4m4 4l4-4"
+                  />
+                </svg>
+                <span>Upload your CV</span>
+              </label>
+            </div>
 
-  {/* Custom File Upload */}
-  <div className="relative">
-    <input
-      id="cv-upload"
-      type="file"
-      name="cv"
-      onChange={handleChange}
-      className="hidden" // hide default
-    />
-    <label
-      htmlFor="cv-upload"
-      className={`flex items-center justify-center w-full px-4 py-3 rounded-lg border-2 border-dashed cursor-pointer transition 
-        ${errors.cv ? "border-red-500 bg-red-50 text-red-600" : "border-gray-300 hover:border-purple-500 text-gray-600"}`}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5 mr-2 text-gray-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 12h2a2 2 0 002-2V7a2 2 0 00-2-2h-2m-4 12h-4m0 0V4m0 12l-4-4m4 4l4-4" />
-      </svg>
-      <span>Upload your CV</span>
-    </label>
-  </div>
+            {/* Error message */}
+            {errors.cv && (
+              <p className="text-red-500 text-sm mt-2">{errors.cv}</p>
+            )}
+          </div>
 
-  {/* Error message */}
-  {errors.cv && <p className="text-red-500 text-sm mt-2">{errors.cv}</p>}
-</div>
+          {/* Submit */}
+          <div className="pt-4 flex justify-between text-center">
+            <button
+              className="lg:text-17 flex gap-4 items-center bg-gray-300 text-gray-700 py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-gray-300 hover:bg-gray-400"
+              onClick={() => onCancel && onCancel()}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="lg:text-17 flex gap-4 items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
+            >
+              Send for Request
+            </button>
+          </div>
+        </form>
+      </div>
 
+      {/*  */}
 
-        {/* Submit */}
-        <div className="pt-4 flex justify-between text-center">
-          
-          <button className="lg:text-17 flex gap-4 items-center bg-gray-300 text-gray-700 py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-gray-300 hover:bg-gray-400" onClick={() => onCancel && onCancel()}>
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="lg:text-17 flex gap-4 items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
-          >
-            Send for Request 
-          </button>
-
-        </div>
-      </form>
-    </div>
+      <ModalApplay
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Success!"
+        description="You Have Succesfuly applay "
+      />
+    </Fragment>
   );
 };
 

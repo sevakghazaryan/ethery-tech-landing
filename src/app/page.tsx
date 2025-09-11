@@ -5,7 +5,16 @@ import Products from "@/components/Home/Products";
 import Solutions from "@/components/Home/Solutions";
 
 export const metadata: Metadata = {
-  title: "Nicktio",
+  title: "Ethery Tech",
+  description: "",
+
+   icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
 };
 
 export default function Home() {
