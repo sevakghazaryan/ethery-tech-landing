@@ -1,27 +1,26 @@
-//
-
-
-//
-
-// components/Modal.tsx
 "use client";
+
 import React, { FC, ReactNode } from "react";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
-    description? : string;
+  description?: string;
   children?: ReactNode;
 }
 
-const ModalApplay: FC<ModalProps> = ({ isOpen, onClose, title, description, children }) => {
-
-    /**
-     * 
-     * Modal Applay Success.
-     */
-
+const ModalApplay: FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  title,
+  description,
+  children,
+}) => {
+  /**
+   *
+   * Modal Applay Success.
+   */
 
   if (!isOpen) return null;
 
@@ -34,11 +33,13 @@ const ModalApplay: FC<ModalProps> = ({ isOpen, onClose, title, description, chil
         >
           ✖
         </button>
-        {title && <h2 className="text-xl font-bold mb-2">{title}</h2>}
-        <div className="text-sm text-gray-700 dark:text-gray-300">{description}</div>
+        {title && <h2 className=" text-xl font-bold mb-2">{title}</h2>}
+        <div className="text-muted dark:text-white dark:text-opacity-70 text-sm ">
+          {description}
+        </div>
         <button
           onClick={onClose}
-          className="mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90"
+          className="bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700"
         >
           Close
         </button>

@@ -1,7 +1,6 @@
 "use client";
 import React, { Fragment, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import emailjs from "@emailjs/browser";
 import ModalDemo from "@/components/Modals/SuccesDemo";
 
@@ -11,12 +10,12 @@ const ContactForm = () => {
    */
 
   const [formData, setFormData] = useState({
-    fullName: "",
+    full_name: "",
     company: "",
-    jobTitle: "",
-    email: "",
+    title: "",
+    work_email: "",
     phone: "",
-    interests: "",
+    interest: "",
     message: "",
   });
 
@@ -28,7 +27,7 @@ const ContactForm = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const interestsOptions = [
+  const interestOptions = [
     "Integrated Radio Systems",
     "UAV Radio Modules",
     "Industrial Radios",
@@ -45,30 +44,19 @@ const ContactForm = () => {
   };
 
   const handleInterestSelect = (item: string) => {
-    setFormData((prev) => ({ ...prev, interests: item }));
-    setOpen(false); 
+    setFormData((prev) => ({ ...prev, interest: item }));
+    setOpen(false);
   };
 
-  const handleCheckboxChange = (item: string) => {
-    setFormData((prev: any) => {
-      const exists = prev.interests.includes(item);
-      return {
-        ...prev,
-        interests: exists
-          ? prev.interests.filter((i: string) => i !== item)
-          : [...prev.interests, item],
-      };
-    });
-  };
-
-  // const handleCheckboxChange = (interest: string) => {
-  //   setFormData((prev) => {
-  //     const exists = prev.interests.includes(interest);
+  //  This line code like change next stage
+  // const handleCheckboxChange = (item: string) => {
+  //   setFormData((prev: any) => {
+  //     const exists = prev.interest.includes(item);
   //     return {
   //       ...prev,
-  //       interests: exists
-  //         ? prev.interests.filter((i) => i !== interest)
-  //         : [...prev.interests, interest],
+  //       interest: exists
+  //         ? prev.interest.filter((i: string) => i !== item)
+  //         : [...prev.interest, item],
   //     };
   //   });
   // };
@@ -76,39 +64,21 @@ const ContactForm = () => {
   const validateForm = () => {
     let newErrors: { [key: string]: string } = {};
 
-    if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required";
+    if (!formData.full_name.trim())
+      newErrors.fullName = "Full Name is required";
     if (!formData.company.trim()) newErrors.company = "Company is required";
-    if (!formData.email.trim()) {
+    if (!formData.work_email.trim()) {
       newErrors.email = "Work Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData.work_email)) {
       newErrors.email = "Enter a valid email";
     }
-    if (formData.interests.length === 0)
-      newErrors.interests = "Select at least one area of interest";
+    if (formData.interest.length === 0)
+      newErrors.interest = "Select at least one area of interest";
 
     setErrors(newErrors);
 
     return Object.keys(newErrors).length === 0;
   };
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   if (validateForm()) {
-  //     console.log("Form submitted successfully ✅", formData);
-  //     alert("Form submitted successfully!");
-  //     setFormData({
-  //       fullName: "",
-  //       company: "",
-  //       jobTitle: "",
-  //       email: "",
-  //       phone: "",
-  //       interests: "",
-  //       message: "",
-  //     });
-  //     setErrors({});
-  //   }
-  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,12 +87,18 @@ const ContactForm = () => {
     setLoading(true);
     setSuccess("");
 
+    if (loading) {
+    }
+
+    if (success) {
+    }
+
     try {
       const result = await emailjs.send(
-        process.env.PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.DEMO_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        "service_cp8yeeo", // Service ID
+        "template_aby5rdu", // Template ID for DEMO
         formData,
-        process.env.PUBLIC_EMAILJS_PUBLIC_KEY!
+        "pCvOyJF65oD7cM4kw" // Public Key
       );
 
       if (result.status === 200) {
@@ -131,19 +107,18 @@ const ContactForm = () => {
           "Thank you for your request! Our team will contact you shortly to schedule your demo. 🎉"
         );
         setFormData({
-          fullName: "",
+          full_name: "",
           company: "",
-          jobTitle: "",
-          email: "",
+          title: "",
+          work_email: "",
           phone: "",
-          interests: "",
+          interest: "",
           message: "",
         });
       }
 
       setModalOpen(true);
     } catch (err) {
-      console.error("EmailJS Error:", err);
       setSuccess("❌ Failed to send message. Try again later.");
     } finally {
       setLoading(false);
@@ -168,15 +143,15 @@ const ContactForm = () => {
                   {/* Full Name */}
                   <div className="mx-0 my-2.5 flex-1">
                     <label
-                      htmlFor="fullName"
+                      htmlFor="full_name"
                       className="pb-3 inline-block text-17"
                     >
                       Full Name*
                     </label>
                     <input
                       type="text"
-                      name="fullName"
-                      value={formData.fullName}
+                      name="full_name"
+                      value={formData.full_name}
                       onChange={handleChange}
                       className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
                         errors.fullName ? "border-red-500" : "border-border"
@@ -216,15 +191,15 @@ const ContactForm = () => {
                   {/* Job Title / Role */}
                   <div className="mx-0 my-2.5 flex-1">
                     <label
-                      htmlFor="jobTitle"
+                      htmlFor="title"
                       className="pb-3 inline-block text-17"
                     >
                       Job Title / Role
                     </label>
                     <input
                       type="text"
-                      name="jobTitle"
-                      value={formData.jobTitle}
+                      name="title"
+                      value={formData.title}
                       onChange={handleChange}
                       className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0"
                     />
@@ -232,15 +207,15 @@ const ContactForm = () => {
                   {/* Work Email */}
                   <div className="mx-0 my-2.5 flex-1">
                     <label
-                      htmlFor="email"
+                      htmlFor="work_email"
                       className="pb-3 inline-block text-17"
                     >
                       Work Email*
                     </label>
                     <input
                       type="email"
-                      name="email"
-                      value={formData.email}
+                      name="work_email"
+                      value={formData.work_email}
                       onChange={handleChange}
                       className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
                         errors.email ? "border-red-500" : "border-border"
@@ -268,7 +243,6 @@ const ContactForm = () => {
                 </div>
 
                 {/* Area of Interest */}
-                {/* Area of Interest */}
                 <div className="mx-0 my-2.5 w-full relative">
                   <label className="pb-3 inline-block text-17">
                     Area of Interest*
@@ -279,10 +253,10 @@ const ContactForm = () => {
                     type="button"
                     onClick={() => setOpen(!open)}
                     className={`w-full text-left px-4 py-2.5 rounded-lg border ${
-                      errors.interests ? "border-red-500" : "border-border"
+                      errors.interest ? "border-red-500" : "border-border"
                     } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                   >
-                    {formData.interests ? formData.interests : "Select option"}
+                    {formData.interest ? formData.interest : "Select option"}
                   </button>
 
                   {/* Dropdown menu */}
@@ -291,12 +265,12 @@ const ContactForm = () => {
                       className="absolute z-10 mt-1 w-full bg-white dark:bg-darkmode border border-border dark:border-dark_border rounded-lg shadow-lg max-h-56 overflow-y-auto"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      {interestsOptions.map((item, i) => (
+                      {interestOptions.map((item, i) => (
                         <div
                           key={i}
                           onClick={() => handleInterestSelect(item)}
                           className={`px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                            formData.interests === item
+                            formData.interest === item
                               ? "bg-gray-200 dark:bg-gray-600"
                               : ""
                           }`}
@@ -307,9 +281,9 @@ const ContactForm = () => {
                     </div>
                   )}
 
-                  {errors.interests && (
+                  {errors.interest && (
                     <p className="text-red-500 text-sm mt-1">
-                      {errors.interests}
+                      {errors.interest}
                     </p>
                   )}
                 </div>
@@ -338,7 +312,7 @@ const ContactForm = () => {
                     type="submit"
                     className="bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700"
                   >
-                    Make an appointment
+                    Make Request Demo
                   </button>
                 </div>
               </form>
@@ -358,7 +332,7 @@ const ContactForm = () => {
         </div>
       </section>
 
-      {/*  */}
+      {/* Modal Demo */}
 
       <ModalDemo
         isOpen={modalOpen}

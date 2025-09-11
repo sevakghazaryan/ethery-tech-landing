@@ -14,8 +14,8 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
    */
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    from_name: "",
+    from_email: "",
     phone: "",
     note: "",
     cv: null as File | null,
@@ -24,8 +24,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [success, setSuccess] = useState("");
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -47,55 +45,52 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = "Name & Surname is required.";
-    if (!formData.email.trim()) newErrors.email = "Email is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+    if (!formData.from_name.trim())
+      newErrors.name = "Name & Surname is required.";
+    if (!formData.from_email.trim()) newErrors.email = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.from_email))
       newErrors.email = "Enter a valid email address.";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
     if (!formData.cv) newErrors.cv = "Please upload your CV.";
+
+    if (formData.cv && formData.cv.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({ ...prev, cv: "CV file is too large. Max 5MB." }));
+      setLoading(false);
+      return;
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
- const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoading(true);
+    if (loading) {
+    }
 
     try {
-      // Prepare FormData for EmailJS (supports attachments)
-      const templateParams = new FormData();
-      templateParams.append("name", formData.name);
-      templateParams.append("email", formData.email);
-      templateParams.append("phone", formData.phone);
-      templateParams.append("note", formData.note);
-      if (formData.cv) templateParams.append("cv", formData.cv);
+      const form = document.getElementById("apply-form") as HTMLFormElement;
 
-      await emailjs.send(
-        process.env.PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.APOLY_PUBLIC_EMAILJS_TAEMPLATE_ID!,
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          note: formData.note,
-        },
-        process.env.PUBLIC_EMAILJS_PUBLIC_KEY
+      await emailjs.sendForm(
+        "service_cp8yeeo", // Service ID
+        "template_6mqe3m6", // Template ID for Apply to Join
+        form, // HTML form element
+        "pCvOyJF65oD7cM4kw" // Public Key
       );
 
       setFormData({
-        name: "",
-        email: "",
+        from_name: "",
+        from_email: "",
         phone: "",
         note: "",
         cv: null,
       });
-      setModalOpen(true); // Show success modal
+      setModalOpen(true);
     } catch (err) {
       console.error("EmailJS Error:", err);
-      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -107,7 +102,7 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
         <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
           Applay for Join
         </h2>
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form id="apply-form" className="space-y-6" onSubmit={handleSubmit}>
           {/* Name, Surname */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -116,7 +111,7 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
             <input
               type="text"
               name="name"
-              value={formData.name}
+              value={formData.from_name}
               onChange={handleChange}
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
                 errors.name
@@ -138,7 +133,7 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              value={formData.from_email}
               onChange={handleChange}
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
                 errors.email
@@ -190,43 +185,26 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
           </div>
 
           {/* CV Upload */}
-          {/* <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            CV Attachment <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="file"
-            name="cv"
-            onChange={handleChange}
-            className={`w-full border rounded-lg px-3 py-2 text-gray-700 cursor-pointer focus:outline-none focus:ring-2 ${
-              errors.cv ? "border-red-500 ring-red-300" : "focus:ring-purple-500"
-            }`}
-          />
-          {errors.cv && <p className="text-red-500 text-sm mt-1">{errors.cv}</p>}
-        </div> */}
-
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               CV Attachment <span className="text-red-500">*</span>
             </label>
-
-            {/* Custom File Upload */}
             <div className="relative">
               <input
                 id="cv-upload"
                 type="file"
                 name="cv"
                 onChange={handleChange}
-                className="hidden" // hide default
+                className="hidden"
               />
               <label
                 htmlFor="cv-upload"
                 className={`flex items-center justify-center w-full px-4 py-3 rounded-lg border-2 border-dashed cursor-pointer transition 
-        ${
-          errors.cv
-            ? "border-red-500 bg-red-50 text-red-600"
-            : "border-gray-300 hover:border-purple-500 text-gray-600"
-        }`}
+                  ${
+                    errors.cv
+                      ? "border-red-500 bg-red-50 text-red-600"
+                      : "border-gray-300 hover:border-purple-500 text-gray-600"
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -242,17 +220,15 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
                     d="M7 16V4m0 0L3 8m4-4l4 4m6 12h2a2 2 0 002-2V7a2 2 0 00-2-2h-2m-4 12h-4m0 0V4m0 12l-4-4m4 4l4-4"
                   />
                 </svg>
-                <span>Upload your CV</span>
+                <span>{formData.cv ? formData.cv.name : "Upload your CV"}</span>
               </label>
             </div>
 
-            {/* Error message */}
             {errors.cv && (
               <p className="text-red-500 text-sm mt-2">{errors.cv}</p>
             )}
           </div>
 
-          {/* Submit */}
           <div className="pt-4 flex justify-between text-center">
             <button
               className="lg:text-17 flex gap-4 items-center bg-gray-300 text-gray-700 py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-gray-300 hover:bg-gray-400"
@@ -276,7 +252,7 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         title="Success!"
-        description="You Have Succesfuly applay "
+        description="Thank you for submitting your application. Our HR team will carefully review your CV and get back to you if your profile matches our current opportunities."
       />
     </Fragment>
   );
