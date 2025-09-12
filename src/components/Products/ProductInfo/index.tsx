@@ -9,9 +9,9 @@ const ProductInfo = () => {
    */
 
   const bottomAnimation = (inView: boolean, index: number) => ({
-    initial: { y: "100%", opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 },
-    transition: { duration: 0.5, delay: index * 0.3 },
+    initial: { y: "50%", opacity: 0 },
+    animate: inView ? { y: 0, opacity: 1 } : { y: "50%", opacity: 0 },
+    transition: { duration: 0.15, delay: index * 0.3  },
   });
 
   return (
@@ -19,12 +19,18 @@ const ProductInfo = () => {
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 space-y-32">
         {ProductSections.map((section, i) => {
           const ref = useRef(null);
-          const inView = useInView(ref, { once: true, margin: "-50px" });
+
+
+            const inView = useInView(ref, { 
+            once: true, 
+            margin: "0px" 
+          });
 
           return (
             <motion.div
               key={i}
               ref={ref}
+              
               {...bottomAnimation(inView, i)}
               className="grid lg:grid-cols-2 grid-cols-1 gap-8 items-center"
             >
