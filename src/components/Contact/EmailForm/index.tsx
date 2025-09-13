@@ -124,7 +124,7 @@ const EmailForm = () => {
         <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
           <div className="grid md:grid-cols-12 grid-cols-1 gap-8">
             <div className="col-span-6">
-              <h2 className="max-w-72 text-40 font-bold mb-9">Career</h2>
+              <h2 className="max-w-72 text-40 font-bold mb-9">Email Us</h2>
               <form
                 className="flex flex-wrap w-full m-auto justify-between"
                 onSubmit={handleSubmit}
