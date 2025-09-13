@@ -1,5 +1,5 @@
 "use client";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState , useRef} from "react";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import ModalDemo from "@/components/Modals/SuccesDemo";
@@ -312,10 +312,13 @@ const ContactForm = () => {
                     type="submit"
                     className="bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700"
                   >
-                    Make Request Demo
+                  
+                    {loading ? "Sending..." : "👉 Request Demo"}
                   </button>
                 </div>
               </form>
+
+                {/* <div ref={formBottomRef} className="mt-10"></div> */}
             </div>
             <div className="col-span-6">
               <Image

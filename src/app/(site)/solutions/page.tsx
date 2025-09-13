@@ -1,5 +1,6 @@
 "use client";
 
+import SolutionsComponent from "@/components/Home/Solutions";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Solutions = () => {
@@ -21,6 +22,7 @@ const Solutions = () => {
         description="Innovative solutions tailored to your unique challenges"
         breadcrumbLinks={breadcrumbLinks}
       />
+      <SolutionsComponent />
     </main>
   );
 };

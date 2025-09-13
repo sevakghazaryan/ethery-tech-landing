@@ -1,3 +1,4 @@
+import { link } from "fs";
 import { url } from "inspector";
 
 // home page data
@@ -186,12 +187,12 @@ export const companyLinks = [
     href: "/about",
   },
   {
-    link: "Leadership",
-    href: "/leadership",
-  },
-  {
     link: "Careers",
     href: "/careers",
+  },
+   {
+    link: "Leadership",
+    href: "/leadership",
   },
 ];
 
@@ -213,6 +214,41 @@ export const featureLinks = [
     href: "/contact",
   },
 ];
+
+export const supportLink = [
+   {
+    link: "Contact Us",
+    href: "/",
+  },
+  {
+    link: "Request Demo",
+    href: "/",
+  },
+]
+
+export const SolutionsLink = [
+
+  {
+    link: "Defense & Military",
+    href: "/",
+  },
+  {
+    link: "Unmanned Aerial Vehicles (UAVs)",
+    href: "/",
+  },
+  {
+    link: "Industrial Automation",
+    href: "/",
+  },
+  {
+    link: "Energy & Utilities / Smart Metering",
+    href: "/",
+  },
+  {
+    link: "Custom Applications / OEM Solutions",
+    href: "/",
+  },
+]
 
 export const address = "221b Baker St, London NW1 6XE, United Kingdom";
 export const phone = "+1 (123) 123 1234";

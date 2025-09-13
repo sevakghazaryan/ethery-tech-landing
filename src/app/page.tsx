@@ -2,7 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
 import Products from "@/components/Home/Products";
-import Solutions from "@/components/Home/Solutions";
+import SolutionsComponent from "@/components/Home/Solutions";
 
 export const metadata: Metadata = {
   title: "Ethery Tech",
@@ -27,7 +27,7 @@ export default function Home() {
     <main>
       <Hero />
       <Products />
-      <Solutions />
+      <SolutionsComponent />
     </main>
   );
 }

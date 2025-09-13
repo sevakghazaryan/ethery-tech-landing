@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { SolutionsItems } from "@/app/api/data";
 
-const Solutions = () => {
+const SolutionsComponent = () => {
   const ref = useRef(null);
   const inView = useInView(ref);
 
@@ -192,4 +192,4 @@ const Solutions = () => {
   );
 };
 
-export default Solutions;
+export default SolutionsComponent;

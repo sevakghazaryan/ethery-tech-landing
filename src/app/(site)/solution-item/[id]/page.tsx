@@ -4,10 +4,6 @@ import Link from "next/link";
 
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
-interface SolutionPageProps {
-  params: { id: string };
-}
-
 const breadcrumbLinks = [
   { href: "/", text: "Home" },
   { href: "/solution-Item", text: "Solution Item" },
@@ -19,13 +15,28 @@ export function generateStaticParams() {
   }));
 }
 
-export default function SolutionItemPage({ params }: SolutionPageProps) {
+
+type SolutionPageProps = {
+  params: { id: string } | Promise<{ id: string }>
+};
+
+
+// interface SolutionPageProps {
+//   params: { id: string };
+// }
+
+
+export default async function SolutionItemPage({ params }: SolutionPageProps) {
   /**
    *
    * Solution not found
    */
 
-  const product = SolutionsItems.find((p) => p.id === params.id);
+    const resolvedParams = await Promise.resolve(params);
+  
+    const product = SolutionsItems.find((p) => p.id === resolvedParams.id);
+
+  // const product = SolutionsItems.find((p) => p.id === params.id);
 
   if (!product) {
     return (
