@@ -230,23 +230,23 @@ export const SolutionsLink = [
 
   {
     link: "Defense & Military",
-    href: "/",
+    href: "/solutions",
   },
   {
     link: "Unmanned Aerial Vehicles (UAVs)",
-    href: "/",
+    href: "/solutions",
   },
   {
     link: "Industrial Automation",
-    href: "/",
+    href: "/solutions",
   },
   {
     link: "Energy & Utilities / Smart Metering",
-    href: "/",
+    href: "/solutions",
   },
   {
     link: "Custom Applications / OEM Solutions",
-    href: "/",
+    href: "/solutions",
   },
 ]
 
