@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useState, useRef , useEffect} from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import ContactInfo from "../ContactInfo";
 import ContactForm from "../Form";
@@ -11,12 +11,18 @@ const ContactMain = () => {
   /**
    * Contact Main Hooks.
    */
-  const [openForm, setOpenForm] = useState<"demo" | "careers" | "email">("demo");
+  const [openForm, setOpenForm] = useState<"demo" | "careers" | "email">(
+    "demo"
+  );
   const formSectionRef = useRef<HTMLDivElement | null>(null);
 
-   const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
 
-  const formFromQuery = searchParams.get("form") as "demo" | "careers" | "email" | null;
+  const formFromQuery = searchParams.get("form") as
+    | "demo"
+    | "careers"
+    | "email"
+    | null;
 
   const scrollToForm = () => {
     if (formSectionRef.current) {
@@ -32,7 +38,6 @@ const ContactMain = () => {
     }
   }, [formFromQuery]);
 
-
   const scrollToElement = (id: string, offset: number = -120) => {
     setTimeout(() => {
       const element = document.getElementById(id);
@@ -43,12 +48,10 @@ const ContactMain = () => {
     }, 100);
   };
 
-
- const handleOpenEmailForm = () => {
+  const handleOpenEmailForm = () => {
     setOpenForm("email");
     scrollToForm();
     scrollToElement("email");
-    
   };
 
   const handleOpenCarrersForm = () => {
@@ -92,17 +95,13 @@ const ContactMain = () => {
           )}
         </AnimatePresence> */}
 
+        <div ref={formSectionRef}>
+          {openForm === "demo" && <ContactForm />}
+          {/* Carrers Form */}
 
-         <div ref={formSectionRef} >
-        {openForm === "demo" && <ContactForm />}
-        {/* Carrers Form */}
-        
-
-        {openForm === "careers" && <CareersForm />}
-        {openForm === "email" && <EmailForm />}
-
-
-      </div>
+          {openForm === "careers" && <CareersForm />}
+          {openForm === "email" && <EmailForm />}
+        </div>
       </div>
     </Fragment>
   );

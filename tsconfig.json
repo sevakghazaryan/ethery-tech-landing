@@ -39,6 +39,7 @@
     ".next",
     "node_modules",
     "app/(site)/product-Item/[id]/page.ts",
-    "app/(site)/solution-item/[id]/page.ts"   
+    "app/(site)/solution-item/[id]/page.ts",
+    "components/Contact/ContactMain/index.tsx",   
   ]
 }

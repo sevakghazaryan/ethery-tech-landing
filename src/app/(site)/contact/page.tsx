@@ -1,9 +1,5 @@
 
-
-import ContactForm from "@/components/Contact/Form";
-import ContactInfo from "@/components/Contact/ContactInfo";
-import Location from "@/components/Contact/OfficeLocation";
-import React, { useState } from "react";
+import React, { Suspense  } from "react";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import { Metadata } from "next";
 import BannerContact from "@/components/Contact/BannerContact";
@@ -12,6 +8,8 @@ import ContactMain from "@/components/Contact/ContactMain";
 export const metadata: Metadata = {
   title: "Contact | Nicktio",
 };
+
+
 
 const Contact = () => {
 
@@ -25,11 +23,6 @@ const Contact = () => {
     { href: "/contact", text: "Contact" },
   ];
 
-
-
- 
-
-
   return (
     <>
       <HeroSub
@@ -40,7 +33,11 @@ const Contact = () => {
       {/*  */}
       <BannerContact />
       {/*  */}
-      <ContactMain />
+
+        <Suspense fallback={<div className=""></div>}>
+        <ContactMain />
+        </Suspense>
+      
 
     
       {/* <Location /> */}
