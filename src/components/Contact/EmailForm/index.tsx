@@ -7,20 +7,18 @@ import ModalDemo from "@/components/Modals/SuccesDemo";
 
 const EmailForm = () => {
   /**
-   * Careers Application Form Component with Validation
+   * Email Form Component with Validation
    */
+
   const [formData, setFormData] = useState({
     full_name: "",
     work_email: "",
-    role: "",
-    cv: null as File | null,
-    phone: "",
-    linkedin: "",
+    subject: "",
     message: "",
-    consent: false,
+    company: "",
+    phone: "",
   });
 
-  const [cvFile, setCvFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
@@ -29,28 +27,8 @@ const EmailForm = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value, type, checked } = e.target as HTMLInputElement;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null;
-    if (file && file.size > 10 * 1024 * 1024) {
-      setErrors((prev) => ({
-        ...prev,
-        cv: "File size must be under 10MB",
-      }));
-      setCvFile(null);
-    } else {
-      setErrors((prev) => {
-        const { cv, ...rest } = prev;
-        return rest;
-      });
-      setCvFile(file);
-    }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const validateForm = () => {
@@ -63,11 +41,8 @@ const EmailForm = () => {
     } else if (!/\S+@\S+\.\S+/.test(formData.work_email)) {
       newErrors.work_email = "Enter a valid email";
     }
-    if (!formData.role.trim())
-      newErrors.role = "Role / Department of Interest is required";
-    if (!cvFile) newErrors.cv = "Upload CV is required";
-    if (!formData.cv) newErrors.cv = "Please upload your CV.";
-    if (!formData.consent) newErrors.consent = "You must agree to be contacted";
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -81,38 +56,32 @@ const EmailForm = () => {
     setSuccess("");
 
     try {
-      // Note: EmailJS cannot upload files directly.
-      // Normally you would use a backend or cloud storage to handle the CV upload.
-      // For demo purposes, we just send formData without the file.
       const result = await emailjs.send(
         "service_cp8yeeo", // Service ID
         "template_aby5rdu", // Template ID
-        {
-          ...formData,
-          cvFileName: cvFile?.name || "No file attached",
-        },
+        formData,
         "pCvOyJF65oD7cM4kw" // Public Key
       );
 
       if (result.status === 200) {
-        setSuccess("✅ Application submitted successfully!");
+        setErrors({});
+        setSuccess(
+          "Thank you for your request! Our team will contact you shortly to schedule your demo. 🎉"
+        );
         setFormData({
           full_name: "",
           work_email: "",
-          role: "",
-          cv: null,
-          phone: "",
-          linkedin: "",
+          subject: "",
           message: "",
-          consent: false,
+          company: "",
+          phone: "",
+      
         });
-        setCvFile(null);
-        setErrors({});
       }
 
       setModalOpen(true);
     } catch (err) {
-      setSuccess("❌ Failed to send application. Try again later.");
+      setSuccess("❌ Failed to send message. Try again later.");
     } finally {
       setLoading(false);
     }
@@ -131,10 +100,7 @@ const EmailForm = () => {
               >
                 {/* Full Name */}
                 <div className="mx-0 my-2.5 w-full">
-                  <label
-                    htmlFor="full_name"
-                    className="pb-3 inline-block text-17"
-                  >
+                  <label htmlFor="full_name" className="pb-3 inline-block text-17">
                     Full Name*
                   </label>
                   <input
@@ -144,7 +110,7 @@ const EmailForm = () => {
                     onChange={handleChange}
                     className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
                       errors.full_name ? "border-red-500" : "border-border"
-                    } dark:border-dark_border dark:text-white dark:bg-transparent`}
+                    } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                   />
                   {errors.full_name && (
                     <p className="text-red-500 text-sm mt-1">
@@ -155,10 +121,7 @@ const EmailForm = () => {
 
                 {/* Work Email */}
                 <div className="mx-0 my-2.5 w-full">
-                  <label
-                    htmlFor="work_email"
-                    className="pb-3 inline-block text-17"
-                  >
+                  <label htmlFor="work_email" className="pb-3 inline-block text-17">
                     Work Email*
                   </label>
                   <input
@@ -168,7 +131,7 @@ const EmailForm = () => {
                     onChange={handleChange}
                     className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
                       errors.work_email ? "border-red-500" : "border-border"
-                    } dark:border-dark_border dark:text-white dark:bg-transparent`}
+                    } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                   />
                   {errors.work_email && (
                     <p className="text-red-500 text-sm mt-1">
@@ -177,70 +140,59 @@ const EmailForm = () => {
                   )}
                 </div>
 
-                {/* Role */}
+                {/* Subject */}
                 <div className="mx-0 my-2.5 w-full">
-                  <label htmlFor="role" className="pb-3 inline-block text-17">
-                    Role / Department of Interest*
+                  <label htmlFor="subject" className="pb-3 inline-block text-17">
+                    Subject*
                   </label>
                   <input
                     type="text"
-                    name="role"
-                    value={formData.role}
+                    name="subject"
+                    value={formData.subject}
+                    placeholder="a short text field about what the request is about"
                     onChange={handleChange}
                     className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
-                      errors.role ? "border-red-500" : "border-border"
-                    } dark:border-dark_border dark:text-white dark:bg-transparent`}
+                      errors.subject ? "border-red-500" : "border-border"
+                    } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                   />
-                  {errors.role && (
-                    <p className="text-red-500 text-sm mt-1">{errors.role}</p>
+                  {errors.subject && (
+                    <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
                   )}
                 </div>
 
-                {/* CV Upload */}
+                {/* Message */}
                 <div className="mx-0 my-2.5 w-full">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    CV Attachment <span className="text-red-500">*</span>
+                  <label htmlFor="message" className="pb-3 inline-block text-17">
+                    Message*
                   </label>
-                  <div className="relative">
-                    <input
-                      id="cv-upload"
-                      type="file"
-                      name="cv"
-                      onChange={handleChange}
-                      className="hidden"
-                    />
-                    <label
-                      htmlFor="cv-upload"
-                      className={`flex items-center justify-center w-full px-4 py-3 rounded-lg border-2 border-dashed cursor-pointer transition 
-                  ${
-                    errors.cv
-                      ? "border-red-500 bg-red-50 text-red-600"
-                      : "border-gray-300 hover:border-purple-500 text-gray-600"
-                  }`}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 mr-2 text-gray-500"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M7 16V4m0 0L3 8m4-4l4 4m6 12h2a2 2 0 002-2V7a2 2 0 00-2-2h-2m-4 12h-4m0 0V4m0 12l-4-4m4 4l4-4"
-                        />
-                      </svg>
-                      <span>
-                        {formData.cv ? formData.cv.name : "Upload your CV"}
-                      </span>
-                    </label>
-                  </div>
-
-                  {errors.cv && (
-                    <p className="text-red-500 text-sm mt-2">{errors.cv}</p>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us a bit about your needs... "
+                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
+                      errors.message ? "border-red-500" : "border-border"
+                    } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1">{errors.message}</p>
                   )}
+                </div>
+
+                <div className="sm:flex gap-3 w-full">
+   {/* Company (Optional) */}
+                <div className="mx-0 my-2.5 w-full">
+                  <label htmlFor="company" className="pb-3 inline-block text-17">
+                    Company (optional)
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0"
+                  />
                 </div>
 
                 {/* Phone (Optional) */}
@@ -253,62 +205,13 @@ const EmailForm = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent"
+                    className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0"
                   />
                 </div>
-
-                {/* LinkedIn (Optional) */}
-                <div className="mx-0 my-2.5 w-full">
-                  <label
-                    htmlFor="linkedin"
-                    className="pb-3 inline-block text-17"
-                  >
-                    LinkedIn / Portfolio link (optional)
-                  </label>
-                  <input
-                    type="url"
-                    name="linkedin"
-                    value={formData.linkedin}
-                    onChange={handleChange}
-                    className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent"
-                  />
                 </div>
+             
 
-                {/* Message (Optional) */}
-                <div className="mx-0 my-2.5 w-full">
-                  <label
-                    htmlFor="message"
-                    className="pb-3 inline-block text-17"
-                  >
-                    Message (optional)
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent"
-                  ></textarea>
-                </div>
-
-                {/* Consent */}
-                <div className="mx-0 my-2.5 w-full flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    name="consent"
-                    checked={formData.consent}
-                    onChange={handleChange}
-                    className={`w-5 h-5 rounded border ${
-                      errors.consent ? "border-red-500" : "border-border"
-                    }`}
-                  />
-                  <label htmlFor="consent" className="text-17">
-                    I agree to be contacted about my application.*
-                  </label>
-                </div>
-                {errors.consent && (
-                  <p className="text-red-500 text-sm mt-1">{errors.consent}</p>
-                )}
+               
 
                 {/* Submit */}
                 <div className="mx-0 my-2.5 w-full">
@@ -317,7 +220,7 @@ const EmailForm = () => {
                     disabled={loading}
                     className="bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700 disabled:opacity-50"
                   >
-                    {loading ? "Submitting..." : "👉 Submit Application"}
+                    {loading ? "Sending..." : "👉 Send Message"}
                   </button>
                 </div>
               </form>
@@ -342,7 +245,7 @@ const EmailForm = () => {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         title="Success!"
-        description={"Thank you for reaching out! We’ve received your message and will get back to you as soon as possible. 🎉"}
+        description={"Application submitted successfully. We’ll contact you if we move forward with your profile․ 🎉"}
       />
     </Fragment>
   );

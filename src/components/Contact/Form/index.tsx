@@ -313,7 +313,7 @@ const ContactForm = () => {
                     className="bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700"
                   >
                   
-                    {loading ? "Sending..." : "👉 Request Demo"}
+                    {loading ? "Sending..." : "Request Demo"}
                   </button>
                 </div>
               </form>

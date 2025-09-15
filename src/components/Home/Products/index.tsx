@@ -61,6 +61,10 @@ const Products = () => {
             {ProductItems.map((item, index) => (
               <SwiperSlide key={index}>
                 <motion.div {...bottomAnimation(index)}>
+                   <Link
+                      href={`/product-Item/${item.id}`}
+                      rel="noopener noreferrer"
+                    >
                   <div className="py-4">
                     <p className="lg:text-25 text-22 font-medium text-midnight_text dark:text-white">
                       {item.title}
@@ -72,10 +76,7 @@ const Products = () => {
                     </p>
                   </div>
                   <div className="rounded-full mt-2">
-                    <Link
-                      href={`/product-Item/${item.id}`}
-                      rel="noopener noreferrer"
-                    >
+                   
                       <Image
                         src={item.image}
                         alt={`Brand: ${item.title}`}
@@ -84,8 +85,9 @@ const Products = () => {
                         style={{ width: "100%", height: "100%" }}
                         className="bg-white dark:bg-midnight_text"
                       />
-                    </Link>
+                  
                   </div>
+                    </Link>
                 </motion.div>
               </SwiperSlide>
             ))}

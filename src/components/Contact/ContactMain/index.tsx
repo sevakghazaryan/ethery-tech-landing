@@ -1,19 +1,22 @@
 "use client";
 
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef , useEffect} from "react";
+import { useSearchParams } from "next/navigation";
 import ContactInfo from "../ContactInfo";
 import ContactForm from "../Form";
-import CarrersForm from "../CarrersForm";
-import EmaillForm from "../EmailForm";
-import { motion, AnimatePresence } from "framer-motion";
+import CareersForm from "../CarrersForm";
+import EmailForm from "../EmailForm";
 
 const ContactMain = () => {
   /**
    * Contact Main Hooks.
    */
   const [openForm, setOpenForm] = useState<"demo" | "careers" | "email">("demo");
+  const formSectionRef = useRef<HTMLDivElement | null>(null);
 
-    const formSectionRef = useRef<HTMLDivElement | null>(null);
+   const searchParams = useSearchParams();
+
+  const formFromQuery = searchParams.get("form") as "demo" | "careers" | "email" | null;
 
   const scrollToForm = () => {
     if (formSectionRef.current) {
@@ -21,17 +24,24 @@ const ContactMain = () => {
     }
   };
 
+  useEffect(() => {
+    if (formFromQuery) {
+      setOpenForm(formFromQuery);
+      scrollToForm();
+      scrollToElement(formFromQuery);
+    }
+  }, [formFromQuery]);
+
 
   const scrollToElement = (id: string, offset: number = -120) => {
-  setTimeout(() => {
-    const element = document.getElementById(id);
-    if (element) {
-      const y =
-        element.getBoundingClientRect().top + window.scrollY + offset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-  }, 100);
-};
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.scrollY + offset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 100);
+  };
 
 
  const handleOpenEmailForm = () => {
@@ -85,8 +95,13 @@ const ContactMain = () => {
 
          <div ref={formSectionRef} >
         {openForm === "demo" && <ContactForm />}
-        {openForm === "careers" && <CarrersForm />}
-        {openForm === "email" && <EmaillForm />}
+        {/* Carrers Form */}
+        
+
+        {openForm === "careers" && <CareersForm />}
+        {openForm === "email" && <EmailForm />}
+
+
       </div>
       </div>
     </Fragment>

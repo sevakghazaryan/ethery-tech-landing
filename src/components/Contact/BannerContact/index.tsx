@@ -14,7 +14,7 @@ const BannerContact = () => {
   const TopAnimation = {
     initial: { y: "-100%", opacity: 0 },
     animate: inView ? { y: 0, opacity: 1 } : { y: "-100%", opacity: 0 },
-    transition: { duration: 1, delay: 0.4 },
+    transition: { duration: 0.3, delay: 0.3 },
   };
 
   return (
