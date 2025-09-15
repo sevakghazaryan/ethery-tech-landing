@@ -33,7 +33,8 @@ const ContactInfo: FC<ContactInfoProps> = ({ handleCarrers, handleDemo, handleEm
                   <span className="text-midnight_text dark:text-white text-xl font-bold">
                     Request demo
                   </span>
-                  <p className=" text-muted font-normal text-xl max-w-80 pt-3 pb-7 dark:text-white dark:text-opacity-50">
+                  {/* sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-center lg:max-w-full sm:max-w-75% */}
+                  <p className=" text-xl max-w-80 pt-3 pb-7 text-muted dark:text-white dark:text-opacity-70">
                     Discover how our radio systems can support your mission. Schedule a personalized demo with our team.
                   </p>
                 </div>
@@ -66,7 +67,7 @@ const ContactInfo: FC<ContactInfoProps> = ({ handleCarrers, handleDemo, handleEm
                   <span className="text-midnight_text dark:text-white text-xl font-bold">
                     Email Us
                   </span>
-                  <p className="text-muted font-normal text-xl max-w-80 pt-3 pb-7 dark:text-white dark:text-opacity-50">
+                  <p className="font-normal text-xl max-w-80 pt-3 pb-7 text-muted dark:text-white dark:text-opacity-70">
                     Have questions or specific requirements? Send us a message and we’ll get back to you shortly.
                   </p>
                 </div>
@@ -99,7 +100,7 @@ const ContactInfo: FC<ContactInfoProps> = ({ handleCarrers, handleDemo, handleEm
                   <span className="text-midnight_text dark:text-white text-xl font-bold">
                     Careers
                   </span>
-                  <p className="text-muted font-normal text-xl max-w-80 pt-3 pb-7 dark:text-white dark:text-opacity-50">
+                  <p className="font-normal text-xl max-w-80 pt-3 pb-7 text-muted dark:text-white dark:text-opacity-70">
                     Join our mission to build next-generation communication solutions. Submit your CV today.
                     {"    "}
                     <br />
