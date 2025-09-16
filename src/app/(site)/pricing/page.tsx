@@ -25,6 +25,7 @@ const PricingPage = () => {
         title="Pricing"
         description="Whether you're an individual, a small team, or a growing enterprise, we have a plan that aligns perfectly with your goals."
         breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={true}
       />
       <Pricing />
     </>

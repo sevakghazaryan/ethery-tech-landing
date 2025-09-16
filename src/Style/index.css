@@ -37,7 +37,7 @@
   height: 22px;
   width: 22px;
   background: white;
-  @apply dark:bg-darklight
+  @apply dark:bg-darklight;
 }
 
 .child-container {
@@ -45,30 +45,76 @@
 }
 
 .history-bg {
-  background: linear-gradient(to right, #f3f9fd 0%, #f3f9fd 64.3%, #BCCFE1 64.3%, #BCCFE1 100%);
+  background: linear-gradient(
+    to right,
+    #f3f9fd 0%,
+    #f3f9fd 64.3%,
+    #bccfe1 64.3%,
+    #bccfe1 100%
+  );
 }
 
 @media (min-width: 768px) {
   .estate-summary-bg {
-    background: linear-gradient(to right, #fff 0%, #fff 50%, #2f73f2 50%, #2f73f2 100%);
+    background: linear-gradient(
+      to right,
+      #fff 0%,
+      #fff 50%,
+      #2f73f2 50%,
+      #2f73f2 100%
+    );
   }
 }
 
 @media (min-width: 768px) {
   .dark {
     .estate-summary-bg {
-      background: linear-gradient(to right, #0c121e 0%, #0c121e 50%, #2f73f2 50%, #2f73f2 100%);
+      background: linear-gradient(
+        to right,
+        #0c121e 0%,
+        #0c121e 50%,
+        #2f73f2 50%,
+        #2f73f2 100%
+      );
     }
   }
 }
 
 .dark {
   .history-bg {
-    background: linear-gradient(to right, #111827 0%, #0e1521 64.3%, #0c121e 64.3%, #0c121e 100%);
+    background: linear-gradient(
+      to right,
+      #111827 0%,
+      #0e1521 64.3%,
+      #0c121e 64.3%,
+      #0c121e 100%
+    );
   }
 }
 
 .imageContainer {
   position: relative;
   overflow: hidden;
+}
+
+/* Default Swiper buttons styled in Tailwind */
+
+/* Custom Swiper buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  color: white !important; /* makes icons white */
+  font-size: 18px !important; /* adjust size */
+  font-weight: bold !important;
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, -50px) !important;
+  left: auto !important;
+}
+
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: var(--swiper-navigation-sides-offset, -50px) !important;
+  right: auto !important;
 }

@@ -24,6 +24,7 @@ const ErrorPage = () => {
         title="404"
         description="We Can't Seem to Find The Page You're Looking For"
         breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={true}
       />
       <NotFound />
     </>

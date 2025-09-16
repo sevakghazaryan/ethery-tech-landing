@@ -20,6 +20,7 @@ const Leadership = () => {
         title="Leadership"
         description="Meet the visionary team driving innovation and growth"
         breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={true}
       />
       <div className="">
 

@@ -43,9 +43,9 @@ export const ProductItems = [
 
 export const SolutionsItems = [
   {
-    id: "defense-military",
+    id: "oem-solutions",
     image: "/images/solutions/high-angle-view-computer-chip.webp",
-    title: "Defense & Military",
+    title: "Custom Applications / OEM Solutions տեղերը",
     subTitle: "(EtheryNet)",
     link: "https://etherynet.com/product/et-101/",
     details:
@@ -82,10 +82,10 @@ export const SolutionsItems = [
       "Radio modules optimized for remote data collection from electricity meters, grid infrastructure monitoring, and smart energy systems.",
   },
   {
-    id: "oem-solutions",
+    id: "defense-military", // defense-military
     image:
       "/images/solutions/soldiers-special-forces-wars-desertthailand-peoplearmy-soldier-use-laptop-see-map-with-satelliteusing-radio-communication-military-operation.webp",
-    title: "Custom Applications / OEM Solutions ",
+    title: "Defense & Military",
     subTitle: "(3 band radio) or new eval board",
     link: "https://etherynet.com/product/et-105/",
     details:
@@ -218,11 +218,11 @@ export const featureLinks = [
 export const supportLink = [
    {
     link: "Contact Us",
-    href: "/",
+    href: "/contact",
   },
   {
     link: "Request Demo",
-    href: "/",
+    href: "/contact",
   },
 ]
 

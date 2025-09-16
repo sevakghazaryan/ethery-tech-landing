@@ -5,6 +5,7 @@ import {
   featureLinks,
   supportLink,
   SolutionsLink,
+  SolutionsItems,
   address,
   phone,
   email,
@@ -34,13 +35,13 @@ const Footer = () => {
               Solutions
             </h4>
             <ul>
-              {SolutionsLink.slice(0, 4).map((item, index) => (
+              {SolutionsItems.map((item, index) => (
                 <li key={index} className="pb-3">
                   <Link
-                    href={item.href}
+                    href={`/solution-item/${item.id}`} 
                     className="text-foottext text-16 hover:text-primary"
                   >
-                    {item.link}
+                    {item.title}
                   </Link>
                 </li>
               ))}
@@ -51,7 +52,7 @@ const Footer = () => {
           <div className="md:col-span-3 col-span-6 mb-4 md:mb-0">
             <h4 className="text-18 text-white dark:text-white mb-3">Company</h4>
             <ul>
-              {companyLinks.slice(0, 4).map((item, index) => (
+              {companyLinks.map((item, index) => (
                 <li key={index} className="pb-3">
                   <Link
                     href={item.href}
@@ -68,7 +69,7 @@ const Footer = () => {
           <div className="md:col-span-3 col-span-6 mb-4 md:mb-0">
             <h4 className="text-18 text-white dark:text-white mb-3">Support</h4>
             <ul>
-              {supportLink.slice(0, 4).map((item, index) => (
+              {supportLink.map((item, index) => (
                 <li key={index} className="pb-3">
                   <Link
                     href={item.href}

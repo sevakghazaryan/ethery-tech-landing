@@ -74,7 +74,7 @@ const ContactMain = () => {
         handleEmail={handleOpenEmailForm}
       />
 
-      <div className="relative min-h-[300px] mt-6">
+      <div className="relative min-h-[300px]">
         {/* <AnimatePresence mode="wait">
           {openForm === "demo" && (
            

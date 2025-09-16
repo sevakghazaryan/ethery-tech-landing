@@ -96,7 +96,7 @@ const Hero = () => {
               />
             </Link> */}
 
-            <button
+            {/* <button
               onClick={() => setShowForm(!showForm)}
               className="lg:text-17 flex gap-4 items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
             >
@@ -106,7 +106,23 @@ const Hero = () => {
                 width="13"
                 height="13"
               />
-            </button>
+            </button> */}
+
+            <Link
+                href={{
+                    pathname: "/contact",
+                    query: { form: "careers" },
+                  }}
+              className="lg:text-17 flex gap-4 items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
+            >
+              Join Us
+              <Icon
+                icon="solar:alt-arrow-right-linear"
+                width="13"
+                height="13"
+              />
+            </Link>
+
           </div>
           <p className="mt-2 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
             Let’s build something meaningful together.

@@ -24,6 +24,7 @@ const Products = () => {
         title="Products"
         description="Explore our innovative product lineup designed to meet your needs"
         breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={true}
       />
       <Intro />
       <div className="py-5"/>

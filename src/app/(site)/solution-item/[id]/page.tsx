@@ -32,9 +32,9 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
    * Solution not found
    */
 
-    const resolvedParams = await Promise.resolve(params);
-  
-    const product = SolutionsItems.find((p) => p.id === resolvedParams.id);
+  const resolvedParams = await Promise.resolve(params);
+
+  const product = SolutionsItems.find((p) => p.id === resolvedParams.id);
 
   // const product = SolutionsItems.find((p) => p.id === params.id);
 
@@ -57,17 +57,18 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
   return (
     <main className="dark:bg-darkmode overflow-x-hidden pb-14">
       <HeroSub
-        title="Solution Item"
+        title={product.title}
         description="Explore our innovative solution lineup designed to meet your needs"
         breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={false}
       />
       <div className="py-10" />
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-          <div className="w-full lg:w-8/12">
-            <h2 className="mb-6 text-3xl font-bold text-midnight_text dark:text-white lg:text-4xl">
+          <div className="w-full lg:w-8/12 order-2 lg:order-1">
+            {/* <h2 className="mb-6 text-3xl font-bold text-midnight_text dark:text-white lg:text-4xl">
               {product.title}
-            </h2>
+            </h2> */}
 
             <article className="prose dark:prose-invert max-w-none">
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
@@ -120,7 +121,7 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
               <hr className="my-6" />
             </article>
           </div>
-          <div className="w-full lg:w-4/12">
+          <div className="w-full lg:w-4/12 order-1 lg:order-2">
             <div className="overflow-hidden rounded-3xl shadow-md">
               <Image
                 src={product.image}
@@ -132,7 +133,31 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
               />
             </div>
           </div>
+        </div> 
+        {/*  Other Solutions Items */}
+
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold mb-4 text-midnight_text dark:text-white">
+            Other Solutions
+          </h2>
+
+          <ul className="flex flex-col md:flex-row gap-2">
+            {SolutionsItems.filter((item) => item.id !== product.id).map((item) => (
+              <li key={item.id}>
+                <Link
+                  href={`/product-Item/${item.id}`}
+                  className="flex flex-row   text-primary hover:underline"
+                >
+                  <span>#</span>
+                  <span>{item.title}</span>
+                
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
+
+
       </div>
     </main>
   );

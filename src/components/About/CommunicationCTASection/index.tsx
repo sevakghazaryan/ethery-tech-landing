@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import {  useInView,motion } from "motion/react";
+import { useInView, motion } from "motion/react";
 import { useRef } from "react";
 
 const CommunicationCTASection = () => {
@@ -26,7 +26,7 @@ const CommunicationCTASection = () => {
         ref={ref}
         className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4"
       >
-        <motion.div {...TopAnimation}   className="bg-heroBg dark:bg-midnight_text rounded-3xl lg:px-16 px-4 py-12">
+        <motion.div {...TopAnimation} className="bg-heroBg dark:bg-midnight_text rounded-3xl lg:px-16 px-4 py-12">
           <div className="grid lg:grid-cols-2 items-center gap-12">
             <div>
               <h2 className="md:text-35 sm:text-28 text-24 font-semibold text-midnight_text dark:text-white">
@@ -39,7 +39,10 @@ const CommunicationCTASection = () => {
                 Let’s build the safest link in your system.
               </p>
               <Link
-                href="/contact"
+                  href={{
+                    pathname: "/contact",
+                    query: { form: "email" },
+                  }}
                 className="lg:text-17 flex gap-4 w-fit items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
               >
                 Contact Our Team
@@ -60,21 +63,21 @@ const CommunicationCTASection = () => {
             </div> */}
 
             <div className="relative flex justify-center">
-  {/* Wrapper with glow effect */}
-  <div className="relative before:content-[''] before:absolute before:inset-0 before:rounded-full before:bg-[radial-gradient(circle,rgba(4,64,188,0.6)_0%,rgba(5,75,129,0)_70%)] before:blur-[120px] before:z-0">
-    
-    {/* radio-phone-one.png */}
+              {/* Wrapper with glow effect */}
+              <div className="relative before:content-[''] before:absolute before:inset-0 before:rounded-full before:bg-[radial-gradient(circle,rgba(4,64,188,0.6)_0%,rgba(5,75,129,0)_70%)] before:blur-[120px] before:z-0">
 
-    {/* radio-two-transparent.png */}
-    <Image
-      src="/images/about/radio-two-transparent.png"
-      alt="image"
-      width={335}
-      height={335}
-      className="relative z-10"
-    />
-  </div>
-</div>
+                {/* radio-phone-one.png */}
+
+                {/* radio-two-transparent.png */}
+                <Image
+                  src="/images/about/radio-two-transparent.png"
+                  alt="image"
+                  width={335}
+                  height={335}
+                  className="relative z-10"
+                />
+              </div>
+            </div>
 
           </div>
         </motion.div>

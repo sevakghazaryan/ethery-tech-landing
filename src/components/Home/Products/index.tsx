@@ -1,13 +1,24 @@
 "use client";
+
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import Link from "next/link";
 import { ProductItems } from "@/app/api/data";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
-import Link from "next/link";
+import "swiper/css/navigation";
 
 const Products = () => {
+
+  /**
+   * 
+   * Products Component Hooks.
+   */
+
   const ref = useRef(null);
   const inView = useInView(ref);
 
@@ -27,7 +38,7 @@ const Products = () => {
     <section className="dark:bg-darkmode py-14">
       <div
         ref={ref}
-        className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4"
+        className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 relative"
       >
         <motion.div {...TopAnimation}>
           <div className="px-4 lg:px-12">
@@ -50,6 +61,11 @@ const Products = () => {
 
         <div className="sm:mt-20 mt-10 w-full">
           <Swiper
+            modules={[Navigation]}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
             spaceBetween={50}
             slidesPerView={3.5}
             breakpoints={{
@@ -61,22 +77,21 @@ const Products = () => {
             {ProductItems.map((item, index) => (
               <SwiperSlide key={index}>
                 <motion.div {...bottomAnimation(index)}>
-                   <Link
-                      href={`/product-Item/${item.id}`}
-                      rel="noopener noreferrer"
-                    >
-                  <div className="py-4">
-                    <p className="lg:text-25 text-22 font-medium text-midnight_text dark:text-white">
-                      {item.title}
-                    </p>
-                  </div>
-                  <div className="mr-2">
-                    <p className="text-base text-muted dark:text-white dark:text-opacity-70">
-                      {item.details}
-                    </p>
-                  </div>
-                  <div className="rounded-full mt-2">
-                   
+                  <Link
+                    href={`/product-Item/${item.id}`}
+                    rel="noopener noreferrer"
+                  >
+                    <div className="py-4">
+                      <p className="lg:text-25 text-22 font-medium text-midnight_text dark:text-white">
+                        {item.title}
+                      </p>
+                    </div>
+                    <div className="mr-2">
+                      <p className="text-base text-muted dark:text-white dark:text-opacity-70">
+                        {item.details}
+                      </p>
+                    </div>
+                    <div className="rounded-full mt-2">
                       <Image
                         src={item.image}
                         alt={`Brand: ${item.title}`}
@@ -85,13 +100,29 @@ const Products = () => {
                         style={{ width: "100%", height: "100%" }}
                         className="bg-white dark:bg-midnight_text"
                       />
-                  
-                  </div>
-                    </Link>
+                    </div>
+                  </Link>
                 </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Custom navigation icons */}
+          <div className="relative swiper-buttons w-full">
+            {/* Prev button */}
+            <button className="swiper-button-prev absolute -left-5  bg-white dark:bg-midnight_text p-6 rounded-md shadow">
+              <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+
+               <span className="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
+            </button>
+
+            {/* Next button */}
+            <button className="swiper-button-next absolute right-0  bg-white dark:bg-midnight_text p-6 rounded-md shadow">
+              <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+            </button>
+          </div>
+
+
         </div>
       </div>
     </section>

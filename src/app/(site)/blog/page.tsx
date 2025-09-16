@@ -26,6 +26,7 @@ const Page = () => {
         title="Blog"
          description=""
         breadcrumbLinks={breadcrumbLinks}  
+        isBrodcurb={true}
          />
       <BlogList />
     </>

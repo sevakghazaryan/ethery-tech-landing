@@ -24,7 +24,7 @@ const Hero = () => {
     transition: { duration: 1 },
   };
   return (
-    <section className="relative pt-44 mb-14 bg-cover bg-center dark:bg-darkmode">
+    <section className="relative pt-44 pb-14 bg-cover bg-center dark:bg-darkmode">
       <div className="w-full h-full absolute z-0 bg-heroBg rounded-b-[119px] -left-1/4 top-0 dark:bg-midnight_text"></div>
       <div className="container mx-auto lg:max-w-screen-xl relative z-1 md:max-w-screen-md px-4">
         <div className="grid grid-cols-12 items-center">

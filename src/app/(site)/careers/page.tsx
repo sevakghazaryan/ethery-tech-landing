@@ -20,6 +20,7 @@ const Careers = () => {
         title="Careers"
         description="Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing Variou"
         breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={true}
       />
       <Hero />
     </main>

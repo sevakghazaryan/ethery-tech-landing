@@ -29,18 +29,15 @@ const Contact = () => {
         title="Contact Us"
         description="Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing Variou"
         breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={true}
       />
-      {/*  */}
       <BannerContact />
-      {/*  */}
+   
 
         <Suspense fallback={<div className=""></div>}>
         <ContactMain />
         </Suspense>
-      
-
     
-      {/* <Location /> */}
     </>
   );
 };

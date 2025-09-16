@@ -21,6 +21,7 @@ const Solutions = () => {
         title="Solutions"
         description="Innovative solutions tailored to your unique challenges"
         breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={true}
       />
       <SolutionsComponent />
     </main>
