@@ -6,12 +6,12 @@ export const headerData: HeaderItem[] = [
     label: "Company",
     href: "#",
     submenu: [
-      { label: "About Us", href: "/about" },
-      { label: "Leadership", href: "/leadership" },
-      { label: "Careers", href: "/careers" },
+      { label: "About Us", href: "/about/" },
+      { label: "Leadership", href: "/leadership/" },
+      { label: "Careers", href: "/careers/" },
     ],
   },
-  { label: "Products", href: "/products" },
-  { label: "Solutions", href: "/solutions" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Products", href: "/products/" },
+  { label: "Solutions", href: "/solutions/" },
+  { label: "Contact Us", href: "/contact/" },
 ];

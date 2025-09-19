@@ -107,25 +107,46 @@ const Products = () => {
             ))}
           </Swiper>
 
-          {/* Custom navigation icons */}
-          <div className="relative swiper-buttons w-full">
-            {/* Prev button */}
-            <button className="swiper-button-prev absolute -left-5  bg-white dark:bg-midnight_text p-6 rounded-md shadow">
-              <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+        
+          {/* <div className="relative swiper-buttons">
 
-               <span className="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
-            </button>
+  <button className="left-btn swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 
+    bg-white dark:bg-midnight_text p-6 rounded-md shadow">
+    <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+  </button>
 
-            {/* Next button */}
-            <button className="swiper-button-next absolute right-0  bg-white dark:bg-midnight_text p-6 rounded-md shadow">
-              <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
-            </button>
-          </div>
+  <button className="right-btn swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 
+    bg-white dark:bg-midnight_text p-6 rounded-md shadow">
+    <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+  </button>
+</div> */}
+
+<div className="swiper-buttons">
+  {/* Prev button */}
+  <button
+    className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 
+    bg-white dark:bg-midnight_text p-6 rounded-md shadow"
+  >
+    <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+  </button>
+
+  {/* Next button */}
+  <button
+    className="right-btn swiper-button-next absolute -right-14 ht-0 top-1/2 -translate-y-1/2 
+    bg-white dark:bg-midnight_text p-6 rounded-md shadow"
+  >
+    <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+  </button>
+</div>
+
+
 
 
         </div>
       </div>
     </section>
+
+
   );
 };
 

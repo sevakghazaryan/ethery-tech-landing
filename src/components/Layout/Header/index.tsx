@@ -1,13 +1,14 @@
 "use client";
+
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, FC } from "react";
 import { headerData } from "../Header/Navigation/menuData";
 import Logo from "./Logo";
 import HeaderLink from "../Header/Navigation/HeaderLink";
 import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
 import { useTheme } from "next-themes";
 
-const Header: React.FC = () => {
+const Header: FC = () => {
 
   /**
    * 
@@ -28,12 +29,10 @@ const Header: React.FC = () => {
   const signUpRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  // Function to handle scroll to set sticky class
   const handleScroll = () => {
     setSticky(window.scrollY >= 80);
   };
 
-  // Function to handle click outside
   const handleClickOutside = (event: MouseEvent) => {
     if (
       signInRef.current &&
@@ -56,8 +55,6 @@ const Header: React.FC = () => {
     }
   };
 
-
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
@@ -67,7 +64,7 @@ const Header: React.FC = () => {
     };
   }, [navbarOpen, isSignInOpen, isSignUpOpen]);
 
-  // Effect to handle body overflow
+
   useEffect(() => {
     if (isSignInOpen || isSignUpOpen || navbarOpen) {
       document.body.style.overflow = "hidden"; // Prevent scrolling
@@ -163,7 +160,6 @@ const Header: React.FC = () => {
           {headerData.map((item, index) => (
             <MobileHeaderLink key={index} item={item} navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen}  />
           ))}
-       
         </nav>
       </div>
     </header>

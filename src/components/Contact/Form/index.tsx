@@ -210,7 +210,7 @@ const ContactForm = () => {
                       htmlFor="work_email"
                       className="pb-3 inline-block text-17"
                     >
-                      Work Email*
+                      Email*
                     </label>
                     <input
                       type="email"

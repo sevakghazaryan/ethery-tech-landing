@@ -1,13 +1,19 @@
 "use client";
+
 import React from "react";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
 import { SolutionsItems } from "@/app/api/data";
 
 const SolutionsComponent = () => {
+
+  /**
+   * 
+   * Solution Component Hooks.
+   */
+
   const ref = useRef(null);
   const inView = useInView(ref);
 
@@ -31,7 +37,7 @@ const SolutionsComponent = () => {
                 Designed for Your Mission
               </span>
             </h2>
-            <p className="font-medium xl:max-w-45% lg:max-w-50% md:max-w-75% text-17 mx-auto text-muted dark:text-white dark:text-opacity-70">
+            <p className="font-medium xl:max-w-45% lg:max-w-50% md:max-w-75% md:text-18  mx-auto text-muted dark:text-white dark:text-opacity-70">
               From airborne systems to fixed infrastructure-take control of how
               and where you connect.
             </p>

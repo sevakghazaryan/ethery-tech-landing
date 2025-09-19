@@ -41,11 +41,71 @@ export const ProductItems = [
   },
 ];
 
+export const LeadershipMembers = [
+  {
+    id: "greg-brown",
+    name: "Greg Brown",
+    role: "Chairman and Chief Executive Officer",
+    image: "/images/leadership/greg-brown.png",
+    bio: `Greg Brown is the chairman and CEO ... (full bio here)`,
+  },
+  {
+    id: "jack-molloy",
+    name: "Jack Molloy",
+    role: "Executive Vice President and Chief Operating Officer",
+    image: "/images/leadership/jack-molloy.png",
+    bio: `Jack Molloy is executive vice president and chief operating officer and leads global go-to-market operations. He oversees the company’s global commercial strategy and day-to-day business operations...`,
+  },
+  {
+    id: "kathi-moore",
+    name: "Kathi Moore",
+    role: "Senior Vice President, Human Resources",
+    image: "/images/leadership/kathi-moore.png",
+    bio: `Kathi Moore is senior vice president of human resources...`,
+  },
+  {
+    id: "rajan-naik",
+    name: "Rajan Naik",
+    role: "Senior Vice President, Strategy & Ventures",
+    image: "/images/leadership/rajan-naik.png",
+    bio: `Rajan Naik is senior vice president, strategy and ventures...`,
+  },
+  {
+    id: "jim-niewiara",
+    name: "Jim Niewiara",
+    role: "Senior Vice President, General Counsel",
+    image: "/images/leadership/jim-niewiara.png",
+    bio: `Jim Niewiara is senior president...`,
+  },
+   {
+    id: "mahesh-saptharishi",
+    name: "Mahesh Saptharishi",
+    role: "Executive Vice President and Chief Technology Officer",
+    image: "/images/leadership/mahesh-saptharishi.png",
+    bio: `Mahesh Saptharishi is Executive Vice President... `,
+  },
+   {
+    id: "jason-winkler",
+    name: "Jason J. Winkler",
+    role: "Executive Vice President and Chief Financial Officer",
+    image: "/images/leadership/winkle.png",
+    bio: `Jason J. Winkler is Executive Vice President... `,
+  },
+   {
+    id: "cynthia-yazdi",
+    name: "Cynthia Yazdi",
+    role: "Senior Vice President, Chief of Staff to the Chairman and CEO",
+    image: "/images/leadership/winkle.png",
+    bio: `Cynthia Yazdi is Chairman and CEO... `,
+  }
+];
+
+
 export const SolutionsItems = [
   {
     id: "oem-solutions",
     image: "/images/solutions/high-angle-view-computer-chip.webp",
-    title: "Custom Applications / OEM Solutions տեղերը",
+    title: "Custom Applications / OEM Solutions",
     subTitle: "(EtheryNet)",
     link: "https://etherynet.com/product/et-101/",
     details:

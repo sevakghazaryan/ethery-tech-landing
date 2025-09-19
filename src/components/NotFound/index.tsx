@@ -3,6 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const NotFound = () => {
+
+  /**
+   * 
+   * Not Found Hooks.
+   */
+
+
   return (
     <section className="bg-white pt-8 pb-20 dark:bg-darkmode">
       <div className="container mx-auto">

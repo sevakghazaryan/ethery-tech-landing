@@ -11,8 +11,10 @@ const CommunicationCTASection = () => {
    */
 
 
+
   const ref = useRef(null);
   const inView = useInView(ref);
+  const emailTech = "info@ethery.tech";
 
   const TopAnimation = {
     initial: { y: "-50%", opacity: 0 },
@@ -39,10 +41,9 @@ const CommunicationCTASection = () => {
                 Let’s build the safest link in your system.
               </p>
               <Link
-                  href={{
-                    pathname: "/contact",
-                    query: { form: "email" },
-                  }}
+               href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailTech}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="lg:text-17 flex gap-4 w-fit items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
               >
                 Contact Our Team

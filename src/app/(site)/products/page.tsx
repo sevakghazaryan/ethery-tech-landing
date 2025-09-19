@@ -1,7 +1,6 @@
 "use client";
 
 import Intro from "@/components/Products/Intro";
-import KeyFeatures from "@/components/Products/KeyFeatures";
 import ProductInfo from "@/components/Products/ProductInfo";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 

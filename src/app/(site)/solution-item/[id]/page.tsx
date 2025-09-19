@@ -15,15 +15,9 @@ export function generateStaticParams() {
   }));
 }
 
-
 type SolutionPageProps = {
   params: { id: string } | Promise<{ id: string }>
 };
-
-
-// interface SolutionPageProps {
-//   params: { id: string };
-// }
 
 
 export default async function SolutionItemPage({ params }: SolutionPageProps) {
@@ -35,8 +29,6 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
   const resolvedParams = await Promise.resolve(params);
 
   const product = SolutionsItems.find((p) => p.id === resolvedParams.id);
-
-  // const product = SolutionsItems.find((p) => p.id === params.id);
 
   if (!product) {
     return (
@@ -66,15 +58,10 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           <div className="w-full lg:w-8/12 order-2 lg:order-1">
-            {/* <h2 className="mb-6 text-3xl font-bold text-midnight_text dark:text-white lg:text-4xl">
-              {product.title}
-            </h2> */}
-
             <article className="prose dark:prose-invert max-w-none">
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
                 {product.details}
               </p>
-
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
                 Lorem Ipsum has been the industry's standard dummy text ever
                 since the 1500s, when an unknown printer took a galley of type
@@ -95,7 +82,6 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
                   tellus
                 </li>
               </ul>
-
               <div className="py-4" />
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% ">
                 Unknown printer took a galley of type and scrambled it to make a
@@ -110,7 +96,6 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
                 businesses from new startups
               </p>
               <hr className="my-6" />
-
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% ">
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form, by

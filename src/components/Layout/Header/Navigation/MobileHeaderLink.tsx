@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { HeaderItem } from "../../../../types/menu";
 
 
@@ -21,6 +22,8 @@ const MobileHeaderLink: React.FC<MobileHeaderLinkProps> = ({
    */
   const [submenuOpen, setSubmenuOpen] = useState(false);
 
+    const path = usePathname();
+
   const handleToggle = (e: React.MouseEvent) => {
     e.preventDefault(); 
     setSubmenuOpen(!submenuOpen);
@@ -35,7 +38,14 @@ const MobileHeaderLink: React.FC<MobileHeaderLinkProps> = ({
       <Link
         href={item.href}
         onClick={item.submenu ? handleToggle : handleCloseMenu}
-        className="flex items-center justify-between w-full py-2 text-black focus:outline-none"
+        className={` flex items-center justify-between w-full py-2 text-black focus:outline-none 
+          ${
+          path === item.href
+            ? "text-primary hover:text-grey"
+            : "text-midnight_text dark:text-white "
+        }
+          
+          `} 
       >
         {item.label}
         {item.submenu && (

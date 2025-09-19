@@ -25,3 +25,23 @@ html, body {
   -ms-overflow-style: none;  
   scrollbar-width: none;     
 }
+
+.swiper-buttons {
+  top: -70px;
+  z-index: 10; 
+  position: relative;
+}
+
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    right: var(--swiper-navigation-sides-offset, -50px) !important;
+    left: auto !important;
+}
+.swiper-buttons .left-btn {
+  left: -100px !important;    
+}
+
+.swiper-buttons .right-btn {
+  right: -100px !important;   
+}
+
+

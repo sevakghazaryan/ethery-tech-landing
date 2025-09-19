@@ -59,7 +59,7 @@ const CareersForm = () => {
     if (!formData.full_name.trim())
       newErrors.full_name = "Full Name is required";
     if (!formData.work_email.trim()) {
-      newErrors.work_email = "Work Email is required";
+      newErrors.work_email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.work_email)) {
       newErrors.work_email = "Enter a valid email";
     }
@@ -159,7 +159,7 @@ const CareersForm = () => {
                     htmlFor="work_email"
                     className="pb-3 inline-block text-17"
                   >
-                    Work Email*
+                    Email*
                   </label>
                   <input
                     type="email"

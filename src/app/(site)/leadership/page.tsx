@@ -1,5 +1,7 @@
 "use client";
 
+import IntroAbout from "@/components/Leadership/IntroAbout";
+import OurTeamComponent from "@/components/Leadership/OurTeam";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const Leadership = () => {
@@ -22,9 +24,12 @@ const Leadership = () => {
         breadcrumbLinks={breadcrumbLinks}
         isBrodcurb={true}
       />
-      <div className="">
+      <div>
+        <IntroAbout />
 
-        
+        <div className="mt-10" />
+        <OurTeamComponent />
+
       </div>
     </main>
   );

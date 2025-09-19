@@ -1,5 +1,5 @@
 
-import React, { Suspense  } from "react";
+import React, { Suspense } from "react";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import { Metadata } from "next";
 import BannerContact from "@/components/Contact/BannerContact";
@@ -8,8 +8,6 @@ import ContactMain from "@/components/Contact/ContactMain";
 export const metadata: Metadata = {
   title: "Contact | Nicktio",
 };
-
-
 
 const Contact = () => {
 
@@ -32,12 +30,11 @@ const Contact = () => {
         isBrodcurb={true}
       />
       <BannerContact />
-   
 
-        <Suspense fallback={<div className=""></div>}>
+      <Suspense fallback={<div className=""></div>}>
         <ContactMain />
-        </Suspense>
-    
+      </Suspense>
+
     </>
   );
 };

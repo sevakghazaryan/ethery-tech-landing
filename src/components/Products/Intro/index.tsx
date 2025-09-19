@@ -1,7 +1,7 @@
 "use client";
+
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { productPerks } from "@/app/api/data";
 
 const Intro = () => {
 
@@ -9,7 +9,6 @@ const Intro = () => {
    * 
    * Products Intro Component
    */
-
 
   const ref = useRef(null);
   const inView = useInView(ref);
@@ -20,23 +19,17 @@ const Intro = () => {
     transition: { duration: 1, delay: 0.4 },
   };
 
-  const bottomAnimation = (index: any) => ({
-    initial: { y: "100%", opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 },
-    transition: { duration: 1, delay: 0.4 + index * 0.4 },
-  });
-
   return (
     <section className="dark:bg-darkmode py-14">
       <div
         ref={ref}
         className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4"
       >
-        <motion.div {...TopAnimation}>
+        <motion.div {...TopAnimation} className="text-center">
           <div className="px-4 lg:px-12">
-            <h2 className="text-center font-semibold md:text-35 sm:text-28 text-24 mb-8 text-midnight_text dark:text-white lg:mx-44">
+            <h2 className="md:text-35 sm:text-28 text-24 text-midnight_text font-semibold mb-5 dark:text-white lg:max-w-full sm:max-w-75% mx-auto">
               Tactical Communication System All-in-One Secure Communication
-              <span className="text-primary">
+              <span className="text-primary max-w-max ml-2">
                 {" "}
                 Platform for Field and Command Use{" "}
               </span>

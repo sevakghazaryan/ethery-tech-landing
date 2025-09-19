@@ -21,11 +21,6 @@ const Logo: React.FC = () => {
         quality={100}
         className="hidden dark:block"
       />
-      {/* width={160}
-        height={18} */}
-
-    
-
     </Link>
   );
 };

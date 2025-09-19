@@ -2,7 +2,15 @@
 import { useTheme } from "next-themes";
 
 const ThemeToggler = () => {
+
+  /**
+   * 
+   * Theme Toggle Hooks.
+   */
+
+
   const { theme, setTheme } = useTheme();
+  
   return (
     <button
       aria-label="theme toggler"
