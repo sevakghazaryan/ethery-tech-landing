@@ -48,3 +48,11 @@ html, body {
 .brd {
   border: 1px solid red;
 }
+
+
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: var(--swiper-pagination-bottom, -20px) !important;
+    top: var(--swiper-pagination-top, auto);
+    left: 0;
+    width: 100%;
+}

@@ -23,7 +23,7 @@ const HeroSub: FC<HeroSubProps> = ({ title, breadcrumbLinks, isBrodcurb }) => {
         <h2 className="text-midnight_text text-left text-28 md:text-40 relative font-bold dark:text-white w-[70%] break-words leading-tight">
           {title}
         </h2>
-        <div className="">
+        <div className="hidden xl:block mr-32">
           {isBrodcurb ? (
             <Breadcrumb links={breadcrumbLinks} />
           ) : (

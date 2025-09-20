@@ -8,9 +8,10 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Products = () => {
 
@@ -61,12 +62,17 @@ const Products = () => {
 
         <div className="sm:mt-20 mt-10 w-full">
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Pagination]}
             loop={true}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
+            pagination={{
+      clickable: true,
+      el: ".swiper-pagination", 
+    }}
+            watchSlidesProgress
             spaceBetween={50}
             slidesPerView={3}
             breakpoints={{
@@ -108,41 +114,21 @@ const Products = () => {
             ))}
           </Swiper>
 
-        
-          {/* <div className="relative swiper-buttons">
-
-  <button className="left-btn swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 
-    bg-white dark:bg-midnight_text p-6 rounded-md shadow">
-    <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
-  </button>
-
-  <button className="right-btn swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 
-    bg-white dark:bg-midnight_text p-6 rounded-md shadow">
-    <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
-  </button>
-</div> */}
-
-<div className="swiper-buttons">
-  {/* Prev button */}
-  <button
-    className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 
-    bg-white dark:bg-midnight_text p-6 rounded-md shadow"
-  >
-    <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
-  </button>
-
-  {/* Next button */}
-  <button
-    className="right-btn swiper-button-next absolute -right-14 ht-0 top-1/2 -translate-y-1/2 
-    bg-white dark:bg-midnight_text p-6 rounded-md shadow"
-  >
-    <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
-  </button>
-</div>
-
-
-
-
+          <div className="swiper-buttons">
+            {/* Prev button */}
+            <button
+              className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow"
+            >
+              <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+            </button>
+            {/* Next button */}
+            <button
+              className="right-btn swiper-button-next absolute -right-14 ht-0 top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow"
+            >
+              <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+            </button>
+          </div>
+          <div className="swiper-pagination -bottom-10  mt-6 flex justify-center"></div>
         </div>
       </div>
     </section>
