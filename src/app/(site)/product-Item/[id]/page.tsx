@@ -50,58 +50,30 @@ export default async function ProductItemPage({ params }: ProductItemPageProps) 
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           <div className="w-full lg:w-8/12 order-2 lg:order-1 ">
-            {/* <h2 className="mb-6 text-3xl font-bold text-midnight_text dark:text-white lg:text-4xl">
-              {product.title}
-            </h2> */}
-
+            <h3 className="mb-6 text-18 font-bold text-midnight_text dark:text-white lg:text-4xl">
+              {product.subTitle}
+            </h3>
             <article className="prose dark:prose-invert max-w-none">
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
                 {product.details}
               </p>
-
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-                and scrambled it to make a type specimen book. It has survived
-                not only five centuries, but also the leap into electronic
-                typesetting, remaining essentially unchanged. It was popularised
-                in the
+                {product.description}
               </p>
+              <h3 className="sm:text-19 text-16 text-start lg:max-w-full sm:max-w-75% pb-4 font-semibold">
+                {product.sectionTitle}
+              </h3>
               <ul className="text-base list-disc list-inside space-y-2 text-muted dark:text-white">
-                <li className="pb-3 text-muted dark:text-white dark:text-opacity-70">
-                  Vivamus eu lacus scelerisque, placerat commodo lectus.
-                </li>
-                <li className="pb-3 text-muted dark:text-white dark:text-opacity-70">
-                  Etiam et ante at ex porta fringilla.
-                </li>
-                <li className="pb-3 text-muted dark:text-white dark:text-opacity-70">
-                  Nullam dignissim sem eu magna aliquet, sit amet volutpat
-                  tellus
-                </li>
+                {product.features.map((feature, idx) => (
+                  <li
+                    key={idx}
+                    className="pb-3 text-muted dark:text-white dark:text-opacity-70"
+                  >
+                    {feature}
+                  </li>
+                ))}
               </ul>
-
               <div className="py-4" />
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% ">
-                Unknown printer took a galley of type and scrambled it to make a
-                type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially
-                unchanged. It was popularised in the
-              </p>
-              <hr className="my-6" />
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% ">
-                We are a dedicated team of passionate product managers,
-                developers, UX/UI designers, QA engineers experts helping
-                businesses from new startups
-              </p>
-              <hr className="my-6" />
-
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% ">
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
-                slightly believable making this the first true generator on the
-                Internet. It uses a dictionary
-              </p>
               <hr className="my-6" />
             </article>
           </div>
@@ -118,14 +90,10 @@ export default async function ProductItemPage({ params }: ProductItemPageProps) 
             </div>
           </div>
         </div>
-
-        {/*  Other Products Items */}
-
         <div className="mt-16">
           <h2 className="text-2xl font-bold mb-4 text-midnight_text dark:text-white">
             Other Products
           </h2>
-
           <ul className="flex flex-col md:flex-row gap-2">
             {ProductItems.filter((item) => item.id !== product.id).map((item) => (
               <li key={item.id}>
@@ -135,7 +103,6 @@ export default async function ProductItemPage({ params }: ProductItemPageProps) 
                 >
                   <span>#</span>
                   <span>{item.title}</span>
-                
                 </Link>
               </li>
             ))}

@@ -59,51 +59,67 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           <div className="w-full lg:w-8/12 order-2 lg:order-1">
             <article className="prose dark:prose-invert max-w-none">
+              {/* Details */}
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
                 {product.details}
               </p>
+
+              {/* Description */}
               <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-                and scrambled it to make a type specimen book. It has survived
-                not only five centuries, but also the leap into electronic
-                typesetting, remaining essentially unchanged. It was popularised
-                in the
+                {product.description}
               </p>
-              <ul className="text-base list-disc list-inside space-y-2 text-muted dark:text-white">
-                <li className="pb-3 text-muted dark:text-white dark:text-opacity-70">
-                  Vivamus eu lacus scelerisque, placerat commodo lectus.
-                </li>
-                <li className="pb-3 text-muted dark:text-white dark:text-opacity-70">
-                  Etiam et ante at ex porta fringilla.
-                </li>
-                <li className="pb-3 text-muted dark:text-white dark:text-opacity-70">
-                  Nullam dignissim sem eu magna aliquet, sit amet volutpat
-                  tellus
-                </li>
-              </ul>
-              <div className="py-4" />
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% ">
-                Unknown printer took a galley of type and scrambled it to make a
-                type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially
-                unchanged. It was popularised in the
-              </p>
+
+              {/* Priorities Section */}
+              {product.sectionTitle && (
+                <h3 className="text-xl font-semibold text-muted dark:text-white pt-4 pb-4">
+                  {product.sectionTitle}
+                </h3>
+              )}
+              {product.priorities && product.priorities.length > 0 && (
+                <ul className="text-base list-disc list-inside space-y-2 text-muted dark:text-white">
+                  {product.priorities.map((priority, index) => (
+                    <li
+                      key={index}
+                      className="pb-3 text-muted dark:text-white dark:text-opacity-70"
+                    >
+                      <strong>{priority.title}:</strong> {priority.text}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {/* Extra Description */}
+              {product.extraDescription && (
+                <>
+                  <div className="py-4" />
+                  <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75%">
+                    {product.extraDescription}
+                  </p>
+                </>
+              )}
+
               <hr className="my-6" />
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% ">
-                We are a dedicated team of passionate product managers,
-                developers, UX/UI designers, QA engineers experts helping
-                businesses from new startups
-              </p>
-              <hr className="my-6" />
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% ">
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
-                slightly believable making this the first true generator on the
-                Internet. It uses a dictionary
-              </p>
-              <hr className="my-6" />
+
+              {/* Related Products */}
+              {product.relatedProducts && product.relatedProducts.length > 0 && (
+                <div>
+                  <h4 className="text-lg font-semibold text-muted dark:text-white mb-3">
+                    Related Products:
+                  </h4>
+                  <ul className="list-disc list-inside space-y-2 text-muted dark:text-white">
+                    {product.relatedProducts.map((rp, idx) => (
+                      <li
+                        key={idx}
+                        className="pb-2 text-primary hover:underline dark:text-white dark:text-opacity-70"
+                      >
+                        <Link href={`/product-Item/${rp.link}`}>
+                          {rp.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </article>
           </div>
           <div className="w-full lg:w-4/12 order-1 lg:order-2">
@@ -118,7 +134,7 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
               />
             </div>
           </div>
-        </div> 
+        </div>
         {/*  Other Solutions Items */}
 
         <div className="mt-16">
@@ -130,12 +146,12 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
             {SolutionsItems.filter((item) => item.id !== product.id).map((item) => (
               <li key={item.id}>
                 <Link
-                  href={`/product-Item/${item.id}`}
+                  href={`/solution-item/${item.id}`}
                   className="flex flex-row   text-primary hover:underline"
                 >
                   <span>#</span>
                   <span>{item.title}</span>
-                
+
                 </Link>
               </li>
             ))}

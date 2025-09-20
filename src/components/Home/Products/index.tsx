@@ -62,16 +62,17 @@ const Products = () => {
         <div className="sm:mt-20 mt-10 w-full">
           <Swiper
             modules={[Navigation]}
+            loop={true}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
             spaceBetween={50}
-            slidesPerView={3.5}
+            slidesPerView={3}
             breakpoints={{
-              1024: { slidesPerView: 3.5 },
-              768: { slidesPerView: 2.5 },
-              0: { slidesPerView: 1.5 },
+              1024: { slidesPerView: 3 },
+              768: { slidesPerView: 2 },
+              0: { slidesPerView: 1 },
             }}
           >
             {ProductItems.map((item, index) => (
@@ -86,9 +87,9 @@ const Products = () => {
                         {item.title}
                       </p>
                     </div>
-                    <div className="mr-2">
+                    <div className="h-12">
                       <p className="text-base text-muted dark:text-white dark:text-opacity-70">
-                        {item.details}
+                        {item.subTitle}
                       </p>
                     </div>
                     <div className="rounded-full mt-2">
