@@ -136,3 +136,8 @@
 .swiper-buttons .right-btn {
   right: -50px !important;   
 }
+
+
+.brd {
+  border: 1px solid red;
+}

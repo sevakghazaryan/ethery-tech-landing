@@ -95,7 +95,7 @@ const ContactMain = () => {
           )}
         </AnimatePresence> */}
 
-        <div ref={formSectionRef}>
+        <div ref={formSectionRef} className=" pt-24">
           {openForm === "demo" && <ContactForm />}
           {/* Carrers Form */}
 

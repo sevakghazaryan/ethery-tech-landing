@@ -41,7 +41,7 @@ const Products = () => {
         className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 relative"
       >
         <motion.div {...TopAnimation}>
-          <div className="px-4 lg:px-12">
+          <div className="px-4 lg:px-12 text-center">
             <h2 className="text-center font-semibold md:text-35 sm:text-28 text-24 mb-8 text-midnight_text dark:text-white lg:mx-44">
               Reliable Radio Communication —
               <span className="text-primary">
@@ -49,7 +49,7 @@ const Products = () => {
                 Tailored for Every Mission and Industry{" "}
               </span>
             </h2>
-            <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75%">
+            <p className="text-18  text-muted dark:text-white dark:text-opacity-70 text-center lg:max-w-full sm:max-w-75%">
               We design and manufacture high-performance radio systems for
               defense, UAVs, and industrial automation. Each device is
               customizable, easy to integrate, and optimized for secure,
