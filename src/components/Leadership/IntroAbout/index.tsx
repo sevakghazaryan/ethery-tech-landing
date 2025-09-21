@@ -32,12 +32,12 @@ const IntroAbout = () => {
                             The Team Behind Next-Generation Communication
                         </h2>
                     </div>
-                    <p className="text-center text-muted dark:text-white dark:text-opacity-70 md:text-18 text-base font-medium relative">
+                    <p className="text-center text-muted dark:text-white dark:text-opacity-70 md:text-18 leading-normal  text-base font-medium relative">
                         At Ethery Tech, we believe innovation starts with people. Our leadership team brings together engineers, strategists, and creative minds to build secure and reliable radio communication systems. We are driven by responsibility, precision, and innovation—ensuring the highest level of performance in every project.
                     </p>
 
                     <div className="mt-10" />
-                    <p className="text-center text-muted dark:text-white dark:text-opacity-70 md:text-18 text-base font-medium relative">
+                    <p className="text-center text-muted dark:text-white dark:text-opacity-70 md:text-18 leading-normal text-base font-medium relative">
                         Our leaders shape the company’s direction with their expertise and vision, combining technical excellence with a trusted, partner-focused approach."
                     </p>
                 </motion.div>

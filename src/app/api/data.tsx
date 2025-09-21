@@ -4,122 +4,129 @@ import { url } from "inspector";
 // home page data
 export const ProductItems = [
   {
-  id: "et-net-100",
-  image: "/images/products/product.webp",
-  title: "Et Net 100",
-  subTitle: "Integrated Radio Communication System",
-  details: "The Et Net 100 is a complete wireless communication system designed to connect teams, assets, and infrastructure in demanding environments. Built around endpoints, base stations, and handheld devices, it provides secure, long-range connectivity with intuitive software for both fixed and mobile users.",
-  description: "With advanced frequency hopping and AES-256 encryption, the system ensures resilience against interference and secure protection of critical data. Coverage extends up to 5 km between handhelds and base stations and up to 10 km between base stations or endpoints, delivering dependable connectivity across wide areas. The Et Net 100 supports real-time chat and data transfer, including text messages, voice messages, video files, and other digital content. With data rates of 0.35 Mbps for handheld devices and 0.7 Mbps for base stations/endpoints, it is optimized for reliable and efficient communication in mission-critical operations.",
-  sectionTitle: "Key Features:",
-  features: [
-    "Complete system: endpoints, base stations, handheld devices, and software suite",
-    "Frequency hopping with AES-256 encryption",
-    "Coverage: 5 km (handheld–base), 10 km (base–base/endpoint)",
-    "Data rates: 0.35 Mbps (mobile), 0.7 Mbps (base/endpoint)",
-    "Supports chat, voice messages, video, and file transfer",
-    "Rugged and secure design for defense, industrial, and field deployments"
-  ]
-},
- {
-  id: "et-net-200",
-  image: "/images/products/product.webp",
-  title: "Et Net 200",
-  subTitle: "Integrated Radio Communication System with Real-Time Voice",
-  details: "The Et Net 200 builds upon the robust foundation of the Et Net 100, adding real-time voice communication to deliver a richer, more dynamic communication experience. Like the Et Net 100, the system consists of endpoints, base stations, handheld devices, and dedicated software—but with the added capability for mobile devices to transmit and receive live voice across the entire network.",
-  description: "With 5 km handheld-to-base coverage and 10 km base-to-base/endpoint coverage, Et Net 200 enables reliable voice and data communication across extended ranges. Advanced frequency hopping and AES-256 encryption ensure secure, interference-resistant operation. In addition to text chat, file transfers, voice messages, and video supported in the Et Net 100, the Et Net 200 enables real-time voice communication between all devices connected to the same base station. This transforms handhelds into true mobile radios capable of seamless voice interaction.",
-  sectionTitle: "Key Features:",
-  features: [
-    "Complete system: endpoints, base stations, handheld devices, and software suite",
-    "Adds real-time voice communication to all Et Net 100 features",
-    "Frequency hopping with AES-256 encryption",
-    "Coverage: 5 km (handheld–base), 10 km (base–base/endpoint)",
-    "Data rates: 0.35 Mbps (mobile), 0.7 Mbps (base/endpoint)",
-    "Supports chat, voice messages, video, file transfer and real-time voice",
-    "Designed for field teams requiring both data and live voice communication"
-  ]
-},
+    id: "et-net-100",
+    image: "/images/products/product.webp",
+    title: "Et Net 100",
+    subTitle: "Integrated Radio Communication System",
+    details: "The Et Net 100 is a complete wireless communication system designed to connect teams, assets, and infrastructure in demanding environments. Built around endpoints, base stations, and handheld devices, it provides secure, long-range connectivity with intuitive software for both fixed and mobile users.",
+    description: "With advanced frequency hopping and AES-256 encryption, the system ensures resilience against interference and secure protection of critical data. Coverage extends up to 5 km between handhelds and base stations and up to 10 km between base stations or endpoints, delivering dependable connectivity across wide areas. The Et Net 100 supports real-time chat and data transfer, including text messages, voice messages, video files, and other digital content. With data rates of 0.35 Mbps for handheld devices and 0.7 Mbps for base stations/endpoints, it is optimized for reliable and efficient communication in mission-critical operations.",
+    sectionTitle: "Key Features:",
+    features: [
+      "Complete system: endpoints, base stations, handheld devices, and software suite",
+      "Frequency hopping with AES-256 encryption",
+      "Coverage: 5 km (handheld–base), 10 km (base–base/endpoint)",
+      "Data rates: 0.35 Mbps (mobile), 0.7 Mbps (base/endpoint)",
+      "Supports chat, voice messages, video, and file transfer",
+      "Rugged and secure design for defense, industrial, and field deployments"
+    ],
+    reverse: false,
+  },
+  {
+    id: "et-net-200",
+    image: "/images/products/product.webp",
+    title: "Et Net 200",
+    subTitle: "Integrated Radio Communication System with Real-Time Voice",
+    details: "The Et Net 200 builds upon the robust foundation of the Et Net 100, adding real-time voice communication to deliver a richer, more dynamic communication experience. Like the Et Net 100, the system consists of endpoints, base stations, handheld devices, and dedicated software—but with the added capability for mobile devices to transmit and receive live voice across the entire network.",
+    description: "With 5 km handheld-to-base coverage and 10 km base-to-base/endpoint coverage, Et Net 200 enables reliable voice and data communication across extended ranges. Advanced frequency hopping and AES-256 encryption ensure secure, interference-resistant operation. In addition to text chat, file transfers, voice messages, and video supported in the Et Net 100, the Et Net 200 enables real-time voice communication between all devices connected to the same base station. This transforms handhelds into true mobile radios capable of seamless voice interaction.",
+    sectionTitle: "Key Features:",
+    features: [
+      "Complete system: endpoints, base stations, handheld devices, and software suite",
+      "Adds real-time voice communication to all Et Net 100 features",
+      "Frequency hopping with AES-256 encryption",
+      "Coverage: 5 km (handheld–base), 10 km (base–base/endpoint)",
+      "Data rates: 0.35 Mbps (mobile), 0.7 Mbps (base/endpoint)",
+      "Supports chat, voice messages, video, file transfer and real-time voice",
+      "Designed for field teams requiring both data and live voice communication"
+    ],
+    reverse: true,
+  },
 
-{
-  id: "et-air-100",
-  image: "/images/products/product.webp",
-  title: "Et Air 100",
-  subTitle: "High-Performance Radio Module for UAV Applications",
-  details: "The Et Air 100 is a high-performance radio module engineered for reliable telemetry, control, and data transfer in UAV applications. Compact yet powerful, it enables long-range connectivity with flexible operating modes to match mission requirements.",
-  description: "Designed for versatility, the module supports both single-band operation and frequency-hopping mode. This allows UAV operators to prioritize either maximum throughput or enhanced resilience against interference and jamming. With configurable modulation schemes, the Et Air 100 adapts seamlessly to different flight scenarios and regulatory environments. The same module simultaneously handles telemetry, command/control signals, and payload data such as photos or video files. With a range of up to 50 km, it ensures dependable links even in extended flight operations. Data rates reach up to 2.2 Mbps in single-band mode and 0.7 Mbps in frequency-hopping mode, providing the right balance between speed and robustness.",
-  sectionTitle: "Key Features:",
-  features: [
-    "UAV telemetry, control, and payload data transfer in one module",
-    "Configurable modulation with support for single-band or frequency-hopping operation",
-    "Coverage up to 50 km",
-    "Data rates: 2.2 Mbps (single-band), 0.7 Mbps (frequency-hopping)",
-    "Simultaneous support for telemetry, command, and file transfer (photos, video, etc.)",
-    "Compact and efficient design for UAV integration"
-  ]
-},
-{
-  id: "et-industrial-100",
-  image: "/images/products/product.webp",
-  title: "Et Industrial 100",
-  subTitle: "Versatile Radio Module for Industrial Connectivity",
-  details: "The Et Industrial 100 is a versatile radio module designed to deliver secure, stable, and efficient wireless connectivity in industrial environments. Built for automation, monitoring, and process control, it ensures reliable communication across production floors, warehouses, and remote facilities.",
-  description: "With a working distance of up to 2 km, the Et Industrial 100 provides robust point-to-point or point-to-multipoint links even in interference-heavy conditions. Its flexible architecture allows seamless integration of Bluetooth, BLE, or Wi-Fi, making it suitable for both legacy equipment and modern IIoT infrastructures. Compact, rugged, and adaptable, the module supports real-time data exchange between sensors, controllers, and gateways—enabling greater productivity and operational efficiency. The Et Industrial 100 is the connectivity bridge for Industry 4.0, combining traditional industrial reliability with modern wireless standards to enable smart, connected operations.",
-  sectionTitle: "Key Features:",
-  features: [
-    "Up to 2 km communication range",
-    "Support for Bluetooth / BLE and Wi-Fi integration",
-    "Designed for industrial automation, monitoring, and control",
-    "Stable operation in interference-rich environments",
-    "Compact form factor for flexible deployment",
-    "Enables IIoT connectivity and process optimization"
-  ]
-},
-{
-  id: "et-bridge-100",
-  image: "/images/products/product.webp",
-  title: "Et Bridge 100",
-  subTitle: "Long-Range Repeater Device",
-  details: "The Et Bridge 100 is a dedicated repeater device designed to overcome line-of-sight challenges and extend wireless coverage across difficult terrains and large-scale environments. By relaying communication between endpoints and base stations, it ensures reliable connectivity where direct links are not possible.",
-  description: "Supporting both frequency-hopping mode and single-band mode, the Et Bridge 100 adapts to diverse deployment scenarios, delivering robust performance against interference while maintaining efficient data throughput. With coverage extension of up to 50 km, it provides a cost-effective way to expand network reach without additional infrastructure. The Et Bridge 100 is the connectivity extender for mission-critical networks, ensuring stable communication even in complex or obstructed environments.",
-  sectionTitle: "Key Features:",
-  features: [
-    "Extends network coverage up to 50 km",
-    "Optimized for environments with line-of-sight limitations",
-    "Operates in frequency-hopping or single-band mode",
-    "Enhances reliability in rugged or obstructed areas"
-  ]
-},
-{
-  id: "et-meter-100",
-  image: "/images/products/product.webp",
-  title: "Et Meter 100",
-  subTitle: "Low-Power Communication Device for Utility Metering",
-  details: "The Et Meter 100 is a low-power communication device designed specifically for utility metering applications. Built to support large-scale deployments, it operates in mesh topologies to extend network coverage and ensure reliable data delivery across electricity, water, and gas networks.",
-  description: "Optimized for energy efficiency, the Et Meter 100 can operate on battery power for up to 15 years, reducing maintenance costs and enabling long-term, unattended operation. Its robust design ensures dependable reporting of consumption data, even in dense urban environments or remote utility infrastructures. The Et Meter 100 is the long-life, low-power backbone of smart utility networks, enabling cost-effective and reliable metering communication for modern energy and utility management.",
-  sectionTitle: "Key Features:",
-  features: [
-    "Designed for smart metering and utility data reporting",
-    "Operates in mesh network topologies to maximize coverage",
-    "Ultra-low power consumption, battery life up to 15 years",
-    "Reliable data transfer for electricity, water, or gas utilities",
-    "Scalable for small to nationwide deployments"
-  ]
-},
-{
-  id: "et-platform-100",
-  image: "/images/products/product.webp",
-  title: "Et Platform 100",
-  subTitle: "Flexible OEM Radio Solution",
-  details: "The Et Platform 100 is a flexible OEM radio solution that combines hardware and software components into a single module, enabling easy integration into a wide range of applications. Designed for developers, system integrators, and equipment manufacturers, it provides a reliable communication foundation that can be tailored to specific requirements.",
-  description: "With its multi-purpose architecture, the Et Platform 100 supports various wireless use cases—from industrial automation and UAVs to smart utilities and custom devices. Its modular design and configurable software stack make it simple to adapt, extend, and deploy in OEM products, reducing time-to-market and development costs. The Et Platform 100 is the building block for OEM innovation, giving manufacturers and developers a ready-to-integrate radio solution for creating next-generation wireless products.",
-  sectionTitle: "Key Features:",
-  features: [
-    "Complete OEM radio module with hardware + software components",
-    "Flexible and multi-purpose architecture for diverse applications",
-    "Easy integration into third-party systems and equipment",
-    "Configurable for different communication needs (control, data, telemetry)",
-    "Scalable foundation for custom product development"
-  ]
-},
+  {
+    id: "et-air-100",
+    image: "/images/products/product.webp",
+    title: "Et Air 100",
+    subTitle: "High-Performance Radio Module for UAV Applications",
+    details: "The Et Air 100 is a high-performance radio module engineered for reliable telemetry, control, and data transfer in UAV applications. Compact yet powerful, it enables long-range connectivity with flexible operating modes to match mission requirements.",
+    description: "Designed for versatility, the module supports both single-band operation and frequency-hopping mode. This allows UAV operators to prioritize either maximum throughput or enhanced resilience against interference and jamming. With configurable modulation schemes, the Et Air 100 adapts seamlessly to different flight scenarios and regulatory environments. The same module simultaneously handles telemetry, command/control signals, and payload data such as photos or video files. With a range of up to 50 km, it ensures dependable links even in extended flight operations. Data rates reach up to 2.2 Mbps in single-band mode and 0.7 Mbps in frequency-hopping mode, providing the right balance between speed and robustness.",
+    sectionTitle: "Key Features:",
+    features: [
+      "UAV telemetry, control, and payload data transfer in one module",
+      "Configurable modulation with support for single-band or frequency-hopping operation",
+      "Coverage up to 50 km",
+      "Data rates: 2.2 Mbps (single-band), 0.7 Mbps (frequency-hopping)",
+      "Simultaneous support for telemetry, command, and file transfer (photos, video, etc.)",
+      "Compact and efficient design for UAV integration"
+    ],
+    reverse: false,
+  },
+  {
+    id: "et-industrial-100",
+    image: "/images/products/product.webp",
+    title: "Et Industrial 100",
+    subTitle: "Versatile Radio Module for Industrial Connectivity",
+    details: "The Et Industrial 100 is a versatile radio module designed to deliver secure, stable, and efficient wireless connectivity in industrial environments. Built for automation, monitoring, and process control, it ensures reliable communication across production floors, warehouses, and remote facilities.",
+    description: "With a working distance of up to 2 km, the Et Industrial 100 provides robust point-to-point or point-to-multipoint links even in interference-heavy conditions. Its flexible architecture allows seamless integration of Bluetooth, BLE, or Wi-Fi, making it suitable for both legacy equipment and modern IIoT infrastructures. Compact, rugged, and adaptable, the module supports real-time data exchange between sensors, controllers, and gateways—enabling greater productivity and operational efficiency. The Et Industrial 100 is the connectivity bridge for Industry 4.0, combining traditional industrial reliability with modern wireless standards to enable smart, connected operations.",
+    sectionTitle: "Key Features:",
+    features: [
+      "Up to 2 km communication range",
+      "Support for Bluetooth / BLE and Wi-Fi integration",
+      "Designed for industrial automation, monitoring, and control",
+      "Stable operation in interference-rich environments",
+      "Compact form factor for flexible deployment",
+      "Enables IIoT connectivity and process optimization"
+    ],
+    reverse: true,
+  },
+  {
+    id: "et-bridge-100",
+    image: "/images/products/product.webp",
+    title: "Et Bridge 100",
+    subTitle: "Long-Range Repeater Device",
+    details: "The Et Bridge 100 is a dedicated repeater device designed to overcome line-of-sight challenges and extend wireless coverage across difficult terrains and large-scale environments. By relaying communication between endpoints and base stations, it ensures reliable connectivity where direct links are not possible.",
+    description: "Supporting both frequency-hopping mode and single-band mode, the Et Bridge 100 adapts to diverse deployment scenarios, delivering robust performance against interference while maintaining efficient data throughput. With coverage extension of up to 50 km, it provides a cost-effective way to expand network reach without additional infrastructure. The Et Bridge 100 is the connectivity extender for mission-critical networks, ensuring stable communication even in complex or obstructed environments.",
+    sectionTitle: "Key Features:",
+    features: [
+      "Extends network coverage up to 50 km",
+      "Optimized for environments with line-of-sight limitations",
+      "Operates in frequency-hopping or single-band mode",
+      "Enhances reliability in rugged or obstructed areas"
+    ],
+    reverse: false,
+  },
+  {
+    id: "et-meter-100",
+    image: "/images/products/product.webp",
+    title: "Et Meter 100",
+    subTitle: "Low-Power Communication Device for Utility Metering",
+    details: "The Et Meter 100 is a low-power communication device designed specifically for utility metering applications. Built to support large-scale deployments, it operates in mesh topologies to extend network coverage and ensure reliable data delivery across electricity, water, and gas networks.",
+    description: "Optimized for energy efficiency, the Et Meter 100 can operate on battery power for up to 15 years, reducing maintenance costs and enabling long-term, unattended operation. Its robust design ensures dependable reporting of consumption data, even in dense urban environments or remote utility infrastructures. The Et Meter 100 is the long-life, low-power backbone of smart utility networks, enabling cost-effective and reliable metering communication for modern energy and utility management.",
+    sectionTitle: "Key Features:",
+    features: [
+      "Designed for smart metering and utility data reporting",
+      "Operates in mesh network topologies to maximize coverage",
+      "Ultra-low power consumption, battery life up to 15 years",
+      "Reliable data transfer for electricity, water, or gas utilities",
+      "Scalable for small to nationwide deployments"
+    ],
+    reverse: true,
+  },
+  {
+    id: "et-platform-100",
+    image: "/images/products/product.webp",
+    title: "Et Platform 100",
+    subTitle: "Flexible OEM Radio Solution",
+    details: "The Et Platform 100 is a flexible OEM radio solution that combines hardware and software components into a single module, enabling easy integration into a wide range of applications. Designed for developers, system integrators, and equipment manufacturers, it provides a reliable communication foundation that can be tailored to specific requirements.",
+    description: "With its multi-purpose architecture, the Et Platform 100 supports various wireless use cases—from industrial automation and UAVs to smart utilities and custom devices. Its modular design and configurable software stack make it simple to adapt, extend, and deploy in OEM products, reducing time-to-market and development costs. The Et Platform 100 is the building block for OEM innovation, giving manufacturers and developers a ready-to-integrate radio solution for creating next-generation wireless products.",
+    sectionTitle: "Key Features:",
+    features: [
+      "Complete OEM radio module with hardware + software components",
+      "Flexible and multi-purpose architecture for diverse applications",
+      "Easy integration into third-party systems and equipment",
+      "Configurable for different communication needs (control, data, telemetry)",
+      "Scalable foundation for custom product development"
+    ],
+    reverse: false,
+  },
 ];
 
 export const LeadershipMembers = [
@@ -234,7 +241,7 @@ export const SolutionsItems = [
     title: "Unmanned Aerial Vehicles (UAVs)",
     subTitle: "(400Mhz small radio)",
     link: "https://etherynet.com/product/et-102/",
-     details: "Unmanned Aerial Vehicles play an increasingly vital role across industries, from defense and surveillance to logistics, agriculture, and infrastructure monitoring. To perform these missions effectively, UAVs require reliable, high-bandwidth communication links that ensure continuous control, navigation, and data transfer.",
+    details: "Unmanned Aerial Vehicles play an increasingly vital role across industries, from defense and surveillance to logistics, agriculture, and infrastructure monitoring. To perform these missions effectively, UAVs require reliable, high-bandwidth communication links that ensure continuous control, navigation, and data transfer.",
     description: "Our UAV communication solutions are designed for performance in dynamic environments, where range, latency, and interference can directly impact mission success. With lightweight, compact radio modules optimized for aerial platforms, we provide stable long-range connectivity and support for high-speed video and data transmission.",
     sectionTitle: "Key benefits include:",
     priorities: [
@@ -265,7 +272,7 @@ export const SolutionsItems = [
         title: "Et Air 100",
         link: "et-air-100"
       },
-    
+
     ]
   },
   {
@@ -302,11 +309,11 @@ export const SolutionsItems = [
     ],
     extraDescription: "From production lines to remote industrial sites, our solutions provide the communication backbone that keeps automation systems operating without interruption.",
     relatedProducts: [
-       {
+      {
         title: "Et Industrial 100",
         link: "et-industrial-100"
       },
-    ]  
+    ]
   },
   {
     id: "energy-utilities",
@@ -342,13 +349,13 @@ export const SolutionsItems = [
     ],
     extraDescription: "From smart meters to grid monitoring and control, our solutions provide the foundation for next-generation energy and utility management.",
     relatedProducts: [
-       {
+      {
         title: "Et Meter 100",
         link: "et-meter-100"
       },
-      
-    ]  
-    },
+
+    ]
+  },
   {
     id: "oem-solutions",
     image: "/images/solutions/high-angle-view-computer-chip.webp",
@@ -386,7 +393,7 @@ export const SolutionsItems = [
         title: "Et Platform 100",
         link: "et-platform-100"
       },
-    ]  
+    ]
 
   },
 
@@ -400,6 +407,16 @@ export const ProductSections = [
     image: "/images/products/product.webp",
     slice: [0, 2],
     reverse: false,
+    relatedProducts: [
+      {
+        title: "Et Net 100",
+        link: "et-net-100"
+      },
+      {
+        title: "Et Net 200",
+        link: "et-net-200"
+      }
+    ]
   },
   {
     title: "UAV Radio Modules",
@@ -408,6 +425,12 @@ export const ProductSections = [
     image: "/images/products/product.webp",
     slice: [0, 3],
     reverse: true,
+    relatedProducts: [
+      {
+        title: "Et Air 100",
+        link: "et-air-100"
+      },
+    ]
   },
   {
     title: "Industrial Radios",
@@ -416,15 +439,27 @@ export const ProductSections = [
     image: "/images/products/product.webp",
     slice: [0, 2],
     reverse: false,
+    relatedProducts: [
+      {
+        title: "Et Industrial 100",
+        link: "et-industrial-100"
+      },
+    ]
   },
 
   {
-    title: "Repeaters ",
+    title: "Repeaters",
     description:
       "Repeater devices seamlessly expand wireless coverage, enhance signal reliability, and deliver stable connections throughout large or complex environments",
     image: "/images/products/product.webp",
     slice: [0, 4],
     reverse: true,
+    relatedProducts: [
+      {
+        title: "Et Bridge 100",
+        link: "et-bridge-100"
+      },
+    ]
   },
   {
     title: "Smart Metering",
@@ -433,6 +468,12 @@ export const ProductSections = [
     image: "/images/products/product.webp",
     slice: [0, 1],
     reverse: false,
+    relatedProducts: [
+      {
+        title: "Et Meter 100",
+        link: "et-meter-100"
+      },
+    ]
   },
 
   {
@@ -442,6 +483,12 @@ export const ProductSections = [
     image: "/images/products/product.webp",
     slice: [0, 4],
     reverse: true,
+    relatedProducts: [
+      {
+        title: "Et Platform 100",
+        link: "et-platform-100"
+      },
+    ]
   },
 
 ];

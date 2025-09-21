@@ -2,15 +2,9 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import {
   companyLinks,
-  featureLinks,
   supportLink,
-  SolutionsLink,
   SolutionsItems,
-  address,
-  phone,
-  email,
   facebook,
-  twitter,
   linkedin,
 } from "@/app/api/data";
 
@@ -22,23 +16,23 @@ const Footer = () => {
 
   const phoneCall = "+37494426764";
 
-  const emailTech = "info@ethery.tech";
+  const emailTech = "contact@ethery.tech";
 
   return (
     <footer className="pt-5 bg-midnight_text relative   xl:after:block ">
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-2">
-       
+
         <div className="grid grid-cols-12 sm:mb-16 mb-8 pt-8 gap-4 relative lg:before:block ">
           {/* Solutions */}
           <div className="md:col-span-4 col-span-6 mb-4 md:mb-0">
-            <h4 className="text-18 text-white dark:text-white mb-3">
+            <h4 className="text-18 leading-normal text-white dark:text-white mb-3">
               Solutions
             </h4>
             <ul>
               {SolutionsItems.map((item, index) => (
                 <li key={index} className="pb-3">
                   <Link
-                    href={`/solution-item/${item.id}`} 
+                    href={`/solution-item/${item.id}`}
                     className="text-foottext text-16 hover:text-primary"
                   >
                     {item.title}
@@ -50,7 +44,7 @@ const Footer = () => {
           {/* Company */}
 
           <div className="md:col-span-3 col-span-6 mb-4 md:mb-0">
-            <h4 className="text-18 text-white dark:text-white mb-3">Company</h4>
+            <h4 className="text-18 leading-normal text-white dark:text-white mb-3">Company</h4>
             <ul>
               {companyLinks.map((item, index) => (
                 <li key={index} className="pb-3">
@@ -67,7 +61,7 @@ const Footer = () => {
 
           {/* Support */}
           <div className="md:col-span-3 col-span-6 mb-4 md:mb-0">
-            <h4 className="text-18 text-white dark:text-white mb-3">Support</h4>
+            <h4 className="text-18 leading-normal text-white dark:text-white mb-3">Support</h4>
             <ul>
               {supportLink.map((item, index) => (
                 <li key={index} className="pb-3">
@@ -92,13 +86,12 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-16 "
               >
-                <span>{email}</span>
-              </Link>{" "}
+                <span>{emailTech}</span>
+              </Link>{" "} {" "}
               |{" "}
               <Link href={`tel:${phoneCall}`} className="text-16 ">
                 <span>{phoneCall}</span>
-              </Link>{" "}
-              ։
+              </Link>
             </p>
           </div>
           <div className="flex gap-4 my-4 lg:mt-0">
@@ -112,16 +105,6 @@ const Footer = () => {
                 <Icon icon="fe:facebook" width="32" height="32" />
               </Link>
             )}
-            {/* {twitter && (
-              <Link
-                href={twitter}
-                className="text-muted hover:text-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon icon="fa6-brands:square-twitter" width="32" height="32" />
-              </Link>
-            )} */}
             {linkedin && (
               <Link
                 href={linkedin}

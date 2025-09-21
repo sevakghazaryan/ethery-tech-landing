@@ -64,7 +64,7 @@ const Benefit = () => {
               {...rightAnimation}
               className="xl:col-span-6 col-span-12"
             >
-              <p className="sm:text-25 text-18 text-midnight_text font-medium dark:text-white">
+              <p className="sm:text-25 text-18 leading-normal text-midnight_text font-medium dark:text-white">
                 Grow revenues and delight your customers by building financial
                 features.
               </p>

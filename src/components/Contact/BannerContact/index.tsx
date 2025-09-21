@@ -28,7 +28,7 @@ const BannerContact = () => {
             <h2 className="text-center font-semibold md:text-35 sm:text-28 text-24 mb-8 text-midnight_text dark:text-white lg:mx-44">
               Let’s Connect
             </h2>
-            <p className=" text-18 text-muted dark:text-white dark:text-opacity-70 text-center lg:max-w-full sm:max-w-75%">
+            <p className=" text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-center lg:max-w-full sm:max-w-75%">
               Get in touch with us for demos, partnerships, or career opportunities. 
               <br />
               Our team is ready to assist you.

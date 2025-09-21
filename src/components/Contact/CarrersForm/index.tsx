@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef  } from "react";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import ModalDemo from "@/components/Modals/SuccesDemo";
@@ -19,6 +19,8 @@ const CareersForm = () => {
     message: "",
     consent: false,
   });
+
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -75,7 +77,10 @@ const CareersForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) return;
+     if (!validateForm()) {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
 
     setLoading(true);
     setSuccess("");
@@ -120,7 +125,7 @@ const CareersForm = () => {
 
   return (
     <Fragment>
-      <section className="dark:bg-darkmode pb-24">
+      <section ref={sectionRef} className="dark:bg-darkmode pb-24">
         <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
           <div className="grid md:grid-cols-12 grid-cols-1 gap-8">
             <div className="col-span-6">
@@ -317,7 +322,7 @@ const CareersForm = () => {
                     disabled={loading}
                     className="bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700 disabled:opacity-50"
                   >
-                    {loading ? "Submitting..." : "👉 Submit Application"}
+                    {loading ? "Submitting..." : "Submit Application"}
                   </button>
                 </div>
               </form>

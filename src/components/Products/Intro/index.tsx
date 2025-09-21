@@ -20,7 +20,7 @@ const Intro = () => {
   };
 
   return (
-    <section className="dark:bg-darkmode py-14">
+    <section className="dark:bg-darkmode overflow-hidden py-14">
       <div
         ref={ref}
         className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4"
@@ -35,37 +35,13 @@ const Intro = () => {
               </span>
             </h2>
           </div>
-          <p className="text-center text-muted dark:text-white dark:text-opacity-70 md:text-18 text-base font-medium relative">
+          <p className="text-center text-muted dark:text-white dark:text-opacity-70 md:text-18 leading-normal text-base font-medium relative">
             Built for mission-critical operations, our tactical communication
             system ensures real-time coordination across environments. Modular,
             encrypted, and easy to deploy — it’s your complete field-to-command
             connectivity platform.
           </p>
         </motion.div>
-
-        {/* <div className="flex justify-start sm:mt-20 mt-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-14 gap-8">
-            {productPerks.map((item, index) => (
-              <div key={index}>
-                <motion.div {...bottomAnimation(index)}>
-                  <div className="rounded-full">
-                   
-                  </div>
-                  <div className="py-4">
-                    <p className="lg:text-25 text-22 font-medium text-midnight_text dark:text-white">
-                      {item.title}
-                    </p>
-                  </div>
-                  <div className="mr-2">
-                    <p className="text-base text-muted dark:text-white dark:text-opacity-70">
-                      {item.text}
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
     </section>
   );

@@ -59,17 +59,12 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           <div className="w-full lg:w-8/12 order-2 lg:order-1">
             <article className="prose dark:prose-invert max-w-none">
-              {/* Details */}
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
+              <p className="text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
                 {product.details}
               </p>
-
-              {/* Description */}
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
+              <p className="text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
                 {product.description}
               </p>
-
-              {/* Priorities Section */}
               {product.sectionTitle && (
                 <h3 className="text-xl font-semibold text-muted dark:text-white pt-4 pb-4">
                   {product.sectionTitle}
@@ -80,37 +75,32 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
                   {product.priorities.map((priority, index) => (
                     <li
                       key={index}
-                      className="pb-3 text-muted dark:text-white dark:text-opacity-70"
+                      className="text-16 leading-normal pb-3 text-muted dark:text-white dark:text-opacity-70"
                     >
                       <strong>{priority.title}:</strong> {priority.text}
                     </li>
                   ))}
                 </ul>
               )}
-
-              {/* Extra Description */}
               {product.extraDescription && (
                 <>
                   <div className="py-4" />
-                  <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75%">
+                  <p className="leading-normal text-18 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75%">
                     {product.extraDescription}
                   </p>
                 </>
               )}
-
               <hr className="my-6" />
-
-              {/* Related Products */}
               {product.relatedProducts && product.relatedProducts.length > 0 && (
                 <div>
-                  <h4 className="text-lg font-semibold text-muted dark:text-white mb-3">
+                  <h4 className="text-18 leading-normal font-semibold text-muted dark:text-white mb-3">
                     Related Products:
                   </h4>
                   <ul className="list-disc list-inside space-y-2 text-muted dark:text-white">
                     {product.relatedProducts.map((rp, idx) => (
                       <li
                         key={idx}
-                        className="pb-2 text-primary hover:underline dark:text-white dark:text-opacity-70"
+                        className="text-16 leading-normal pb-2 text-primary hover:underline dark:text-white dark:text-opacity-70"
                       >
                         <Link href={`/product-Item/${rp.link}`}>
                           {rp.title}
@@ -135,30 +125,23 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
             </div>
           </div>
         </div>
-        {/*  Other Solutions Items */}
-
         <div className="mt-16">
-          <h2 className="text-2xl font-bold mb-4 text-midnight_text dark:text-white">
+          <h2 className="text-20 font-bold mb-4 text-midnight_text dark:text-white">
             Other Solutions
           </h2>
-
-          <ul className="flex flex-col md:flex-row gap-2">
+          <ul className="flex flex-col gap-2">
             {SolutionsItems.filter((item) => item.id !== product.id).map((item) => (
               <li key={item.id}>
                 <Link
                   href={`/solution-item/${item.id}`}
-                  className="flex flex-row   text-primary hover:underline"
+                  className="text-16 leading-normal pb-2 flex flex-row   text-primary hover:underline"
                 >
-                  <span>#</span>
                   <span>{item.title}</span>
-
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-
-
       </div>
     </main>
   );

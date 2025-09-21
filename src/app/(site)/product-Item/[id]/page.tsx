@@ -54,13 +54,13 @@ export default async function ProductItemPage({ params }: ProductItemPageProps) 
               {product.subTitle}
             </h3>
             <article className="prose dark:prose-invert max-w-none">
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
+              <p className="text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
                 {product.details}
               </p>
-              <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
+              <p className="text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75% pb-8">
                 {product.description}
               </p>
-              <h3 className="sm:text-19 text-16 text-start lg:max-w-full sm:max-w-75% pb-4 font-semibold">
+              <h3 className="text-18 leading-normal text-start lg:max-w-full sm:max-w-75% pb-4 font-semibold">
                 {product.sectionTitle}
               </h3>
               <ul className="text-base list-disc list-inside space-y-2 text-muted dark:text-white">

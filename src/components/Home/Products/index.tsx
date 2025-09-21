@@ -50,7 +50,7 @@ const Products = () => {
                 Tailored for Every Mission and Industry{" "}
               </span>
             </h2>
-            <p className="text-18  text-muted dark:text-white dark:text-opacity-70 text-center lg:max-w-full sm:max-w-75%">
+            <p className="text-18 leading-normal  text-muted dark:text-white dark:text-opacity-70 text-center lg:max-w-full sm:max-w-75%">
               We design and manufacture high-performance radio systems for
               defense, UAVs, and industrial automation. Each device is
               customizable, easy to integrate, and optimized for secure,
@@ -69,9 +69,9 @@ const Products = () => {
               prevEl: ".swiper-button-prev",
             }}
             pagination={{
-      clickable: true,
-      el: ".swiper-pagination", 
-    }}
+              clickable: true,
+              el: ".swiper-pagination",
+            }}
             watchSlidesProgress
             spaceBetween={50}
             slidesPerView={3}
@@ -114,21 +114,15 @@ const Products = () => {
             ))}
           </Swiper>
 
-          <div className="swiper-buttons">
-            {/* Prev button */}
-            <button
-              className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow"
-            >
+          <div className="swiper-buttons hidden md:block">
+            <button className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow" >
               <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
             </button>
-            {/* Next button */}
-            <button
-              className="right-btn swiper-button-next absolute -right-14 ht-0 top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow"
-            >
+            <button className="right-btn swiper-button-next absolute -right-14 ht-0 top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow" >
               <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
             </button>
           </div>
-          <div className="swiper-pagination -bottom-10  mt-6 flex justify-center"></div>
+          <div className="swiper-pagination flex justify-center"></div>
         </div>
       </div>
     </section>

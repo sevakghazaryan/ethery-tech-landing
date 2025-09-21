@@ -1,5 +1,6 @@
 "use client";
-import React, { Fragment, useState , useRef} from "react";
+
+import React, { Fragment, useState, useRef  } from "react";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import ModalDemo from "@/components/Modals/SuccesDemo";
@@ -18,6 +19,8 @@ const ContactForm = () => {
     interest: "",
     message: "",
   });
+
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
@@ -48,19 +51,6 @@ const ContactForm = () => {
     setOpen(false);
   };
 
-  //  This line code like change next stage
-  // const handleCheckboxChange = (item: string) => {
-  //   setFormData((prev: any) => {
-  //     const exists = prev.interest.includes(item);
-  //     return {
-  //       ...prev,
-  //       interest: exists
-  //         ? prev.interest.filter((i: string) => i !== item)
-  //         : [...prev.interest, item],
-  //     };
-  //   });
-  // };
-
   const validateForm = () => {
     let newErrors: { [key: string]: string } = {};
 
@@ -82,7 +72,10 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) return;
+     if (!validateForm()) {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
 
     setLoading(true);
     setSuccess("");
@@ -127,12 +120,11 @@ const ContactForm = () => {
 
   return (
     <Fragment>
-      <section className="dark:bg-darkmode pb-24">
+      <section  ref={sectionRef}  className="dark:bg-darkmode pb-24">
         <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
           <div className="grid md:grid-cols-12 grid-cols-1 gap-8">
             <div className="col-span-6">
               <h2 className="max-w-72 text-40 font-bold mb-9">
-                {/* Get Online Consultation */}
                 Request Demo
               </h2>
               <form
@@ -140,7 +132,6 @@ const ContactForm = () => {
                 onSubmit={handleSubmit}
               >
                 <div className="sm:flex gap-3 w-full">
-                  {/* Full Name */}
                   <div className="mx-0 my-2.5 flex-1">
                     <label
                       htmlFor="full_name"
@@ -153,9 +144,8 @@ const ContactForm = () => {
                       name="full_name"
                       value={formData.full_name}
                       onChange={handleChange}
-                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
-                        errors.fullName ? "border-red-500" : "border-border"
-                      } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
+                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.fullName ? "border-red-500" : "border-border"
+                        } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                     />
                     {errors.fullName && (
                       <p className="text-red-500 text-sm mt-1">
@@ -163,7 +153,6 @@ const ContactForm = () => {
                       </p>
                     )}
                   </div>
-                  {/* Company */}
                   <div className="mx-0 my-2.5 flex-1">
                     <label
                       htmlFor="company"
@@ -176,9 +165,8 @@ const ContactForm = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
-                        errors.company ? "border-red-500" : "border-border"
-                      } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
+                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.company ? "border-red-500" : "border-border"
+                        } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                     />
                     {errors.company && (
                       <p className="text-red-500 text-sm mt-1">
@@ -188,7 +176,6 @@ const ContactForm = () => {
                   </div>
                 </div>
                 <div className="sm:flex gap-3 w-full">
-                  {/* Job Title / Role */}
                   <div className="mx-0 my-2.5 flex-1">
                     <label
                       htmlFor="title"
@@ -204,7 +191,7 @@ const ContactForm = () => {
                       className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0"
                     />
                   </div>
-                  {/* Work Email */}
+
                   <div className="mx-0 my-2.5 flex-1">
                     <label
                       htmlFor="work_email"
@@ -217,9 +204,8 @@ const ContactForm = () => {
                       name="work_email"
                       value={formData.work_email}
                       onChange={handleChange}
-                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
-                        errors.email ? "border-red-500" : "border-border"
-                      } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
+                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.email ? "border-red-500" : "border-border"
+                        } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                     />
                     {errors.email && (
                       <p className="text-red-500 text-sm mt-1">
@@ -228,7 +214,6 @@ const ContactForm = () => {
                     )}
                   </div>
                 </div>
-                {/* Phone Number */}
                 <div className="mx-0 my-2.5 w-full">
                   <label htmlFor="phone" className="pb-3 inline-block text-17">
                     Phone number (optional)
@@ -241,20 +226,15 @@ const ContactForm = () => {
                     className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0"
                   />
                 </div>
-
-                {/* Area of Interest */}
                 <div className="mx-0 my-2.5 w-full relative">
                   <label className="pb-3 inline-block text-17">
                     Area of Interest*
                   </label>
-
-                  {/* Dropdown button */}
                   <button
                     type="button"
                     onClick={() => setOpen(!open)}
-                    className={`w-full text-left px-4 py-2.5 rounded-lg border ${
-                      errors.interest ? "border-red-500" : "border-border"
-                    } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
+                    className={`w-full text-left px-4 py-2.5 rounded-lg border ${errors.interest ? "border-red-500" : "border-border"
+                      } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                   >
                     {formData.interest ? formData.interest : "Select option"}
                   </button>
@@ -269,18 +249,16 @@ const ContactForm = () => {
                         <div
                           key={i}
                           onClick={() => handleInterestSelect(item)}
-                          className={`px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                            formData.interest === item
-                              ? "bg-gray-200 dark:bg-gray-600"
-                              : ""
-                          }`}
+                          className={`px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${formData.interest === item
+                            ? "bg-gray-200 dark:bg-gray-600"
+                            : ""
+                            }`}
                         >
                           {item}
                         </div>
                       ))}
                     </div>
                   )}
-
                   {errors.interest && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.interest}
@@ -312,13 +290,10 @@ const ContactForm = () => {
                     type="submit"
                     className="bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700"
                   >
-                  
                     {loading ? "Sending..." : "Request Demo"}
                   </button>
                 </div>
               </form>
-
-                {/* <div ref={formBottomRef} className="mt-10"></div> */}
             </div>
             <div className="col-span-6">
               <Image
@@ -334,9 +309,6 @@ const ContactForm = () => {
           </div>
         </div>
       </section>
-
-      {/* Modal Demo */}
-
       <ModalDemo
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

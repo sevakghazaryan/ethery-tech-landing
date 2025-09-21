@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef  } from "react";
 import ModalApplay from "@/components/Modals/SuccesApplay";
 import emailjs from "@emailjs/browser";
 
@@ -20,6 +20,8 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
     note: "",
     cv: null as File | null,
   });
+
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 

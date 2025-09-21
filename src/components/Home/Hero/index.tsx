@@ -32,7 +32,7 @@ const Hero = () => {
             <h1 className="md:text-50 sm:text-40 text-28 text-midnight_text lg:text-start mb-9 lg:w-full w-3/4">
               Radio Systems, Redefined by Simplicity
             </h1>
-            <p className="sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75%">
+            <p className="text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-start lg:max-w-full sm:max-w-75%">
               Secure, lightweight, and adaptable radio systems for military
               operations, UAVs and industrial applications - all with minimal
               training, maximum efficiency, and full customization.

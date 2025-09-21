@@ -33,13 +33,12 @@ const ContactInfo: FC<ContactInfoProps> = ({ handleCarrers, handleDemo, handleEm
                   <span className="text-midnight_text dark:text-white text-xl font-bold">
                     Request demo
                   </span>
-                  {/* sm:text-19 text-16 text-muted dark:text-white dark:text-opacity-70 text-center lg:max-w-full sm:max-w-75% */}
                   <p className=" text-xl max-w-80 pt-3 pb-7 text-muted dark:text-white dark:text-opacity-70">
                     Discover how our radio systems can support your mission. Schedule a personalized demo with our team.
                   </p>
                 </div>
                 <div>
-                  <button onClick={ () => handleDemo() } className="text-primary text-18 font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white">
+                  <button onClick={ () => handleDemo() } className="text-primary text-18 leading-normal font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white">
                    Request Now
                     <svg
                       width="23"
@@ -72,7 +71,7 @@ const ContactInfo: FC<ContactInfoProps> = ({ handleCarrers, handleDemo, handleEm
                   </p>
                 </div>
                 <div>
-                  <button onClick={()=> handleEmail() } className="text-primary text-18 font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white">
+                  <button onClick={()=> handleEmail() } className="text-primary text-18 leading-normal font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white">
                     Send Email
                     <svg
                       width="23"
@@ -111,7 +110,7 @@ const ContactInfo: FC<ContactInfoProps> = ({ handleCarrers, handleDemo, handleEm
                   </p>
                 </div>
                 <div>
-                  <button onClick={() => handleCarrers() } className="text-primary text-18 font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white">
+                  <button onClick={() => handleCarrers() } className="text-primary text-18 leading-normal font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white">
                     Apply Now
                     <svg
                       width="23"
