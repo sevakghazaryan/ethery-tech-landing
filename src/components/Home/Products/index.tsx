@@ -6,9 +6,9 @@ import Link from "next/link";
 import { ProductItems } from "@/app/api/data";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { Pagination } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -112,9 +112,10 @@ const Products = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="swiper-pagination relative mt-4 flex justify-center"></div>
+          <div className="swiper-container">
 
-          <div className="custom-pagination mt-4 flex justify-center"></div>
+          </div>
+
 
           <div className="swiper-buttons hidden md:block">
             <button className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow" >
@@ -125,6 +126,7 @@ const Products = () => {
             </button>
           </div>
         </div>
+
       </div>
     </section>
 

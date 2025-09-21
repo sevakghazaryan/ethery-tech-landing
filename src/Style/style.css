@@ -39,11 +39,13 @@ html, body {
     left: auto !important;
 }
 .swiper-buttons .left-btn {
-  left: -100px !important;    
+  left: -100px !important;   
+  top: -40px; 
 }
 
 .swiper-buttons .right-btn {
-  right: -100px !important;   
+  right: -100px !important; 
+  top: -40px;  
 }
 
 
@@ -77,7 +79,7 @@ html, body {
 } */
 
 .swiper-pagination {
-  position:  relative !important;
+  position: relative !important;
 }
 
 .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
@@ -90,21 +92,8 @@ html, body {
 
 
 
-.custom-pagination {
-  text-align: center;
-}
+/*  */
 
-.custom-pagination .swiper-pagination-bullet {
-  background: #c0c0c0;
-  opacity: 0.6;
-  transition: all 0.3s ease;
-  margin: 0 4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
 
-.custom-pagination .swiper-pagination-bullet-active {
-  background: #007aff; 
-  opacity: 1;
-}
+/* hide default pagination completely */
+
