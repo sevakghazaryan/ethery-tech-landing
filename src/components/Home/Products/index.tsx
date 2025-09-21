@@ -113,6 +113,7 @@ const Products = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+           <div className="swiper-pagination flex justify-center"></div>
 
           <div className="swiper-buttons hidden md:block">
             <button className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow" >
@@ -122,7 +123,7 @@ const Products = () => {
               <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
             </button>
           </div>
-          <div className="swiper-pagination flex justify-center"></div>
+         
         </div>
       </div>
     </section>
