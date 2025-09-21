@@ -29,7 +29,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
         </div>
       </div>
       <div>
-        <p className="text-14 sm:text-16 md:text-18 leading-normal font-medium text-muted leading-loose mb-0">
+        <p className="text-14 sm:text-16 leading-normal font-medium text-muted mb-0">
           {format(new Date(date), "MMMM dd, yyyy")}
         </p>
         <div className="my-4">

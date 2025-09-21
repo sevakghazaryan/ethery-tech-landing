@@ -35,7 +35,7 @@ const Intro = () => {
               </span>
             </h2>
           </div>
-          <p className="text-center text-muted dark:text-white dark:text-opacity-70 md:text-18 leading-normal text-base font-medium relative">
+          <p className="text-center text-muted dark:text-white dark:text-opacity-70 text-16 leading-normal  font-medium relative">
             Built for mission-critical operations, our tactical communication
             system ensures real-time coordination across environments. Modular,
             encrypted, and easy to deploy — it’s your complete field-to-command

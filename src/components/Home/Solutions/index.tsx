@@ -53,7 +53,7 @@ const SolutionsComponent = () => {
                           {item.title}
                         </h3>
                         <div className="mt-6" />
-                        <p className="text-muted dark:text-white dark:text-opacity-70 md:text-18 text-16 leading-normal md:mb-14 mb-8">
+                        <p className="text-muted dark:text-white dark:text-opacity-70 text-16 leading-normal ">
                           {item.details}
                         </p>
                       </div>
