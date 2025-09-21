@@ -56,3 +56,15 @@ html, body {
     left: 0;
     width: 100%;
 }
+
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 1rem; 
+  bottom: 0 !important;
+  text-align: center;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets {
+  margin-top: 20px; 
+}
