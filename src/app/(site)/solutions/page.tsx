@@ -16,7 +16,7 @@ const Solutions = () => {
   ];
 
   return (
-    <main className="dark:bg-darkmode overflow-x-hidden pb-14">
+    <main className="dark:bg-darkmode overflow-x-hidden">
       <HeroSub
         title="Solutions"
         description="Innovative solutions tailored to your unique challenges"

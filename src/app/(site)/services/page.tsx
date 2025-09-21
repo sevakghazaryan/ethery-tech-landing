@@ -27,7 +27,11 @@ const Services = () => {
         breadcrumbLinks={breadcrumbLinks}
         isBrodcurb={true}
       />
-      <Products />
+
+      <div className="dark:bg-darkmode">
+<Products />
+      </div>
+
       <Benefit />
       <Spend />
     </>

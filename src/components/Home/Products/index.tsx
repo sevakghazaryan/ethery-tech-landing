@@ -63,18 +63,14 @@ const Products = () => {
         <div className="sm:mt-20 mt-10 w-full">
           <Swiper
             modules={[Navigation, Pagination]}
-            // pagination={{ clickable: true }}
-              pagination={{
-              clickable: true,
-              el: ".swiper-pagination",
-            }}
-            
+            pagination={{ clickable: true }}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
-             loop={true}
-          
+            loop={true}
+            rewind={true}
+            loopAdditionalSlides={3}
             watchSlidesProgress
             spaceBetween={50}
             slidesPerView={3}
@@ -86,7 +82,7 @@ const Products = () => {
           >
             {ProductItems.map((item, index) => (
               <SwiperSlide key={index}>
-                <motion.div {...bottomAnimation(index)}>
+                <motion.div {...bottomAnimation(index)} viewport={{ once: true }} >
                   <Link
                     href={`/product-Item/${item.id}`}
                     rel="noopener noreferrer"
@@ -118,6 +114,8 @@ const Products = () => {
           </Swiper>
           <div className="swiper-pagination relative mt-4 flex justify-center"></div>
 
+          <div className="custom-pagination mt-4 flex justify-center"></div>
+
           <div className="swiper-buttons hidden md:block">
             <button className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow" >
               <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
@@ -126,7 +124,6 @@ const Products = () => {
               <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
             </button>
           </div>
-         
         </div>
       </div>
     </section>

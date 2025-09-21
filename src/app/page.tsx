@@ -25,7 +25,9 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Products />
+      <div className="dark:bg-darkmode py-14">
+        <Products />
+      </div>
       <SolutionsComponent />
     </main>
   );
