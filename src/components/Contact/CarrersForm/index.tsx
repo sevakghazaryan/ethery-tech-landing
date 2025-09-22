@@ -182,7 +182,7 @@ const CareersForm = () => {
       // For demo purposes, we just send formData without the file.
       const result = await emailjs.send(
         "service_cp8yeeo", // Service ID
-        "template_aby5rdu", // Template ID
+        "template_6mqe3m6", // Template ID  
         {
           ...formData,
           cvFileName: cvFile?.name || "No file attached",
