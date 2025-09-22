@@ -20,6 +20,8 @@ const FormCV = ({ onCancel }: FormCVProps) => {
     cv: null as File | null,
   });
 
+  const [loading, setLoading] = useState(false);
+  
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (
@@ -45,7 +47,11 @@ const FormCV = ({ onCancel }: FormCVProps) => {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       newErrors.email = "Enter a valid email address.";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
-    if (!formData.cv) newErrors.cv = "Please upload your CV.";
+     if (formData.cv && formData.cv.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({ ...prev, cv: "CV file is too large. Max 5MB." }));
+      setLoading(false);
+      return;
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -145,9 +151,6 @@ const FormCV = ({ onCancel }: FormCVProps) => {
             placeholder="Write something..."
           ></textarea>
         </div>
-
-       
-
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             CV Attachment <span className="text-red-500">*</span>

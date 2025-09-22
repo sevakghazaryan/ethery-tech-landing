@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useState, useRef  } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import ModalDemo from "@/components/Modals/SuccesDemo";
@@ -39,40 +39,100 @@ const ContactForm = () => {
     "OEM Solutions",
   ];
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
+  // };
 
-  const handleInterestSelect = (item: string) => {
-    setFormData((prev) => ({ ...prev, interest: item }));
-    setOpen(false);
-  };
 
-  const validateForm = () => {
-    let newErrors: { [key: string]: string } = {};
+ const validateForm = () => {
+  let newErrors: { [key: string]: string } = {};
 
-    if (!formData.full_name.trim())
-      newErrors.fullName = "Full Name is required";
-    if (!formData.company.trim()) newErrors.company = "Company is required";
-    if (!formData.work_email.trim()) {
-      newErrors.email = "Work Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.work_email)) {
-      newErrors.email = "Enter a valid email";
+  if (!formData.full_name.trim())
+    newErrors.full_name = "Full Name is required";
+
+  if (!formData.company.trim())
+    newErrors.company = "Company is required";
+
+  if (!formData.work_email.trim()) {
+    newErrors.work_email = "Work Email is required";
+  } else if (!/\S+@\S+\.\S+/.test(formData.work_email)) {
+    newErrors.work_email = "Enter a valid email";
+  }
+
+  if (!formData.interest.trim())
+    newErrors.interest = "Select at least one area of interest";
+
+  setErrors(newErrors);
+
+  return Object.keys(newErrors).length === 0;
+};
+
+const validateField = (name: string, value: any) => {
+  switch (name) {
+    case "full_name":
+      if (!value.trim()) return "Full Name is required";
+      return null;
+    case "company":
+      if (!value.trim()) return "Company is required";
+      return null;
+    case "work_email":
+      if (!value.trim()) return "Work Email is required";
+      if (!/\S+@\S+\.\S+/.test(value)) return "Enter a valid email";
+      return null;
+    case "interest":
+      if (!value.trim()) return "Select at least one area of interest";
+      return null;
+    default:
+      return null;
+  }
+};
+
+
+
+const handleInterestSelect = (item: string) => {
+  setFormData((prev) => ({ ...prev, interest: item }));
+  setErrors((prev) => {
+    const newErrors = { ...prev };
+    const errorMessage = validateField("interest", item);
+    if (errorMessage) {
+      newErrors.interest = errorMessage;
+    } else {
+      delete newErrors.interest;
     }
-    if (formData.interest.length === 0)
-      newErrors.interest = "Select at least one area of interest";
+    return newErrors;
+  });
+  setOpen(false);
+};
+ 
 
-    setErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0;
+const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+  const { name, value } = e.target;
+
+  setFormData((prev) => ({ ...prev, [name]: value }));
+
+  const errorMessage = validateField(name, value);
+
+  setErrors((prev) => {
+    const newErrors = { ...prev };
+    if (errorMessage) {
+      newErrors[name] = errorMessage; 
+    } else {
+      delete newErrors[name];
+    }
+    return newErrors;
+    });
   };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-     if (!validateForm()) {
+    if (!validateForm()) {
       sectionRef.current?.scrollIntoView({ behavior: "smooth" });
       return;
     }
@@ -120,7 +180,7 @@ const ContactForm = () => {
 
   return (
     <Fragment>
-      <section  ref={sectionRef}  className="dark:bg-darkmode pb-24">
+      <section ref={sectionRef} className="dark:bg-darkmode pb-24">
         <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
           <div className="grid md:grid-cols-12 grid-cols-1 gap-8">
             <div className="col-span-6">
@@ -144,14 +204,12 @@ const ContactForm = () => {
                       name="full_name"
                       value={formData.full_name}
                       onChange={handleChange}
-                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.fullName ? "border-red-500" : "border-border"
+                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.full_name ? "border-red-500" : "border-border"
                         } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                     />
-                    {errors.fullName && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.fullName}
-                      </p>
-                    )}
+               
+
+                    {errors.full_name && <p className="text-red-500 text-sm mt-1">{errors.full_name}</p>}
                   </div>
                   <div className="mx-0 my-2.5 flex-1">
                     <label
@@ -204,14 +262,12 @@ const ContactForm = () => {
                       name="work_email"
                       value={formData.work_email}
                       onChange={handleChange}
-                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.email ? "border-red-500" : "border-border"
+                      className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.work_email ? "border-red-500" : "border-border"
                         } dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0`}
                     />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.email}
-                      </p>
-                    )}
+          
+
+                    {errors.work_email && <p className="text-red-500 text-sm mt-1">{errors.work_email}</p>}
                   </div>
                 </div>
                 <div className="mx-0 my-2.5 w-full">
@@ -259,11 +315,13 @@ const ContactForm = () => {
                       ))}
                     </div>
                   )}
-                  {errors.interest && (
+                  {/* {errors.interest && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.interest}
                     </p>
-                  )}
+                  )} */}
+
+                  {errors.interest && <p className="text-red-500 text-sm mt-1">{errors.interest}</p>}
                 </div>
 
                 {/* Message */}

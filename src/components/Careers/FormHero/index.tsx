@@ -54,7 +54,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
       newErrors.email = "Enter a valid email address.";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
     if (!formData.cv) newErrors.cv = "Please upload your CV.";
-
     if (formData.cv && formData.cv.size > 5 * 1024 * 1024) {
       setErrors((prev) => ({ ...prev, cv: "CV file is too large. Max 5MB." }));
       setLoading(false);

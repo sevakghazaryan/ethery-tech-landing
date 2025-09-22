@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useState, useRef  } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import ModalDemo from "@/components/Modals/SuccesDemo";
@@ -28,59 +28,150 @@ const CareersForm = () => {
   const [success, setSuccess] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
 
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value, type, checked } = e.target as HTMLInputElement;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // };
+
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value, type, checked } = e.target as HTMLInputElement;
+    const fieldValue = type === "checkbox" ? checked : value;
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: fieldValue,
     }));
+
+    // Validate current field while typing
+    const errorMessage = validateField(name, fieldValue);
+    setErrors((prev) => {
+      if (errorMessage) {
+        return { ...prev, [name]: errorMessage };
+      } else {
+        const { [name]: removed, ...rest } = prev;
+        return rest;
+      }
+    });
   };
+
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0] || null;
+  //   if (file && file.size > 10 * 1024 * 1024) {
+  //     setErrors((prev) => ({
+  //       ...prev,
+  //       cv: "File size must be under 10MB",
+  //     }));
+  //     setCvFile(null);
+  //   } else {
+  //     setErrors((prev) => {
+  //       const { cv, ...rest } = prev;
+  //       return rest;
+  //     });
+  //     setCvFile(file);
+  //   }
+  // };
+
+
+  // const validateForm = () => {
+  //   let newErrors: { [key: string]: string } = {};
+
+  //   if (!formData.full_name.trim())
+  //     newErrors.full_name = "Full Name is required";
+  //   if (!formData.work_email.trim()) {
+  //     newErrors.work_email = "Email is required";
+  //   } else if (!/\S+@\S+\.\S+/.test(formData.work_email)) {
+  //     newErrors.work_email = "Enter a valid email";
+  //   }
+  //   if (!formData.role.trim())
+  //     newErrors.role = "Role / Department of Interest is required";
+  //   if (!cvFile) newErrors.cv = "Upload CV is required";
+
+  //    if (!formData.cv) newErrors.cv = "Please upload your CV.";
+  //   if (formData.cv && formData.cv.size > 5 * 1024 * 1024) {
+  //     setErrors((prev) => ({ ...prev, cv: "CV file is too large. Max 5MB." }));
+  //     setLoading(false);
+  //     return;
+  //   }
+
+  //   if (!formData.consent) newErrors.consent = "You must agree to be contacted";
+
+  //   setErrors(newErrors);
+  //   return Object.keys(newErrors).length === 0;
+  // };
+
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     if (file && file.size > 10 * 1024 * 1024) {
-      setErrors((prev) => ({
-        ...prev,
-        cv: "File size must be under 10MB",
-      }));
+      setErrors((prev) => ({ ...prev, cv: "File size must be under 10MB" }));
       setCvFile(null);
     } else {
+      setCvFile(file);
       setErrors((prev) => {
         const { cv, ...rest } = prev;
         return rest;
       });
-      setCvFile(file);
+      setFormData((prev) => ({ ...prev, cv: file })); // sync with formData
     }
   };
+
+  const validateField = (name: string, value: any) => {
+    switch (name) {
+      case "full_name":
+        if (!value.trim()) return "Full Name is required";
+        return "";
+      case "work_email":
+        if (!value.trim()) return "Email is required";
+        if (!/\S+@\S+\.\S+/.test(value)) return "Enter a valid email";
+        return "";
+      case "role":
+        if (!value.trim()) return "Role / Department of Interest is required";
+        return "";
+      case "consent":
+        if (!value) return "You must agree to be contacted";
+        return "";
+      default:
+        return "";
+    }
+  };
+
+
 
   const validateForm = () => {
     let newErrors: { [key: string]: string } = {};
 
-    if (!formData.full_name.trim())
-      newErrors.full_name = "Full Name is required";
-    if (!formData.work_email.trim()) {
-      newErrors.work_email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.work_email)) {
-      newErrors.work_email = "Enter a valid email";
-    }
-    if (!formData.role.trim())
-      newErrors.role = "Role / Department of Interest is required";
+    Object.entries(formData).forEach(([key, value]) => {
+      const errorMessage = validateField(key, value);
+      if (errorMessage) newErrors[key] = errorMessage;
+    });
+
     if (!cvFile) newErrors.cv = "Upload CV is required";
-    if (!formData.cv) newErrors.cv = "Please upload your CV.";
-    if (!formData.consent) newErrors.consent = "You must agree to be contacted";
+    else if (cvFile.size > 10 * 1024 * 1024) {
+      newErrors.cv = "File size must be under 10MB";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-     if (!validateForm()) {
+
+    if (!validateForm()) {
       sectionRef.current?.scrollIntoView({ behavior: "smooth" });
       return;
     }
+
 
     setLoading(true);
     setSuccess("");
@@ -147,9 +238,8 @@ const CareersForm = () => {
                     name="full_name"
                     value={formData.full_name}
                     onChange={handleChange}
-                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
-                      errors.full_name ? "border-red-500" : "border-border"
-                    } dark:border-dark_border dark:text-white dark:bg-transparent`}
+                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.full_name ? "border-red-500" : "border-border"
+                      } dark:border-dark_border dark:text-white dark:bg-transparent`}
                   />
                   {errors.full_name && (
                     <p className="text-red-500 text-sm mt-1">
@@ -171,9 +261,8 @@ const CareersForm = () => {
                     name="work_email"
                     value={formData.work_email}
                     onChange={handleChange}
-                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
-                      errors.work_email ? "border-red-500" : "border-border"
-                    } dark:border-dark_border dark:text-white dark:bg-transparent`}
+                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.work_email ? "border-red-500" : "border-border"
+                      } dark:border-dark_border dark:text-white dark:bg-transparent`}
                   />
                   {errors.work_email && (
                     <p className="text-red-500 text-sm mt-1">
@@ -192,9 +281,8 @@ const CareersForm = () => {
                     name="role"
                     value={formData.role}
                     onChange={handleChange}
-                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
-                      errors.role ? "border-red-500" : "border-border"
-                    } dark:border-dark_border dark:text-white dark:bg-transparent`}
+                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.role ? "border-red-500" : "border-border"
+                      } dark:border-dark_border dark:text-white dark:bg-transparent`}
                   />
                   {errors.role && (
                     <p className="text-red-500 text-sm mt-1">{errors.role}</p>
@@ -211,17 +299,18 @@ const CareersForm = () => {
                       id="cv-upload"
                       type="file"
                       name="cv"
-                      onChange={handleChange}
+                      // onChange={handleChange}
+
+                      onChange={handleFileChange}
                       className="hidden"
                     />
                     <label
                       htmlFor="cv-upload"
                       className={`flex items-center justify-center w-full px-4 py-3 rounded-lg border-2 border-dashed cursor-pointer transition 
-                  ${
-                    errors.cv
-                      ? "border-red-500 bg-red-50 text-red-600"
-                      : "border-gray-300 hover:border-purple-500 text-gray-600"
-                  }`}
+                  ${errors.cv
+                          ? "border-red-500 bg-red-50 text-red-600"
+                          : "border-gray-300 hover:border-purple-500 text-gray-600"
+                        }`}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -303,9 +392,8 @@ const CareersForm = () => {
                     name="consent"
                     checked={formData.consent}
                     onChange={handleChange}
-                    className={`w-5 h-5 rounded border ${
-                      errors.consent ? "border-red-500" : "border-border"
-                    }`}
+                    className={`w-5 h-5 rounded border ${errors.consent ? "border-red-500" : "border-border"
+                      }`}
                   />
                   <label htmlFor="consent" className="text-17">
                     I agree to be contacted about my application.*
@@ -352,5 +440,6 @@ const CareersForm = () => {
     </Fragment>
   );
 };
+
 
 export default CareersForm;
