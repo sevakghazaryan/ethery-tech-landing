@@ -10,13 +10,13 @@ const CareersForm = () => {
    * Careers Application Form Component with Validation
    */
   const [formData, setFormData] = useState({
-    full_name: "",
-    work_email: "",
+    from_name: "",   
+     form_email: "",
     role: "",
     cv: null as File | null,
     phone: "",
     linkedin: "",
-    message: "",
+    note: "",
     consent: false,
   });
 
@@ -27,17 +27,6 @@ const CareersForm = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-
-  // const handleChange = (
-  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   const { name, value, type, checked } = e.target as HTMLInputElement;
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [name]: type === "checkbox" ? checked : value,
-  //   }));
-  // };
-
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -62,52 +51,6 @@ const CareersForm = () => {
     });
   };
 
-  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files?.[0] || null;
-  //   if (file && file.size > 10 * 1024 * 1024) {
-  //     setErrors((prev) => ({
-  //       ...prev,
-  //       cv: "File size must be under 10MB",
-  //     }));
-  //     setCvFile(null);
-  //   } else {
-  //     setErrors((prev) => {
-  //       const { cv, ...rest } = prev;
-  //       return rest;
-  //     });
-  //     setCvFile(file);
-  //   }
-  // };
-
-
-  // const validateForm = () => {
-  //   let newErrors: { [key: string]: string } = {};
-
-  //   if (!formData.full_name.trim())
-  //     newErrors.full_name = "Full Name is required";
-  //   if (!formData.work_email.trim()) {
-  //     newErrors.work_email = "Email is required";
-  //   } else if (!/\S+@\S+\.\S+/.test(formData.work_email)) {
-  //     newErrors.work_email = "Enter a valid email";
-  //   }
-  //   if (!formData.role.trim())
-  //     newErrors.role = "Role / Department of Interest is required";
-  //   if (!cvFile) newErrors.cv = "Upload CV is required";
-
-  //    if (!formData.cv) newErrors.cv = "Please upload your CV.";
-  //   if (formData.cv && formData.cv.size > 5 * 1024 * 1024) {
-  //     setErrors((prev) => ({ ...prev, cv: "CV file is too large. Max 5MB." }));
-  //     setLoading(false);
-  //     return;
-  //   }
-
-  //   if (!formData.consent) newErrors.consent = "You must agree to be contacted";
-
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
-
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     if (file && file.size > 10 * 1024 * 1024) {
@@ -125,10 +68,10 @@ const CareersForm = () => {
 
   const validateField = (name: string, value: any) => {
     switch (name) {
-      case "full_name":
+      case "from_name":
         if (!value.trim()) return "Full Name is required";
         return "";
-      case "work_email":
+      case "form_email":
         if (!value.trim()) return "Email is required";
         if (!/\S+@\S+\.\S+/.test(value)) return "Enter a valid email";
         return "";
@@ -193,13 +136,13 @@ const CareersForm = () => {
       if (result.status === 200) {
         setSuccess("✅ Application submitted successfully!");
         setFormData({
-          full_name: "",
-          work_email: "",
+          from_name: "",
+          form_email: "",
           role: "",
           cv: null,
           phone: "",
           linkedin: "",
-          message: "",
+          note: "",
           consent: false,
         });
         setCvFile(null);
@@ -228,22 +171,22 @@ const CareersForm = () => {
                 {/* Full Name */}
                 <div className="mx-0 my-2.5 w-full">
                   <label
-                    htmlFor="full_name"
+                    htmlFor="from_name"
                     className="pb-3 inline-block text-17"
                   >
                     Full Name*
                   </label>
                   <input
                     type="text"
-                    name="full_name"
-                    value={formData.full_name}
+                    name="from_name"
+                    value={formData.from_name}
                     onChange={handleChange}
-                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.full_name ? "border-red-500" : "border-border"
+                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.from_name ? "border-red-500" : "border-border"
                       } dark:border-dark_border dark:text-white dark:bg-transparent`}
                   />
-                  {errors.full_name && (
+                  {errors.from_name && (
                     <p className="text-red-500 text-sm mt-1">
-                      {errors.full_name}
+                      {errors.from_name}
                     </p>
                   )}
                 </div>
@@ -251,22 +194,22 @@ const CareersForm = () => {
                 {/* Work Email */}
                 <div className="mx-0 my-2.5 w-full">
                   <label
-                    htmlFor="work_email"
+                    htmlFor="form_email"
                     className="pb-3 inline-block text-17"
                   >
                     Email*
                   </label>
                   <input
                     type="email"
-                    name="work_email"
-                    value={formData.work_email}
+                    name="form_email"
+                    value={formData.form_email}
                     onChange={handleChange}
-                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.work_email ? "border-red-500" : "border-border"
+                    className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.form_email ? "border-red-500" : "border-border"
                       } dark:border-dark_border dark:text-white dark:bg-transparent`}
                   />
-                  {errors.work_email && (
+                  {errors.form_email && (
                     <p className="text-red-500 text-sm mt-1">
-                      {errors.work_email}
+                      {errors.form_email}
                     </p>
                   )}
                 </div>
@@ -371,15 +314,15 @@ const CareersForm = () => {
                 {/* Message (Optional) */}
                 <div className="mx-0 my-2.5 w-full">
                   <label
-                    htmlFor="message"
+                    htmlFor="note"
                     className="pb-3 inline-block text-17"
                   >
                     Message (optional)
                   </label>
                   <textarea
-                    name="message"
+                    name="note"
                     rows={5}
-                    value={formData.message}
+                    value={formData.note}
                     onChange={handleChange}
                     className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent"
                   ></textarea>
