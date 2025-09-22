@@ -29,7 +29,7 @@ html, body {
 /*  */
 
 .swiper-buttons {
-  top: -70px;
+  top: -85px;
   z-index: 10; 
   position: relative;
 }
@@ -90,6 +90,23 @@ html, body {
     z-index: 100;
 }
 
+
+.swiper-button-prev, .swiper-button-next {
+
+}
+
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+  display: none;
+}
+
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+  display: none;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  width: 70px !important;
+  height: 70px !important;
+}
 
 
 /*  */

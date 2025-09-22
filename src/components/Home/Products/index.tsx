@@ -13,6 +13,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import LeftIcon from "../../../../public/icon/left-icon.svg";
+import RightIcon from "../../../../public/icon/right-icon.svg";
+
 const Products = () => {
 
   /**
@@ -118,11 +121,30 @@ const Products = () => {
 
 
           <div className="swiper-buttons hidden md:block">
-            <button className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow" >
-              <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+            <button className="left-btn swiper-button-prev absolute top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-2 rounded-md shadow" >
+              {/* <ChevronLeft className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" /> */}
+              <Image
+                src="/icon/left-icon.svg"
+                alt="Left Icon"
+                width={64}
+                height={64}
+                className="w-16 h-16 text-28 text-primary"
+              />
             </button>
-            <button className="right-btn swiper-button-next absolute -right-14 ht-0 top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-6 rounded-md shadow" >
-              <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" />
+            <button className="right-btn swiper-button-next absolute -right-14 ht-0 top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-2 rounded-md shadow" >
+              {/* <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" /> */}
+
+              <Image
+                src="/icon/right-icon.svg"
+                alt="Right Icon"
+                width={64}
+                height={64}
+                className="w-16 h-16 text-28 text-primary"
+              />
+
+
+
+
             </button>
           </div>
         </div>

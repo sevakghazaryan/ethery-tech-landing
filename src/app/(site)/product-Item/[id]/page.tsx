@@ -94,14 +94,14 @@ export default async function ProductItemPage({ params }: ProductItemPageProps) 
           <h2 className="text-2xl font-bold mb-4 text-midnight_text dark:text-white">
             Other Products
           </h2>
-          <ul className="flex flex-col md:flex-row gap-2">
+          <ul className="flex flex-col gap-2">
             {ProductItems.filter((item) => item.id !== product.id).map((item) => (
               <li key={item.id}>
                 <Link
                   href={`/product-Item/${item.id}`}
-                  className="flex flex-row   text-primary hover:underline"
+                  className="text-16 leading-normal pb-2 flex flex-row text-primary hover:underline"
                 >
-                  <span>#</span>
+                 
                   <span>{item.title}</span>
                 </Link>
               </li>
