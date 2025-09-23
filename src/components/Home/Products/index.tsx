@@ -62,8 +62,8 @@ const Products = () => {
             </p>
           </div>
         </motion.div>
-
-        <div className="sm:mt-20 mt-10 w-full">
+        <div className="sm:mt-20 mt-10" />
+        <div className=" w-full h-[400px] max-h-[400px]">
           <Swiper
             modules={[Navigation, Pagination]}
             pagination={{ clickable: true }}
@@ -144,7 +144,6 @@ const Products = () => {
             </button>
           </div>
         </div>
-
       </div>
     </section>
 
