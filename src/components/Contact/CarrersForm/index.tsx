@@ -10,7 +10,7 @@ const CareersForm = () => {
    */
   const [formData, setFormData] = useState({
     from_name: "",
-    form_email: "",
+    from_email: "",
     role: "",
     cv: null as File | null,
     phone: "",
@@ -24,8 +24,12 @@ const CareersForm = () => {
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
+
+  // success modal state
   const [modalOpen, setModalOpen] = useState(false);
+
+  // inline status text under the button
+  const [statusMsg, setStatusMsg] = useState<null | { type: "ok" | "err"; text: string }>(null);
 
   const handleChange = (
       e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -55,13 +59,14 @@ const CareersForm = () => {
     if (file && file.size > 10 * 1024 * 1024) {
       setErrors((prev) => ({ ...prev, cv: "File size must be under 10MB" }));
       setCvFile(null);
+      setFormData((p) => ({ ...p, cv: null }));
     } else {
       setCvFile(file);
+      setFormData((prev) => ({ ...prev, cv: file })); // sync with formData
       setErrors((prev) => {
         const { cv, ...rest } = prev;
         return rest;
       });
-      setFormData((prev) => ({ ...prev, cv: file })); // sync with formData
     }
   };
 
@@ -70,7 +75,7 @@ const CareersForm = () => {
       case "from_name":
         if (!String(value).trim()) return "Full Name is required";
         return "";
-      case "form_email":
+      case "from_email":
         if (!String(value).trim()) return "Email is required";
         if (!/\S+@\S+\.\S+/.test(String(value))) return "Enter a valid email";
         return "";
@@ -105,49 +110,49 @@ const CareersForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setStatusMsg(null);
+
     if (!validateForm()) {
       sectionRef.current?.scrollIntoView({ behavior: "smooth" });
       return;
     }
 
     setLoading(true);
-    setSuccess("");
 
     try {
-      // Build FormData for PHP endpoint (includes file + fields)
       const body = new FormData();
       body.append("from_name", formData.from_name);
-      body.append("form_email", formData.form_email);
+      body.append("from_email", formData.from_email);
       body.append("role", formData.role);
       if (cvFile) body.append("cv", cvFile, cvFile.name);
-      body.append("phone", formData.phone);
-      body.append("linkedin", formData.linkedin);
-      body.append("note", formData.note);
+      body.append("phone", formData.phone || "");
+      body.append("linkedin", formData.linkedin || "");
+      body.append("note", formData.note || "");
       body.append("consent", formData.consent ? "1" : "0");
-      body.append("website", ""); // honeypot must remain empty
+      body.append("website", ""); // honeypot
 
       const res = await fetch("https://ethery.tech/api/send-careers.php", {
         method: "POST",
-        body, // IMPORTANT: don't set Content-Type manually
+        body,
       });
 
-      // Try JSON; fall back to text
-      let ok = res.ok;
-      let data: any = null;
-      try {
-        data = await res.json();
-      } catch {
-        const text = await res.text().catch(() => "");
-        if (!ok) throw new Error(text || "Failed to send application");
-      }
-      if (!ok) {
-        throw new Error(data?.message || data?.error || "Failed to send application");
+      // Parse response (JSON preferred, else text)
+      const isJson = (res.headers.get("content-type") || "").includes("application/json");
+      const payload = isJson ? await res.json().catch(() => null) : await res.text().catch(() => "");
+
+      if (!res.ok) {
+        const msg =
+            (payload && typeof payload === "object" && (payload.message || payload.error)) ||
+            (typeof payload === "string" && payload) ||
+            "Failed to send application";
+        throw new Error(String(msg));
       }
 
-      setSuccess("✅ Application submitted successfully!");
+      // Success
+      setStatusMsg({ type: "ok", text: "Application submitted successfully!" });
       setFormData({
         from_name: "",
-        form_email: "",
+        from_email: "",
         role: "",
         cv: null,
         phone: "",
@@ -158,10 +163,14 @@ const CareersForm = () => {
       setCvFile(null);
       setErrors({});
       setModalOpen(true);
-    } catch (err) {
-      setSuccess("❌ Failed to send application. Try again later.");
-      setModalOpen(true);
+    } catch (err: any) {
+      // Error: show inline error text and DO NOT open success modal
+      const msg = err?.message || "Failed to send application. Try again later.";
+      setStatusMsg({ type: "err", text: msg });
       sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+
+      // If you prefer an error modal, uncomment below and pass a different modal component/title
+      // setModalOpen(true);
     } finally {
       setLoading(false);
     }
@@ -188,27 +197,31 @@ const CareersForm = () => {
                         name="from_name"
                         value={formData.from_name}
                         onChange={handleChange}
-                        className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.from_name ? "border-red-500" : "border-border"} dark:border-dark_border dark:text-white dark:bg-transparent`}
+                        className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
+                            errors.from_name ? "border-red-500" : "border-border"
+                        } dark:border-dark_border dark:text-white dark:bg-transparent`}
                     />
                     {errors.from_name && (
                         <p className="text-red-500 text-sm mt-1">{errors.from_name}</p>
                     )}
                   </div>
 
-                  {/* Work Email */}
+                  {/* Email */}
                   <div className="mx-0 my-2.5 w-full">
-                    <label htmlFor="form_email" className="pb-3 inline-block text-17">
+                    <label htmlFor="from_email" className="pb-3 inline-block text-17">
                       Email*
                     </label>
                     <input
                         type="email"
-                        name="form_email"
-                        value={formData.form_email}
+                        name="from_email"
+                        value={formData.from_email}
                         onChange={handleChange}
-                        className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.form_email ? "border-red-500" : "border-border"} dark:border-dark_border dark:text-white dark:bg-transparent`}
+                        className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
+                            errors.from_email ? "border-red-500" : "border-border"
+                        } dark:border-dark_border dark:text-white dark:bg-transparent`}
                     />
-                    {errors.form_email && (
-                        <p className="text-red-500 text-sm mt-1">{errors.form_email}</p>
+                    {errors.from_email && (
+                        <p className="text-red-500 text-sm mt-1">{errors.from_email}</p>
                     )}
                   </div>
 
@@ -222,7 +235,9 @@ const CareersForm = () => {
                         name="role"
                         value={formData.role}
                         onChange={handleChange}
-                        className={`w-full text-17 px-4 py-2.5 rounded-lg border ${errors.role ? "border-red-500" : "border-border"} dark:border-dark_border dark:text-white dark:bg-transparent`}
+                        className={`w-full text-17 px-4 py-2.5 rounded-lg border ${
+                            errors.role ? "border-red-500" : "border-border"
+                        } dark:border-dark_border dark:text-white dark:bg-transparent`}
                     />
                     {errors.role && <p className="text-red-500 text-sm mt-1">{errors.role}</p>}
                   </div>
@@ -237,6 +252,7 @@ const CareersForm = () => {
                           id="cv-upload"
                           type="file"
                           name="cv"
+                          accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                           onChange={handleFileChange}
                           className="hidden"
                       />
@@ -252,8 +268,12 @@ const CareersForm = () => {
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                d="M7 16V4m0 0L3 8m4-4l4 4m6 12h2a2 2 0 002-2V7a2 2 0 00-2-2h-2m-4 12h-4m0 0V4m0 12l-4-4m4 4l4-4" />
+                          <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M7 16V4m0 0L3 8m4-4l4 4m6 12h2a2 2 0 002-2V7a2 2 0 00-2-2h-2m-4 12h-4m0 0V4m0 12l-4-4m4 4l4-4"
+                          />
                         </svg>
                         <span>{formData.cv ? formData.cv.name : "Upload your CV"}</span>
                       </label>
@@ -329,6 +349,17 @@ const CareersForm = () => {
                     >
                       {loading ? "Submitting..." : "Submit Application"}
                     </button>
+
+                    {/* Inline status */}
+                    {statusMsg && (
+                        <p
+                            className={`mt-3 text-sm ${
+                                statusMsg.type === "ok" ? "text-green-600" : "text-red-600"
+                            }`}
+                        >
+                          {statusMsg.text}
+                        </p>
+                    )}
                   </div>
                 </form>
               </div>
@@ -348,12 +379,14 @@ const CareersForm = () => {
           </div>
         </section>
 
-        {/* Modal */}
+        {/* Success Modal */}
         <ModalDemo
             isOpen={modalOpen}
             onClose={() => setModalOpen(false)}
             title="Success!"
-            description={"Thank you for reaching out! We’ve received your message and will get back to you as soon as possible. 🎉"}
+            description={
+              "Thank you for reaching out! We’ve received your message and will get back to you as soon as possible. 🎉"
+            }
         />
       </Fragment>
   );
