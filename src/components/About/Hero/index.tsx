@@ -2,7 +2,7 @@ import { useInView, motion } from "motion/react";
 import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { aboutPerks, careersPerks } from "@/app/api/data";
+import { aboutPerks } from "@/app/api/data";
 
 const Hero = () => {
 

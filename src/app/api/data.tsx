@@ -1,5 +1,4 @@
-import { link } from "fs";
-import { url } from "inspector";
+
 
 // home page data
 export const ProductItems = [
@@ -634,20 +633,6 @@ export const careersPerks = [
   },
 ];
 
-export const productPerks = [
-  {
-    title: "Base Station Unit",
-    text: " Secure, rugged coordination hub for fixed deployment and communication routing.",
-  },
-  {
-    title: "Handheld Radio",
-    text: "Portable, lightweight, and designed for mobility during tactical operations.",
-  },
-  {
-    title: "Control Software Suite",
-    text: "Intuitive UI for system setup, real-time monitoring, and encrypted network management.",
-  },
-];
 
 export const productKeyFeaturePerks = [
   "End-to-end encryption",

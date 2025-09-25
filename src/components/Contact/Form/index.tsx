@@ -94,7 +94,6 @@ const ContactForm = () => {
       sectionRef.current?.scrollIntoView({ behavior: "smooth" });
       return;
     }
-
     setLoading(true);
 
     try {
@@ -157,7 +156,6 @@ const ContactForm = () => {
                   {errors._form && (
                       <p className="w-full text-red-500 text-sm mb-2">{errors._form}</p>
                   )}
-
                   <div className="sm:flex gap-3 w-full">
                     <div className="mx-0 my-2.5 flex-1">
                       <label htmlFor="full_name" className="pb-3 inline-block text-17">Full Name*</label>
@@ -183,7 +181,6 @@ const ContactForm = () => {
                       {errors.company && <p className="text-red-500 text-sm mt-1">{errors.company}</p>}
                     </div>
                   </div>
-
                   <div className="sm:flex gap-3 w-full">
                     <div className="mx-0 my-2.5 flex-1">
                       <label htmlFor="title" className="pb-3 inline-block text-17">Job Title / Role</label>
@@ -195,7 +192,6 @@ const ContactForm = () => {
                           className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0"
                       />
                     </div>
-
                     <div className="mx-0 my-2.5 flex-1">
                       <label htmlFor="work_email" className="pb-3 inline-block text-17">Email*</label>
                       <input
@@ -208,7 +204,6 @@ const ContactForm = () => {
                       {errors.work_email && <p className="text-red-500 text-sm mt-1">{errors.work_email}</p>}
                     </div>
                   </div>
-
                   <div className="mx-0 my-2.5 w-full">
                     <label htmlFor="phone" className="pb-3 inline-block text-17">Phone number (optional)</label>
                     <input
@@ -219,7 +214,6 @@ const ContactForm = () => {
                         className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-500 focus:border-primary focus:outline-0"
                     />
                   </div>
-
                   <div className="mx-0 my-2.5 w-full relative">
                     <label className="pb-3 inline-block text-17">Area of Interest*</label>
                     <select
@@ -235,7 +229,6 @@ const ContactForm = () => {
                     </select>
                     {errors.interest && <p className="text-red-500 text-sm mt-1">{errors.interest}</p>}
                   </div>
-
                   <div className="mx-0 my-2.5 w-full">
                     <label htmlFor="message" className="pb-3 inline-block text-17">Message / Notes</label>
                     <textarea
@@ -278,6 +271,7 @@ const ContactForm = () => {
           </div>
         </section>
 
+        {/* Modal Demo Component Success  */}
         <ModalDemo
             isOpen={modalOpen}
             onClose={() => setModalOpen(false)}

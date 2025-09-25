@@ -23,7 +23,6 @@ const EmailForm = () => {
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleChange = (
@@ -56,9 +55,7 @@ const EmailForm = () => {
       sectionRef.current?.scrollIntoView({ behavior: "smooth" });
       return;
     }
-
     setLoading(true);
-    setSuccess("");
 
     try {
       const result = await emailjs.send(
@@ -70,9 +67,6 @@ const EmailForm = () => {
 
       if (result.status === 200) {
         setErrors({});
-        setSuccess(
-          "Thank you for your request! Our team will contact you shortly to schedule your demo. 🎉"
-        );
         setFormData({
           full_name: "",
           work_email: "",
@@ -86,7 +80,7 @@ const EmailForm = () => {
 
       setModalOpen(true);
     } catch (err) {
-      setSuccess("❌ Failed to send message. Try again later.");
+      console.error("Failed to send email:", err);
     } finally {
       setLoading(false);
     }

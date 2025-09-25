@@ -25,10 +25,8 @@ const CareersForm = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
 
-  // success modal state
   const [modalOpen, setModalOpen] = useState(false);
 
-  // inline status text under the button
   const [statusMsg, setStatusMsg] = useState<null | { type: "ok" | "err"; text: string }>(null);
 
   const handleChange = (
@@ -41,8 +39,6 @@ const CareersForm = () => {
       ...prev,
       [name]: fieldValue,
     }));
-
-    // Validate current field while typing
     const errorMessage = validateField(name, fieldValue);
     setErrors((prev) => {
       if (errorMessage) {
@@ -62,7 +58,7 @@ const CareersForm = () => {
       setFormData((p) => ({ ...p, cv: null }));
     } else {
       setCvFile(file);
-      setFormData((prev) => ({ ...prev, cv: file })); // sync with formData
+      setFormData((prev) => ({ ...prev, cv: file }));
       setErrors((prev) => {
         const { cv, ...rest } = prev;
         return rest;
@@ -109,7 +105,6 @@ const CareersForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setStatusMsg(null);
 
     if (!validateForm()) {
@@ -169,8 +164,7 @@ const CareersForm = () => {
       setStatusMsg({ type: "err", text: msg });
       sectionRef.current?.scrollIntoView({ behavior: "smooth" });
 
-      // If you prefer an error modal, uncomment below and pass a different modal component/title
-      // setModalOpen(true);
+      // If you prefer an error modal, uncomment below and pass a different modal component/title/description
     } finally {
       setLoading(false);
     }
@@ -187,7 +181,6 @@ const CareersForm = () => {
                     className="flex flex-wrap w-full m-auto justify-between"
                     onSubmit={handleSubmit}
                 >
-                  {/* Full Name */}
                   <div className="mx-0 my-2.5 w-full">
                     <label htmlFor="from_name" className="pb-3 inline-block text-17">
                       Full Name*
@@ -205,8 +198,6 @@ const CareersForm = () => {
                         <p className="text-red-500 text-sm mt-1">{errors.from_name}</p>
                     )}
                   </div>
-
-                  {/* Email */}
                   <div className="mx-0 my-2.5 w-full">
                     <label htmlFor="from_email" className="pb-3 inline-block text-17">
                       Email*
@@ -224,8 +215,6 @@ const CareersForm = () => {
                         <p className="text-red-500 text-sm mt-1">{errors.from_email}</p>
                     )}
                   </div>
-
-                  {/* Role */}
                   <div className="mx-0 my-2.5 w-full">
                     <label htmlFor="role" className="pb-3 inline-block text-17">
                       Role / Department of Interest*
@@ -241,8 +230,6 @@ const CareersForm = () => {
                     />
                     {errors.role && <p className="text-red-500 text-sm mt-1">{errors.role}</p>}
                   </div>
-
-                  {/* CV Upload */}
                   <div className="mx-0 my-2.5 w-full">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       CV Attachment <span className="text-red-500">*</span>
@@ -280,8 +267,6 @@ const CareersForm = () => {
                     </div>
                     {errors.cv && <p className="text-red-500 text-sm mt-2">{errors.cv}</p>}
                   </div>
-
-                  {/* Phone (Optional) */}
                   <div className="mx-0 my-2.5 w-full">
                     <label htmlFor="phone" className="pb-3 inline-block text-17">
                       Phone (optional)
@@ -294,8 +279,6 @@ const CareersForm = () => {
                         className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent"
                     />
                   </div>
-
-                  {/* LinkedIn (Optional) */}
                   <div className="mx-0 my-2.5 w-full">
                     <label htmlFor="linkedin" className="pb-3 inline-block text-17">
                       LinkedIn / Portfolio link (optional)
@@ -308,8 +291,6 @@ const CareersForm = () => {
                         className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent"
                     />
                   </div>
-
-                  {/* Message (Optional) */}
                   <div className="mx-0 my-2.5 w-full">
                     <label htmlFor="note" className="pb-3 inline-block text-17">
                       Message (optional)
@@ -322,8 +303,6 @@ const CareersForm = () => {
                         className="w-full text-17 px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent"
                     />
                   </div>
-
-                  {/* Consent */}
                   <div className="mx-0 my-2.5 w-full flex items-center gap-2">
                     <input
                         type="checkbox"
@@ -339,8 +318,6 @@ const CareersForm = () => {
                   {errors.consent && (
                       <p className="text-red-500 text-sm mt-1">{errors.consent}</p>
                   )}
-
-                  {/* Submit */}
                   <div className="mx-0 my-2.5 w-full">
                     <button
                         type="submit"
@@ -349,21 +326,14 @@ const CareersForm = () => {
                     >
                       {loading ? "Submitting..." : "Submit Application"}
                     </button>
-
-                    {/* Inline status */}
                     {statusMsg && (
-                        <p
-                            className={`mt-3 text-sm ${
-                                statusMsg.type === "ok" ? "text-green-600" : "text-red-600"
-                            }`}
-                        >
+                        <p className={`mt-3 text-sm ${statusMsg.type === "ok" ? "text-green-600" : "text-red-600" }`}>
                           {statusMsg.text}
                         </p>
                     )}
                   </div>
                 </form>
               </div>
-
               <div className="col-span-6">
                 <Image
                     src="/images/contact-page/contact.jpg"
@@ -378,7 +348,6 @@ const CareersForm = () => {
             </div>
           </div>
         </section>
-
         {/* Success Modal */}
         <ModalDemo
             isOpen={modalOpen}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useState, useRef  } from "react";
+import React, { Fragment, useState } from "react";
 import ModalApplay from "@/components/Modals/SuccesApplay";
 import emailjs from "@emailjs/browser";
 
@@ -20,8 +20,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
     note: "",
     cv: null as File | null,
   });
-
-  const sectionRef = useRef<HTMLElement | null>(null);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -104,7 +102,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
           Applay for Join
         </h2>
         <form id="apply-form" className="space-y-6" onSubmit={handleSubmit}>
-          {/* Name, Surname */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Name, Surname <span className="text-red-500">*</span>
@@ -125,8 +122,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
               <p className="text-red-500 text-sm mt-1">{errors.name}</p>
             )}
           </div>
-
-          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Mail <span className="text-red-500">*</span>
@@ -147,8 +142,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
               <p className="text-red-500 text-sm mt-1">{errors.email}</p>
             )}
           </div>
-
-          {/* Phone Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Phone Number <span className="text-red-500">*</span>
@@ -169,8 +162,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
               <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
             )}
           </div>
-
-          {/* Note */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Note (Optional)
@@ -184,8 +175,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
               placeholder="Write something..."
             ></textarea>
           </div>
-
-          {/* CV Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               CV Attachment <span className="text-red-500">*</span>
@@ -229,7 +218,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
               <p className="text-red-500 text-sm mt-2">{errors.cv}</p>
             )}
           </div>
-
           <div className="pt-4 flex justify-between text-center">
             <button
               className="lg:text-17 flex gap-4 items-center bg-gray-300 text-gray-700 py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-gray-300 hover:bg-gray-400"
@@ -246,9 +234,6 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
           </div>
         </form>
       </div>
-
-      {/*  */}
-
       <ModalApplay
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

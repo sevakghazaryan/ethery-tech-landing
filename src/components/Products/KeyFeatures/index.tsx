@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { productKeyFeaturePerks } from "@/app/api/data";
-import Link from "next/link";
 
 const KeyFeatures = () => {
   const ref = useRef(null);

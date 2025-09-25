@@ -9,11 +9,14 @@ import EmailForm from "../EmailForm";
 
 const ContactMain = () => {
   /**
-   * Contact Main Hooks.
+   * Contact Main Component Hooks and variables.
+   * Handles which form to display based on user interaction or URL query params.
    */
+
   const [openForm, setOpenForm] = useState<"demo" | "careers" | "email">(
     "demo"
   );
+
   const formSectionRef = useRef<HTMLDivElement | null>(null);
 
   const searchParams = useSearchParams();
@@ -66,8 +69,6 @@ const ContactMain = () => {
     scrollToElement("demo");
   };
 
-  
-
   return (
     <Fragment>
       <ContactInfo
@@ -77,30 +78,8 @@ const ContactMain = () => {
       />
 
       <div className="relative min-h-[300px]">
-        {/* <AnimatePresence mode="wait">
-          {openForm === "demo" && (
-           
-              <ContactForm />
-            
-          )}
-
-          {openForm === "careers" && (
-            
-              <CarrersForm />
-         
-          )}
-
-          {openForm === "email" && (
-            
-              <EmaillForm />
-           
-          )}
-        </AnimatePresence> */}
-
         <div ref={formSectionRef} className=" pt-24">
           {openForm === "demo" && <ContactForm />}
-          {/* Carrers Form */}
-
           {openForm === "careers" && <CareersForm />}
           {openForm === "email" && <EmailForm />}
         </div>

@@ -10,7 +10,6 @@ const IntroAbout = () => {
      * Leadership Intro About Component
      */
 
-
     const ref = useRef(null);
     const inView = useInView(ref);
 
