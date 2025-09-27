@@ -1,10 +1,72 @@
 
 import { ProductItems } from "@/app/api/data";
 import Image from "next/image";
-
 import Link from "next/link";
-
 import HeroSub from "@/components/SharedComponents/HeroSub";
+import type { Metadata } from "next";
+
+
+const titles: Record<string, { title: string; description: string }> = {
+  "et-net-100": {
+    title: "Et Net 100 | Integrated Radio Communication System",
+    description: "AES-256 with frequency hopping, real-time chat and data; coverage up to 5 km (handheld-base) / 10 km (base-endpoint); data rates up to 0.7 Mbps.",
+  },
+  "et-net-200": {
+    title: "Et Net 200 | Radio System with Real-Time Voice",
+    description: "Adds real-time voice to Et Net 100 features. Secure hopping with AES-256, 5 km/10 km coverage, and data up to 0.7 Mbps for field teams.",
+  },
+  "et-air-100": {
+    title: "Et Air 100 | High-Performance UAV Radio Module",
+    description: "UAV module for telemetry, control, and payload data. Up to 50 km range, 2.2 Mbps single-band or 0.7 Mbps hopping; compact for easy integration.",
+  },
+  "et-industrial-100": {
+    title: "Et Industrial 100 | Versatile Radio Module for Industrial Connectivity",
+    description: "Compact, rugged radio module for automation and IIoT. Up to 2 km range, Bluetooth/BLE/Wi-Fi integration, and robust performance in interference-heavy environments.",
+  },
+  "et-bridge-100": {
+    title: "Et Bridge 100 | Long-Range Radio Repeater Device",
+    description:
+      "Repeater device to extend coverage up to 50 km. Supports frequency-hopping and single-band modes, ensuring reliable comms in obstructed environments.",
+  },
+   "et-meter-100": {
+    title: "Et Meter 100 | Low-Power Radio for Smart Utility Metering",
+    description: "Low-power mesh radio for utility metering. Up to 15 years battery life, scalable deployments, and reliable data reporting for electricity, water, and gas.",
+  },
+   "et-platform-100": {
+    title: "Et Platform 100 | Flexible OEM Radio Solution",
+    description: "Customizable OEM radio module with hardware + software integration. Multi-purpose architecture, rapid prototyping, and scalable foundation for next-gen wireless devices.",
+  },
+
+};
+
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const productId = params.id;
+  const productMeta = titles[productId];
+
+  if (!productMeta) {
+    return {
+      title: "Product Not Found | Ethery Tech",
+      description: "The requested product could not be found.",
+    };
+  }
+
+  return {
+    title: productMeta.title,
+    description: productMeta.description,
+    openGraph: {
+      title: productMeta.title,
+      description: productMeta.description,
+      type: "website",
+    },
+  };
+}
+
 
 const breadcrumbLinks = [
   { href: "/", text: "Home" },

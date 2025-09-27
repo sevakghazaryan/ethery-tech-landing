@@ -5,10 +5,9 @@ import Products from "@/components/Home/Products";
 import SolutionsComponent from "@/components/Home/Solutions";
 
 export const metadata: Metadata = {
-  title: "Ethery Tech",
-  description: "",
-
-   icons: {
+  title: "Ethery Tech | Secure Radio Systems for Defense, UAVs & IIoT",
+  description: "Ethery Tech | Secure Radio Systems for Defense, UAVs & IIoT",
+  icons: {
     icon: [
       { url: "/icon/favicon-logo16x16.svg", sizes: "16x16", type: "image/png" },
     ],

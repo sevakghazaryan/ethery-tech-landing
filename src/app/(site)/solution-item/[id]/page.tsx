@@ -1,8 +1,38 @@
 import { SolutionsItems } from "@/app/api/data";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import HeroSub from "@/components/SharedComponents/HeroSub";
+
+const titles: Record<string, { title: string; description: string }> = {
+  "defense-military": {
+    title: "Defense Communication Radios | AES-256, Hopping, Long-Range",
+    description:
+      "Rugged, encrypted radios for tactical comms: AES-256, frequency hopping, long-range, low-latency links for soldiers, vehicles, UAVs, and base stations.",
+  },
+  "uav-drone": {
+    title: "UAV Communication Links | Low-Latency, Long-Range Radio Modules",
+    description:
+      "High-bandwidth, low-latency links for UAV control, telemetry, and data. Compact modules offer frequency agility and dependable long-range connectivity.",
+  },
+  "industrial-automation": {
+    title: "Industrial Automation Radios | Rugged, Reliable Data Links",
+    description:
+      "Reliable radio modules for industrial automation: robust performance in noisy environments, SCADA/PLC integration, high availability, and rugged design.",
+  },
+  "energy-utilities": {
+    title: "Smart Metering Communications | Low-Power, Scalable Networks",
+    description:
+      "Low-power, scalable communications for utilities and smart metering. Secure data collection, extended battery life, and reliable grid-wide connectivity.",
+  },
+  "oem-solutions": {
+    title: "Custom Radio Modules & OEM Solutions | Ethery Tech",
+    description:
+      "Custom radio modules and OEM solutions tailored to your specs: multi-band support, rapid prototyping, and end-to-end development from design to deployment.",
+  },
+};
+
 
 const breadcrumbLinks = [
   { href: "/", text: "Home" },
@@ -18,6 +48,38 @@ export function generateStaticParams() {
 type SolutionPageProps = {
   params: { id: string } | Promise<{ id: string }>
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const meta = titles[params.id];
+
+  if (!meta) {
+    return {
+      title: "Solutions | Ethery Tech",
+      description: "Explore our innovative communication solutions.",
+    };
+  }
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://yourdomain.com/solution-item/${params.id}`,
+      siteName: "Ethery Tech",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+    },
+  };
+}
 
 
 export default async function SolutionItemPage({ params }: SolutionPageProps) {
