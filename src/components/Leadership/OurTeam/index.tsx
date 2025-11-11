@@ -6,28 +6,28 @@ import Link from "next/link";
 
 const teamMembers = [
   {
-    id: "greg-brown",
-    name: "Greg Brown",
-    role: "Chairman and Chief Executive Officer",
-    image: "/images/leadership/greg-brown.png",
+    id: "narek-ghazaryan",
+    name: "Narek Ghazaryan",
+    role: "Chief Executive Officer (CEO)",
+    image: "/images/leadership/narek.webp",
   },
   {
-    id: "jack-molloy",
-    name: "Jack Molloy",
-    role: "Executive Vice President and Chief Operating Officer",
-    image: "/images/leadership/jack-molloy.png",
+    id: "sargis-sargsyan",
+    name: "Sargis Sargsyan",
+    role: "Chief Technology Officer (CTO)",
+    image: "/images/leadership/sargis.webp",
   },
   {
-    id: "kathi-moore",
-    name: "Kathi Moore",
-    role: "Senior Vice President, Human Resources",
-    image: "/images/leadership/kathi-moore.png",
+    id: "nare-abgaryan",
+    name: "Nare Abgaryan",
+    role: "Head of Software Engineering",
+    image: "/images/leadership/nare.webp",
   },
   {
-    id: "rajan-naik",
-    name: "Rajan Naik",
-    role: "Senior Vice President, Strategy & Ventures",
-    image: "/images/leadership/rajan-naik.png",
+    id: "eduard-harutyunyan",
+    name: "Eduard Harutyunyan",
+    role: "Head of Hardware Engineering",
+    image: "/images/leadership/eduard.webp",
   },
 ];
 

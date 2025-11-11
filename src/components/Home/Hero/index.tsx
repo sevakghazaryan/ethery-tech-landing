@@ -65,7 +65,8 @@ const Hero = () => {
               alt="image"
               width={1260}
               height={1260}
-              style={{ width: "100%", height: "100%" }}
+              priority
+              style={{ width: "100%", height: "auto" }}
             />
           </motion.div>
         </div>

@@ -1,5 +1,6 @@
-import React from "react";
-import { motion } from "motion/react";
+"use client";
+import React, { useRef } from "react";
+import { motion, useInView } from "motion/react";
 import { ProductItems, ProductSections } from "@/app/api/data";
 import Link from "next/link";
 
@@ -8,19 +9,47 @@ const ProductInfo = () => {
    * Product Info Component
    */
 
-  const bottomAnimation = (inView: boolean, index: number) => ({
-    initial: { y: "50%", opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: "50%", opacity: 0 },
-    transition: { duration: 0.15, delay: index * 0.3 },
-  });
-
   return (
     <section className="dark:bg-darkmode py-14 sccrollbar-hide">
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 space-y-32">
         {ProductSections.length && ProductSections.map((section, i) => (
-          <motion.div {...bottomAnimation}
-            className="flex flex-col"
-          >
+          <ProductSection key={i} section={section} index={i} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+type RelatedProduct = {
+  title: string;
+  link: string;
+};
+
+type ProductSectionType = {
+  title: string;
+  description: string;
+  image: string;
+  slice: number[];
+  reverse: boolean;
+  relatedProducts: RelatedProduct[];
+};
+
+const ProductSection = ({ section, index }: { section: ProductSectionType; index: number }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref);
+
+  const bottomAnimation = {
+    initial: { y: "50%", opacity: 0 },
+    animate: inView ? { y: 0, opacity: 1 } : { y: "50%", opacity: 0 },
+    transition: { duration: 0.5, delay: index * 0.1 },
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      {...bottomAnimation}
+      className="flex flex-col"
+    >
             <div>
               <h3 className="text-midnight_text dark:text-white font-semibold lg:text-30 md:text-24 text-20 mb-6">
                 {section.title}
@@ -51,8 +80,8 @@ const ProductInfo = () => {
               >
                 <div className="flex justify-center w-full">
                   <ul className="flex flex-col  gap-2">
-                    {section.relatedProducts.map((item, index) => (
-                      <li key={index} className="text-18 leading-normal font-bold pb-2" >
+                    {section.relatedProducts.map((item: RelatedProduct, idx: number) => (
+                      <li key={idx} className="text-18 leading-normal font-bold pb-2" >
                         <Link
                           href={`/product-Item/${item.link}`}
                           className="flex flex-row text-primary hover:underline"
@@ -65,10 +94,7 @@ const ProductInfo = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+    </motion.div>
   );
 };
 

@@ -46,15 +46,16 @@ export function generateStaticParams() {
 }
 
 type SolutionPageProps = {
-  params: { id: string } | Promise<{ id: string }>
+  params: Promise<{ id: string }>
 };
 
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const meta = titles[params.id];
+  const { id } = await params;
+  const meta = titles[id];
 
   if (!meta) {
     return {
@@ -69,7 +70,7 @@ export async function generateMetadata({
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: `https://yourdomain.com/solution-item/${params.id}`,
+      url: `https://yourdomain.com/solution-item/${id}`,
       siteName: "Ethery Tech",
       type: "website",
     },
@@ -88,7 +89,7 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
    * Solution not found
    */
 
-  const resolvedParams = await Promise.resolve(params);
+  const resolvedParams = await params;
 
   const product = SolutionsItems.find((p) => p.id === resolvedParams.id);
 

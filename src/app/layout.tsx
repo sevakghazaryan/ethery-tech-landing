@@ -4,8 +4,13 @@ import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "next-themes";
 import ScrollToTop from "@/components/ScrollToTop";
+import type { Metadata } from "next";
 
 const dmsans = DM_Sans({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://dev.ethery.tech'),
+};
 
 export default function RootLayout({
   children,
@@ -14,8 +19,8 @@ export default function RootLayout({
 }>) {
   
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${dmsans.className}`}>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+      <body className={`${dmsans.className}`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           enableSystem={false}

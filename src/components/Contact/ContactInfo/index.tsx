@@ -97,13 +97,8 @@ const ContactInfo: FC<ContactInfoProps> = ({ handleCarrers, handleDemo, handleEm
                   <span className="text-midnight_text dark:text-white text-xl font-bold">
                     Careers
                   </span>
-                  <p className="font-normal text-xl max-w-80 pt-3 pb-7 text-muted dark:text-white dark:text-opacity-70">
+                  <p className="font-normal text-xl max-w-80 pt-3 text-muted dark:text-white dark:text-opacity-70">
                     Join our mission to build next-generation communication solutions. Submit your CV today.
-                    {"    "}
-                    <br />
-                    <div className="h-7">
-                      
-                    </div>
                   </p>
                 </div>
                 <div>

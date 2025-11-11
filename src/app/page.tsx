@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   ],
   other: [
     { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#000000" },
-    { rel: "manifest", url: "/site.webmanifest" },
+    { rel: "manifest", url: "/favi/site.webmanifest" },
   ],
 },
   openGraph: {

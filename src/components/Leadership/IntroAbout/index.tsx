@@ -37,7 +37,7 @@ const IntroAbout = () => {
 
                     <div className="mt-10" />
                     <p className="text-center text-muted dark:text-white dark:text-opacity-70 md:text-16leading-normal text-base font-medium relative">
-                        Our leaders shape the company’s direction with their expertise and vision, combining technical excellence with a trusted, partner-focused approach."
+                        Our leaders shape the company’s direction with their expertise and vision, combining technical excellence with a trusted, partner-focused approach.
                     </p>
                 </motion.div>
             </div>

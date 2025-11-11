@@ -1,5 +1,6 @@
 'use client'
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const ThemeToggler = () => {
 
@@ -8,8 +9,24 @@ const ThemeToggler = () => {
    * Theme Toggle Hooks.
    */
 
-
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <button
+        aria-label="theme toggler"
+        className="text-body-color flex h-8 w-8 items-center justify-center duration-300 dark:text-white"
+      >
+        <span className="h-8 w-8" />
+      </button>
+    );
+  }
   
   return (
     <button

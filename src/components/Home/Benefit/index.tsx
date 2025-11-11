@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { Icon } from "@iconify/react";
-import { BeneifitImage } from "@/app/api/data";
+import { BenefitImage } from "@/app/api/data";
 
 const Benefit = () => {
   const ref = useRef(null);
@@ -68,7 +68,7 @@ const Benefit = () => {
                 Grow revenues and delight your customers by building financial
                 features.
               </p>
-              {BeneifitImage.map((item, index) => (
+              {BenefitImage.map((item, index) => (
                 <div key={index} className="sm:flex items-center mt-8">
                   <Image
                     src={item.image}

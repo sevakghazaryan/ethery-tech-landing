@@ -16,7 +16,7 @@ export function generateStaticParams() {
 }
 
 type LeadershipPageProps = {
-  params: { id: string } | Promise<{ id: string }>;
+  params: Promise<{ id: string }>;
 };
 
 export default async function LeadershipPage({ params }: LeadershipPageProps) {
@@ -27,7 +27,7 @@ export default async function LeadershipPage({ params }: LeadershipPageProps) {
    */
 
 
-  const resolvedParams = await Promise.resolve(params);
+	const resolvedParams = await params;
 
   const member = LeadershipMembers.find((m) => m.id === resolvedParams.id);
 
@@ -80,15 +80,15 @@ export default async function LeadershipPage({ params }: LeadershipPageProps) {
 
           {/* Right Side - Content */}
           <div className="w-full lg:w-8/12 order-2 lg:order-2">
-            <article className="prose dark:prose-invert max-w-none">
-              <p className="text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-start">
-                {member.bio}
-              </p>
-              <hr className="my-6" />
-              <p className="text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-start">
-                Additional placeholder text for longer bios, achievements, and
-                leadership history. You can expand this with real data later.
-              </p>
+            <article className="prose dark:prose-invert max-w-none space-y-0">
+              {member.bio.map((paragraph, index) => (
+                <p 
+                  key={index} 
+                  className="text-18 leading-normal text-muted dark:text-white dark:text-opacity-70 text-start"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </article>
           </div>
         </div>

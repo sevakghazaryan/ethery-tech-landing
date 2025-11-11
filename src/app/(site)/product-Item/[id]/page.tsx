@@ -36,6 +36,10 @@ const titles: Record<string, { title: string; description: string }> = {
     title: "Et Platform 100 | Flexible OEM Radio Solution",
     description: "Customizable OEM radio module with hardware + software integration. Multi-purpose architecture, rapid prototyping, and scalable foundation for next-gen wireless devices.",
   },
+  "et-dmr-100": {
+    title: "Et-DMR 100 | Handheld Digital Mobile Radio",
+    description: "Compact handheld digital radio supporting single-band and frequency-hopping operation, providing secure voice and data communication in peer-to-peer or networked modes.",
+  },
 
 };
 
@@ -44,9 +48,9 @@ const titles: Record<string, { title: string; description: string }> = {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const productId = params.id;
+  const { id: productId } = await params;
   const productMeta = titles[productId];
 
   if (!productMeta) {
@@ -80,12 +84,12 @@ export function generateStaticParams() {
 }
 
 type ProductItemPageProps = {
-  params: { id: string } | Promise<{ id: string }>
+  params: Promise<{ id: string }>
 };
 
 export default async function ProductItemPage({ params }: ProductItemPageProps) {
 
-  const resolvedParams = await Promise.resolve(params);
+  const resolvedParams = await params;
 
   const product = ProductItems.find((p) => p.id === resolvedParams.id);
 
