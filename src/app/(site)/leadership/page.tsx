@@ -1,16 +1,14 @@
-"use client";
-
 import IntroAbout from "@/components/Leadership/IntroAbout";
 import OurTeamComponent from "@/components/Leadership/OurTeam";
 import HeroSub from "@/components/SharedComponents/HeroSub";
+import { Metadata } from "next";
 
-const Leadership = () => {
+export const metadata: Metadata = {
+  title: "Ethery Tech | Leadership",
+  description: "Meet the visionary team driving innovation and growth at Ethery Tech.",
+};
 
-
-  /**
-   * Leadership Page
-   */
-
+export default function Leadership() {
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/leadership", text: "Leadership" },
@@ -26,13 +24,9 @@ const Leadership = () => {
       />
       <div>
         <IntroAbout />
-
         <div className="mt-10" />
         <OurTeamComponent />
-
       </div>
     </main>
   );
-};
-
-export default Leadership;
+}

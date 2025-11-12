@@ -15,6 +15,10 @@ const titles: Record<string, { title: string; description: string }> = {
     title: "Et Net 200 | Radio System with Real-Time Voice",
     description: "Adds real-time voice to Et Net 100 features. Secure hopping with AES-256, 5 km/10 km coverage, and data up to 0.7 Mbps for field teams.",
   },
+  "et-dmr-100": {
+    title: "Et DMR 100 | Handheld Digital Mobile Radio",
+    description: "DMR-compatible handheld radio with single-band or FHSS modes. Up to 50 km line-of-sight, 5 km urban range, MIL-STD-810G compliant for secure field operations.",
+  },
   "et-air-100": {
     title: "Et Air 100 | High-Performance UAV Radio Module",
     description: "UAV module for telemetry, control, and payload data. Up to 50 km range, 2.2 Mbps single-band or 0.7 Mbps hopping; compact for easy integration.",
@@ -25,22 +29,16 @@ const titles: Record<string, { title: string; description: string }> = {
   },
   "et-bridge-100": {
     title: "Et Bridge 100 | Long-Range Radio Repeater Device",
-    description:
-      "Repeater device to extend coverage up to 50 km. Supports frequency-hopping and single-band modes, ensuring reliable comms in obstructed environments.",
+    description: "Repeater device to extend coverage up to 50 km. Supports frequency-hopping and single-band modes, ensuring reliable comms in obstructed environments.",
   },
-   "et-meter-100": {
+  "et-meter-100": {
     title: "Et Meter 100 | Low-Power Radio for Smart Utility Metering",
     description: "Low-power mesh radio for utility metering. Up to 15 years battery life, scalable deployments, and reliable data reporting for electricity, water, and gas.",
   },
-   "et-platform-100": {
+  "et-platform-100": {
     title: "Et Platform 100 | Flexible OEM Radio Solution",
     description: "Customizable OEM radio module with hardware + software integration. Multi-purpose architecture, rapid prototyping, and scalable foundation for next-gen wireless devices.",
   },
-  "et-dmr-100": {
-    title: "Et-DMR 100 | Handheld Digital Mobile Radio",
-    description: "Compact handheld digital radio supporting single-band and frequency-hopping operation, providing secure voice and data communication in peer-to-peer or networked modes.",
-  },
-
 };
 
 

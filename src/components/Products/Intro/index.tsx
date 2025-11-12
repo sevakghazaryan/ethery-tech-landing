@@ -28,18 +28,15 @@ const Intro = () => {
         <motion.div {...TopAnimation} className="text-center">
           <div className="px-4 lg:px-12">
             <h2 className="md:text-35 sm:text-28 text-24 text-midnight_text font-semibold mb-5 dark:text-white lg:max-w-full sm:max-w-75% mx-auto">
-              Tactical Communication System All-in-One Secure Communication
+              Advanced Radio Communication Systems -
               <span className="text-primary max-w-max ml-2">
                 {" "}
-                Platform for Field and Command Use{" "}
+                Unified, Secure and Mission-Ready{" "}
               </span>
             </h2>
           </div>
           <p className="text-center text-muted dark:text-white dark:text-opacity-70 text-16 leading-normal  font-medium relative">
-            Built for mission-critical operations, our tactical communication
-            system ensures real-time coordination across environments. Modular,
-            encrypted, and easy to deploy — it’s your complete field-to-command
-            connectivity platform.
+            Next-generation radio communication systems connecting defense units, UAVs, industrial automation, and smart-utility networks. Our modular hardware and intelligent software deliver encrypted, long-range, and reliable data, voice and control links. Scalable, rugged, and easy to deploy - our systems form a complete platform for secure communication across any environment.
           </p>
         </motion.div>
       </div>

@@ -1,14 +1,13 @@
-"use client";
 import Hero from "@/components/Careers/Hero";
 import HeroSub from "@/components/SharedComponents/HeroSub";
+import { Metadata } from "next";
 
-const Careers = () => {
+export const metadata: Metadata = {
+  title: "Ethery Tech | Careers",
+  description: "Join the Ethery Tech team and help build the future of secure radio communication systems.",
+};
 
-  /**
-   * 
-   * Careers Page
-   */
-
+export default function Careers() {
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/careers", text: "Careers" },
@@ -25,6 +24,4 @@ const Careers = () => {
       <Hero />
     </main>
   );
-};
-
-export default Careers;
+}

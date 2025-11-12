@@ -3,6 +3,28 @@ import { LeadershipMembers } from "@/app/api/data";
 import Image from "next/image";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const member = LeadershipMembers.find((m) => m.id === id);
+
+  if (!member) {
+    return {
+      title: "Leader Not Found | Ethery Tech",
+      description: "The requested leader could not be found.",
+    };
+  }
+
+  return {
+    title: `Ethery Tech | Leadership | ${member.name}`,
+    description: `${member.name} - ${member.role} at Ethery Tech`,
+  };
+}
 
 const breadcrumbLinks = [
   { href: "/", text: "Home" },

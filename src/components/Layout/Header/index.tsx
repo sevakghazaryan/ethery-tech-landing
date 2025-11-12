@@ -137,12 +137,12 @@ const Header: FC = () => {
       </div>
       <div
         ref={mobileMenuRef}
-        className={`lg:hidden fixed top-0 right-0  h-full w-full bg-white shadow-lg transform transition-transform duration-300 max-w-xs ${
+        className={`lg:hidden fixed top-0 right-0  h-full w-full bg-white dark:bg-darkheader shadow-lg transform transition-transform duration-300 max-w-xs ${
           navbarOpen ? "-translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between p-4">
-          <h2 className="text-lg font-bold text-midnight_text dark:text-midnight_text">
+          <h2 className="text-lg font-bold text-midnight_text dark:text-white">
             Menu
           </h2>
           <button
@@ -154,7 +154,7 @@ const Header: FC = () => {
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              className="dark:text-midnight_text"
+              className="text-midnight_text dark:text-white"
             >
               <path
                 fill="none"

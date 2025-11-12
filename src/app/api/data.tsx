@@ -37,7 +37,26 @@ export const ProductItems = [
         ],
         reverse: true,
     },
-
+    {
+        id: "et-dmr-100",
+        image: "/images/products/items/et_dmr_100.webp",
+        title: "Et DMR 100",
+        subTitle: "Handheld Digital Mobile Radio",
+        details: "The Et DMR 100 is a versatile handheld radio built on the Digital Mobile Radio (DMR) standard, delivering reliable field communication in both single-band and frequency-hopping (FHSS) modes. Designed for interoperability and adaptability, it enables peer-to-peer links between handheld units or seamless connection with tablets.",
+        description: "Engineered for mobility, the Et DMR 100 provides secure digital voice and data transfer, ensuring continuous communication even in challenging environments. The Et DMR 100 delivers digital clarity, reliability, and adaptability, bringing professional-grade radio performance into the Ethery ecosystem.",
+        sectionTitle: "Key Features:",
+        features: [
+            "DMR-compatible handheld radio",
+            "Operates in single-band or FHSS modes",
+            "Up to 50 km in line-of-sight environments",
+            "Up to 5 km obstructed or urban areas",
+            "MIL-STD-810G compliant",
+            "Peer-to-peer connection with handhelds over tablets",
+            "Secure, interference-resistant communication",
+            "Compact, rugged design for field and tactical use"
+        ],
+        reverse: false,
+    },
     {
         id: "et-air-100",
         image: "/images/products/items/et_air_100.webp",
@@ -54,7 +73,7 @@ export const ProductItems = [
             "Simultaneous support for telemetry, command, and file transfer (photos, video, etc.)",
             "Compact and efficient design for UAV integration"
         ],
-        reverse: false,
+        reverse: true,
     },
     {
         id: "et-industrial-100",
@@ -72,7 +91,7 @@ export const ProductItems = [
             "Compact form factor for flexible deployment",
             "Enables IIoT connectivity and process optimization"
         ],
-        reverse: true,
+        reverse: false,
     },
     {
         id: "et-bridge-100",
@@ -88,7 +107,7 @@ export const ProductItems = [
             "Operates in frequency-hopping or single-band mode",
             "Enhances reliability in rugged or obstructed areas"
         ],
-        reverse: false,
+        reverse: true,
     },
     {
         id: "et-meter-100",
@@ -105,7 +124,7 @@ export const ProductItems = [
             "Reliable data transfer for electricity, water, or gas utilities",
             "Scalable for small to nationwide deployments"
         ],
-        reverse: true,
+        reverse: false,
     },
     {
         id: "et-platform-100",
@@ -121,26 +140,6 @@ export const ProductItems = [
             "Easy integration into third-party systems and equipment",
             "Configurable for different communication needs (control, data, telemetry)",
             "Scalable foundation for custom product development"
-        ],
-        reverse: false,
-    },
-    {
-        id: "et-dmr-100",
-        image: "/images/products/items/et_dmr_100.webp",
-        title: "Et-DMR 100",
-        subTitle: "Handheld Digital Mobile Radio",
-        details: "The Et-DMR 100 is a versatile handheld radio built on the Digital Mobile Radio (DMR) standard, delivering reliable field communication in both single-band and frequency-hopping (FHSS) modes. Designed for interoperability and adaptability, it enables peer-to-peer links between handheld units or seamless connection with tablets.",
-        description: "Engineered for mobility, the Et-DMR 100 provides secure digital voice and data transfer, ensuring continuous communication even in challenging environments. The Et-DMR 100 delivers digital clarity, reliability, and adaptability, bringing professional-grade radio performance into the Ethery ecosystem.",
-        sectionTitle: "Key Features:",
-        features: [
-            "DMR-compatible handheld radio",
-            "Operates in single-band or FHSS modes",
-            "Up to 15 km in line-of-sight environments",
-            "Up to 3 km obstructed or urban areas",
-            "MIL-STD-810G compliant",
-            "Peer-to-peer connection with handhelds over tablets",
-            "Secure, interference-resistant communication",
-            "Compact, rugged design for field and tactical use"
         ],
         reverse: true,
     },
@@ -232,6 +231,10 @@ export const SolutionsItems = [
             {
                 title: "Et Net 200",
                 link: "et-net-200"
+            },
+            {
+                title: "Et DMR 100",
+                link: "et-dmr-100"
             }
         ]
     },
@@ -429,7 +432,7 @@ export const ProductSections = [
         reverse: true,
         relatedProducts: [
             {
-                title: "Et-DMR 100",
+                title: "Et DMR 100",
                 link: "et-dmr-100"
             },
         ]
@@ -495,7 +498,7 @@ export const ProductSections = [
     {
         title: "OEM Solutions ",
         description:
-            "A powerful, dual-frequency radio solution designed for developers and integrators who need flexibility across various applications. With full software configurability and wide-band support, it's suitable for hybrid systems, advanced UAVs, and mobile surveillance platforms.",
+            "A powerful, multi-band, full-duplex radio solution designed for developers and integrators who need flexibility across various applications. With full software configurability and wide-band support, it's suitable for hybrid systems, advanced UAVs, and mobile surveillance platforms.",
         image: "/images/products/oem-solutions.webp",
         slice: [0, 4],
         reverse: false,

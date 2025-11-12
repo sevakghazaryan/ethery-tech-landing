@@ -5,7 +5,7 @@ import Products from "@/components/Home/Products";
 import SolutionsComponent from "@/components/Home/Solutions";
 
 export const metadata: Metadata = {
-  title: "Ethery Tech | Secure Radio Systems",
+  title: "Ethery Tech | Home",
   description:
     "Ethery Tech designs and develops secure radio communication systems with AES-256 encryption, frequency hopping, and real-time data transfer for Defense, UAVs, and Industrial IoT applications.",
   keywords: [

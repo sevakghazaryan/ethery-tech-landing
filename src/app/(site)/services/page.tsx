@@ -5,7 +5,7 @@ import Spend from "@/components/Home/Spend";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | Nicktio",
+  title: "Ethery Tech | Services",
 };
 
 const Services = () => {

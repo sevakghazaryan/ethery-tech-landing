@@ -1,3 +1,5 @@
+"use client";
+
 import { useInView, motion } from "motion/react";
 import { useRef, useState } from "react";
 import { Icon } from "@iconify/react";

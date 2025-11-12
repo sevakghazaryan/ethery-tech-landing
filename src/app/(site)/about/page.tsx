@@ -1,17 +1,14 @@
-"use client";
-
 import Hero from "@/components/About/Hero";
 import CommunicationCTASection from "@/components/About/CommunicationCTASection";
 import HeroSub from "@/components/SharedComponents/HeroSub";
+import { Metadata } from "next";
 
-const AboutUs = () => {
+export const metadata: Metadata = {
+  title: "Ethery Tech | About",
+  description: "Learn about Ethery Tech's mission to deliver innovative, secure radio communication technologies that keep you connected - anywhere, anytime.",
+};
 
-  /**
-   * 
-   * About Us Page
-   */
-
-
+export default function AboutUs() {
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     { href: "/about", text: "About" },
@@ -29,6 +26,4 @@ const AboutUs = () => {
       <CommunicationCTASection />
     </main>
   );
-};
-
-export default AboutUs;
+}

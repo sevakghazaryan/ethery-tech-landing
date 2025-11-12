@@ -126,12 +126,12 @@ const Products = () => {
               <Image
                 src="/icon/left-icon.svg"
                 alt="Left Icon"
-                width={44}
+                width={4}
                 height={44}
                 className="w-11 h-11 text-24 text-primary"
               />
             </button>
-            <button className="right-btn swiper-button-next absolute -right-14 top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-0 rounded-md shadow" >
+            <button className="right-btn swiper-button-next absolute -right-14 ht-0 top-1/2 -translate-y-1/2 bg-white dark:bg-midnight_text p-0 rounded-md shadow" >
               {/* <ChevronRight className="w-4 h-4 text-[#FF4C00] dark:text-[#00E5FF]" /> */}
 
               <Image

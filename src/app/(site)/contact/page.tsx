@@ -6,7 +6,7 @@ import BannerContact from "@/components/Contact/BannerContact";
 import ContactMain from "@/components/Contact/ContactMain";
 
 export const metadata: Metadata = {
-  title: "Contact | Nicktio",
+  title: "Ethery Tech | Contact",
 };
 
 const Contact = () => {

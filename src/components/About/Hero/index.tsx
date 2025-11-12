@@ -1,3 +1,5 @@
+"use client";
+
 import { useInView, motion } from "motion/react";
 import { useRef } from "react";
 import { Icon } from "@iconify/react";
@@ -41,8 +43,11 @@ const Hero = () => {
             </span>
           </h2>
           <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
+            At <b>Ethery Tech</b>, our name speaks to our mission. Inspired by the Armenian word <b>«եթեր» (yeter)</b>-meaning "in air" or "ether"-we capture the idea of boundless, invisible networks that connect people, devices and possibilities. "Ethery" represents the seamless flow of communication that travels through the air, overcoming barriers and bringing the world closer together. We're committed to delivering innovative, secure technologies that keep you connected-anywhere, anytime. With <b>Ethery Tech</b>, the invisible becomes possible and connection knows no limits.
+          </p>
+          <p className="mt-6 text-muted dark:text-white dark:text-opacity-70 lg:text-17 max-w-full">
             At <b>Ethery Tech</b>, safety means more than encryption or signal
-            strength - it’s about{" "}
+            strength - it's about{" "}
             <b>reliability under pressure, clarity in the field</b>, and{" "}
             <b>control over every transmission.</b> Our radio communication
             systems are engineered to keep people, processes, and missions safe

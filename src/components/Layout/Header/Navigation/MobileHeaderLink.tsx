@@ -67,13 +67,13 @@ const MobileHeaderLink: React.FC<MobileHeaderLinkProps> = ({
         )}
       </Link>
       {submenuOpen && item.submenu && (
-        <div className="bg-white p-2 w-full">
+        <div className="bg-white dark:bg-darkheader p-2 w-full">
           {item.submenu.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
               onClick={handleCloseMenu}
-              className="block py-2 text-midnight_text hover:bg-primary hover:text-white "
+              className="block py-2 text-midnight_text dark:text-white hover:bg-primary hover:text-white "
             >
               {subItem.label}
             </Link>
