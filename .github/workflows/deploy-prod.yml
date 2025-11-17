@@ -48,4 +48,4 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}                 # e.g., host23.name.am
           SSH_PORT: ${{ secrets.SSH_PORT }}                 # 22
           SSH_USER: ${{ secrets.SSH_USER }}                 # cPanel username (e.g., etheryadmin)
-          REMOTE_DEV_PATH: ${{ secrets.REMOTE_PROD_PATH }}   # absolute docroot, e.g., /home2/etheryadmin/public_html
+          REMOTE_PROD_PATH: ${{ secrets.REMOTE_PROD_PATH }}   # absolute docroot, e.g., /home2/etheryadmin/public_html
