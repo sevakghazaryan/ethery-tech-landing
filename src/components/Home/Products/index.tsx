@@ -7,14 +7,10 @@ import { ProductItems } from "@/app/api/data";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Navigation, } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-import LeftIcon from "../../../../public/icon/left-icon.svg";
-import RightIcon from "../../../../public/icon/right-icon.svg";
 
 const Products = () => {
 

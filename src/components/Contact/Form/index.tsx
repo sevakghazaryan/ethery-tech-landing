@@ -258,7 +258,7 @@ const ContactForm = () => {
 
               <div className="col-span-6">
                 <Image
-                    src="/images/contact-page/contact.jpg"
+                    src="/images/contact-page/contact.webp"
                     alt="Contact"
                     width={1300}
                     height={0}
