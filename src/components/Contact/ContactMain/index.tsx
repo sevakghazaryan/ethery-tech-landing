@@ -78,7 +78,7 @@ const ContactMain = () => {
       />
 
       <div className="relative min-h-[300px]">
-        <div ref={formSectionRef} className=" pt-24">
+        <div ref={formSectionRef} className="pt-24 dark:bg-darkmode">
           {openForm === "demo" && <ContactForm />}
           {openForm === "careers" && <CareersForm />}
           {openForm === "email" && <EmailForm />}

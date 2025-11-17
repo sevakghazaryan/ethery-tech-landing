@@ -242,7 +242,7 @@ const ContactForm = () => {
                   </div>
 
                   {/* Honeypot (keep empty) */}
-                  <input type="text" name="website" value="" hidden readOnly />
+                  <input type="text" name="website" value="" hidden readOnly className="dark:bg-darkmode" />
 
                   <div className="mx-0 my-2.5 w-full">
                     <button
