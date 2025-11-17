@@ -9,12 +9,10 @@ import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
 import { useTheme } from "next-themes";
 
 const Header: FC = () => {
-
   /**
-   * 
+   *
    * Header Component
    */
-
 
   const pathUrl = usePathname();
   const { theme, setTheme } = useTheme();
@@ -58,6 +56,7 @@ const Header: FC = () => {
 
   useEffect(() => {
     setMounted(true);
+    handleScroll();
   }, []);
 
   useEffect(() => {
@@ -68,7 +67,6 @@ const Header: FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [navbarOpen, isSignInOpen, isSignUpOpen]);
-
 
   useEffect(() => {
     if (isSignInOpen || isSignUpOpen || navbarOpen) {
@@ -169,7 +167,12 @@ const Header: FC = () => {
         </div>
         <nav className="flex flex-col items-start p-4">
           {headerData.map((item, index) => (
-            <MobileHeaderLink key={index} item={item} navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen}  />
+            <MobileHeaderLink
+              key={index}
+              item={item}
+              navbarOpen={navbarOpen}
+              setNavbarOpen={setNavbarOpen}
+            />
           ))}
         </nav>
       </div>

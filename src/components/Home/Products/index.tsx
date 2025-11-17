@@ -78,6 +78,7 @@ const Products = () => {
               768: { slidesPerView: 2 },
               0: { slidesPerView: 1 },
             }}
+            autoHeight={true}
           >
             {ProductItems.map((item, index) => (
               <SwiperSlide key={index}>
