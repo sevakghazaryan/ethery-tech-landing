@@ -3,7 +3,8 @@ import HeroSub from "@/components/SharedComponents/HeroSub";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 Page | Nicktio ",
+  title: "Ethery Tech | 404",
+  description: "The page you're looking for doesn't exist. Return to Ethery Tech's homepage to explore our secure radio communication solutions.",
 };
 
 const ErrorPage = () => {
