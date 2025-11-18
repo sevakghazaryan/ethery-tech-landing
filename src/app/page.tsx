@@ -19,37 +19,15 @@ export const metadata: Metadata = {
     " tactical communication radios",
     "mission-critical connectivity",
     "Radio Communication",
-    "Radio Systems"
+    "Radio Systems",
   ],
   authors: [{ name: "Ethery Tech" }],
-  icons: {
-  icon: [
-    { url: "/icon/favicon-logo16x16.svg", sizes: "16x16", type: "image/svg+xml" },
-    { url: "/icon/favicon-logo32x32.svg", sizes: "32x32", type: "image/svg+xml" },
-    { url: "/favicon.ico", type: "image/x-icon" },
-  ],
-  apple: [
-    { url: "/favi/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-  ],
-  other: [
-    { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#000000" },
-    { rel: "manifest", url: "/favi/site.webmanifest" },
-  ],
-},
   openGraph: {
     title: "Ethery Tech | Secure Radio Systems",
     description:
       "Secure radio systems with advanced encryption for defense, UAVs, and industrial IoT. Trusted communication solutions by Ethery Tech.",
     url: "https://dev.ethery.tech/",
     siteName: "Ethery Tech",
-    images: [
-      {
-        url: "/favicon.ico", 
-        width: 16,
-        height: 16,
-        alt: "Ethery Tech Secure Radio Systems",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -58,13 +36,11 @@ export const metadata: Metadata = {
     title: "Ethery Tech | Secure Radio Systems for Defense, UAVs & IIoT",
     description:
       "Ethery Tech provides secure radio communication solutions with AES-256 encryption, frequency hopping, and real-time data for Defense, UAVs & IIoT.",
-    images: ["/favicon.ico"], 
-    creator: "@etherytech", 
+    creator: "@etherytech",
   },
 };
 
 export default function Home() {
-
   /**
    * Home Page
    */
