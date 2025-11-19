@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://dev.ethery.tech'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ethery.tech'),
 };
 
 export default function RootLayout({

@@ -7,7 +7,7 @@ import SolutionsComponent from "@/components/Home/Solutions";
 export const metadata: Metadata = {
   title: "Ethery Tech | Home",
   description:
-    "Ethery Tech designs and develops secure radio communication systems with AES-256 encryption, frequency hopping, and real-time data transfer for Defense, UAVs, and Industrial IoT applications.",
+    "Ethery Tech designs and develops advanced radio communication systems with intelligent hopping and reliable real-time performance in any environment։",
   keywords: [
     "Ethery Tech, secure radio systems",
     "frequency hopping radios",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "industrial IoT radios",
     "OEM radio modules",
     "long-range wireless links",
-    " tactical communication radios",
+    "tactical communication radios",
     "mission-critical connectivity",
     "Radio Communication",
     "Radio Systems",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Ethery Tech | Secure Radio Systems",
     description:
       "Secure radio systems with advanced encryption for defense, UAVs, and industrial IoT. Trusted communication solutions by Ethery Tech.",
-    url: "https://dev.ethery.tech/",
+    url: "https://ethery.tech/",
     siteName: "Ethery Tech",
     locale: "en_US",
     type: "website",
