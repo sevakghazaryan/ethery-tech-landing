@@ -8,7 +8,7 @@ import { generateSEOMetadata, SITE_URL } from "@/utils/seo";
 export const metadata: Metadata = generateSEOMetadata({
   title: "Ethery Tech | Advanced Secure Radio Communication Systems",
   description:
-    "Ethery Tech designs and develops advanced radio communication systems with intelligent hopping and reliable real-time performance in any environment. Secure, encrypted solutions for defense, UAVs, and industrial IoT.",
+    "Advanced radio systems with intelligent hopping and encryption. Secure solutions for defense, UAVs, and industrial IoT applications.",
   keywords: [
     "Ethery Tech",
     "secure radio systems",
