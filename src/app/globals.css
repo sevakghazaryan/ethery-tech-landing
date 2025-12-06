@@ -85,35 +85,3 @@ html {
         @apply relative z-[1] py-[0.8rem] px-[2.3rem] text-17 font-normal rounded-[0.3125rem] cursor-pointer no-underline border-2 border-solid border-white text-white before:content-[''] before:absolute before:-z-[1] after:content-[''] after:absolute after:-z-[1] hover:text-white hover:border-transparent hover:bg-white
     }
 }
-
-.blog-details p, .blog-details hr {
-    @apply mb-8;
-}
-
-.blog-details strong {
-    @apply font-bold dark:text-white;
-}
-
-.blog-details ul {
-    @apply mb-8 list-inside list-disc space-y-3;
-}
-
-.blog-details ol {
-    @apply mb-8 list-inside list-decimal space-y-3;
-}
-
-.blog-details h1 {
-    @apply mb-8 text-3xl font-bold dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.28];
-}
-
-.blog-details h2 {
-    @apply mb-8 text-2xl font-bold dark:text-white sm:text-3xl md:text-[35px] md:leading-[1.28];
-}
-
-.blog-details h3 {
-    @apply mb-6 text-2xl font-bold dark:text-white sm:text-[28px] sm:leading-[40px];
-}
-
-.blog-details hr {
-    @apply border-border dark:border-dark_border
-}

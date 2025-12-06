@@ -512,38 +512,6 @@ export const ProductSections = [
 
 ];
 
-// Benefit
-export const BenefitImage = [
-    {
-        image:
-            "/images/solutions/digital-electric-meters-row-measuring-power-use.webp",
-        alt: "Trusted brand",
-        details:
-            "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
-    },
-    {
-        image: "/images/benefit/contact.svg",
-        alt: "Trusted brand",
-        details: "See where the company money is going in real time.",
-    },
-    {
-        image: "/images/benefit/bank.svg",
-        alt: "Trusted brand",
-        details: "Powered by the free app that helps you run your whole business.",
-    },
-    {
-        image: "/images/benefit/files.svg",
-        alt: "Trusted brand",
-        details: "No more lost receipts and tedious paperwork.",
-    },
-    {
-        image: "/images/benefit/setting.svg",
-        alt: "Trusted brand",
-        details:
-            "It's an all-digital card designed for online, and even in-store shopping.",
-    },
-];
-
 // footer data
 
 export const companyLinks = [
@@ -659,16 +627,4 @@ export const productKeyFeaturePerks = [
     "Long-range secure radio links",
     "Minimal training required",
     "Flexible across mission types",
-];
-
-// review
-export const review = [
-    {
-        text: "It's easy to set up and the support experience is unparalleled. every transaction the instant it happens and correct wasteful behavior. What a relief.",
-        name: "Nina B. Freeman",
-        post: "Founder at Litchi Care",
-        image: "/images/search/profile.png",
-        appstorerating: "4.5",
-        gplayrating: "4.5",
-    },
 ];
