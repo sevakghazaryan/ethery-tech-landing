@@ -1,11 +1,23 @@
 import Hero from "@/components/Careers/Hero";
 import HeroSub from "@/components/SharedComponents/HeroSub";
+import { generateSEOMetadata } from "@/utils/seo";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Ethery Tech | Careers",
-  description: "Join the Ethery Tech team and help build the future of secure radio communication systems.",
-};
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Careers at Ethery Tech",
+  description: "Join the Ethery Tech team and help build the future of secure radio communication systems. We value passion, curiosity, and mission-driven innovation. Grow with purpose in wireless technology.",
+  keywords: [
+    "ethery tech careers",
+    "radio engineering jobs",
+    "wireless technology careers",
+    "communication systems jobs",
+    "hardware engineer positions",
+    "software engineer jobs",
+    "RF engineer careers",
+  ],
+  canonicalPath: "/careers/",
+  ogImage: "https://ethery.tech/images/careers/careers.webp",
+});
 
 export default function Careers() {
   const breadcrumbLinks = [

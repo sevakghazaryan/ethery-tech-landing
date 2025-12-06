@@ -5,6 +5,7 @@ const nextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    qualities: [75, 90, 100],
   },
 };
 

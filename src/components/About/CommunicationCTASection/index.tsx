@@ -74,7 +74,7 @@ const CommunicationCTASection = () => {
                 {/* radio-two-transparent.png */}
                 <Image
                   src="/images/about/radio-two-transparent.png"
-                  alt="image"
+                  alt="Ethery Tech tactical radio communication device"
                   width={335}
                   height={335}
                   className="relative z-10"

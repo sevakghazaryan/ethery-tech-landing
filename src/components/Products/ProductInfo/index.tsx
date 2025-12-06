@@ -83,7 +83,7 @@ const ProductSection = ({ section, index }: { section: ProductSectionType; index
                     {section.relatedProducts.map((item: RelatedProduct, idx: number) => (
                       <li key={idx} className="text-18 leading-normal font-bold pb-2" >
                         <Link
-                          href={`/product-Item/${item.link}`}
+                          href={`/product/${item.link}`}
                           className="flex flex-row text-primary hover:underline"
                         >
                           <span>{item.title}</span>

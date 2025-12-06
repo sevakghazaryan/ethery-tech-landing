@@ -134,7 +134,7 @@ const Hero = () => {
           <div className="lg:max-w-full md:max-w-75% mx-auto">
             <Image
               src="/images/careers/careers.webp"
-              alt="image"
+              alt="Join Ethery Tech team - career opportunities in radio communication technology"
               width={555}
               height={634}
               style={{ width: "100%", height: "100%" }}

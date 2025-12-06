@@ -45,7 +45,7 @@ const SolutionsComponent = () => {
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 mt-11">
             {SolutionsItems.map((item, index) => (
               <motion.div {...TopAnimation} className="col-span-2" key={index}>
-                <Link href={`/solution-item/${item.id}`} className="transition-transform duration-300 hover:scale-[1.02] hover:shadow-md">
+                <Link href={`/solution/${item.id}`} className="transition-transform duration-300 hover:scale-[1.02] hover:shadow-md">
                   <div className="bg-white dark:bg-darkmode rounded-2xl overflow-hidden py-8 xl:py-0 hover:scale-[1.02] hover:shadow-md">
                     <div className="grid xl:grid-cols-2 xl:gap-10">
                       <div className="xl:px-9 px-4  py-4 flex flex-col">

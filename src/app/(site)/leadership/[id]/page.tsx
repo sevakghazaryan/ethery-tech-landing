@@ -2,6 +2,7 @@
 import { LeadershipMembers } from "@/app/api/data";
 import Image from "next/image";
 import HeroSub from "@/components/SharedComponents/HeroSub";
+import { generateSEOMetadata, SITE_URL } from "@/utils/seo";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -17,13 +18,25 @@ export async function generateMetadata({
     return {
       title: "Leader Not Found | Ethery Tech",
       description: "The requested leader could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  return {
-    title: `Ethery Tech | Leadership | ${member.name}`,
-    description: `${member.name} - ${member.role} at Ethery Tech`,
-  };
+  return generateSEOMetadata({
+    title: `${member.name} - ${member.role}`,
+    description: `${member.name}, ${member.role} at Ethery Tech. ${member.bio[0]}`,
+    keywords: [
+      member.name,
+      member.role,
+      "ethery tech leadership",
+      "radio engineering expert",
+    ],
+    canonicalPath: `/leadership/${id}/`,
+    ogImage: `${SITE_URL}${member.image}`,
+  });
 }
 
 const breadcrumbLinks = [

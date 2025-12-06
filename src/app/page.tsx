@@ -3,42 +3,32 @@ import { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
 import Products from "@/components/Home/Products";
 import SolutionsComponent from "@/components/Home/Solutions";
+import { generateSEOMetadata } from "@/utils/seo";
 
-export const metadata: Metadata = {
-  title: "Ethery Tech | Home",
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Ethery Tech - Advanced Secure Radio Communication Systems",
   description:
-    "Ethery Tech designs and develops advanced radio communication systems with intelligent hopping and reliable real-time performance in any environment։",
+    "Ethery Tech designs and develops advanced radio communication systems with intelligent hopping and reliable real-time performance in any environment. Secure, encrypted solutions for defense, UAVs, and industrial IoT.",
   keywords: [
-    "Ethery Tech, secure radio systems",
+    "Ethery Tech",
+    "secure radio systems",
     "frequency hopping radios",
-    "UAES-256 encrypted radios",
+    "AES-256 encrypted radios",
     "UAV telemetry modules",
     "industrial IoT radios",
     "OEM radio modules",
     "long-range wireless links",
     "tactical communication radios",
     "mission-critical connectivity",
-    "Radio Communication",
-    "Radio Systems",
+    "radio communication",
+    "radio systems",
+    "military radio",
+    "drone communication",
+    "industrial automation radio",
   ],
-  authors: [{ name: "Ethery Tech" }],
-  openGraph: {
-    title: "Ethery Tech | Secure Radio Systems",
-    description:
-      "Secure radio systems with advanced encryption for defense, UAVs, and industrial IoT. Trusted communication solutions by Ethery Tech.",
-    url: "https://ethery.tech/",
-    siteName: "Ethery Tech",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ethery Tech | Secure Radio Systems for Defense, UAVs & IIoT",
-    description:
-      "Ethery Tech provides secure radio communication solutions with AES-256 encryption, frequency hopping, and real-time data for Defense, UAVs & IIoT.",
-    creator: "@etherytech",
-  },
-};
+  canonicalPath: "/",
+  ogImage: "https://ethery.tech/images/hero/hero-image.webp",
+});
 
 export default function Home() {
   /**

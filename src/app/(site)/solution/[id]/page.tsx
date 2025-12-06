@@ -2,7 +2,7 @@ import { SolutionsItems } from "@/app/api/data";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-
+import { generateSEOMetadata, SITE_URL } from "@/utils/seo";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 
 const titles: Record<string, { title: string; description: string }> = {
@@ -56,30 +56,31 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const meta = titles[id];
+  const solution = SolutionsItems.find((s) => s.id === id);
 
-  if (!meta) {
+  if (!meta || !solution) {
     return {
-      title: "Solutions | Ethery Tech",
-      description: "Explore our innovative communication solutions.",
+      title: "Solution Not Found | Ethery Tech",
+      description: "The requested solution could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  return {
+  return generateSEOMetadata({
     title: meta.title,
     description: meta.description,
-    openGraph: {
-      title: meta.title,
-      description: meta.description,
-      url: `https://yourdomain.com/solution-item/${id}`,
-      siteName: "Ethery Tech",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: meta.title,
-      description: meta.description,
-    },
-  };
+    keywords: [
+      solution.title,
+      "radio communication solutions",
+      "wireless solutions",
+      "secure communication",
+    ],
+    canonicalPath: `/solution/${id}/`,
+    ogImage: `${SITE_URL}${solution.image}`,
+  });
 }
 
 
@@ -165,7 +166,7 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
                         key={idx}
                         className="text-16 leading-normal pb-2 text-primary hover:underline dark:text-white dark:text-opacity-70"
                       >
-                        <Link href={`/product-Item/${rp.link}`}>
+                        <Link href={`/product/${rp.link}`}>
                           {rp.title}
                         </Link>
                       </li>
@@ -196,7 +197,7 @@ export default async function SolutionItemPage({ params }: SolutionPageProps) {
             {SolutionsItems.filter((item) => item.id !== product.id).map((item) => (
               <li key={item.id}>
                 <Link
-                  href={`/solution-item/${item.id}`}
+                  href={`/solution/${item.id}`}
                   className="text-16 leading-normal pb-2 flex flex-row   text-primary hover:underline"
                 >
                   <span>{item.title}</span>

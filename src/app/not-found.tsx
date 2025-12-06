@@ -1,11 +1,14 @@
 import NotFound from "@/components/NotFound";
 import HeroSub from "@/components/SharedComponents/HeroSub";
+import { generateSEOMetadata } from "@/utils/seo";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Ethery Tech | 404",
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Page Not Found - 404 Error",
   description: "The page you're looking for doesn't exist. Return to Ethery Tech's homepage to explore our secure radio communication solutions.",
-};
+  canonicalPath: "/404/",
+  noIndex: true, // Don't index 404 pages
+});
 
 const ErrorPage = () => {
 
@@ -17,7 +20,7 @@ const ErrorPage = () => {
 
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
-    { href: "/contact", text: "404" },
+    { href: "", text: "404" },
   ];
   return (
     <>

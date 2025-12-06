@@ -1,0 +1,13 @@
+# robots.txt for Ethery Tech
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Block access to build and admin directories
+Disallow: /build/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://ethery.tech/sitemap.xml
+

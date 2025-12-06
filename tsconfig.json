@@ -38,8 +38,8 @@
   "exclude": [
     ".next",
     "node_modules",
-    "app/(site)/product-Item/[id]/page.tsx",
-    "app/(site)/solution-item/[id]/page.tsx",
+    "app/(site)/product/[id]/page.tsx",
+    "app/(site)/solution/[id]/page.tsx",
     "components/Contact/ContactMain/index.tsx",   
   ]
 }
