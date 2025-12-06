@@ -36,34 +36,50 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Clean remote directory (preserve important files)
+      - name: Clean remote directory via SFTP (no shell access required)
         run: |
-          ssh -i ~/.ssh/id_ci -oStrictHostKeyChecking=no -p "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}" << 'EOSSH'
-            cd "${REMOTE_PROD_PATH}" || exit 1
-            
-            echo "📂 Current directory: $(pwd)"
-            echo "📋 Files before cleanup:"
-            ls -la | head -20
-            
-            # Remove all files and folders EXCEPT:
-            # - .htaccess (Apache config)
-            # - cgi-bin (cPanel system)
-            # - .well-known (SSL certificates)
-            # - Any other hidden files/folders (.*) 
-            echo ""
-            echo "🗑️  Removing old files..."
-            find . -maxdepth 1 \
-              ! -name '.' \
-              ! -name '..' \
-              ! -name '.htaccess' \
-              ! -name 'cgi-bin' \
-              ! -name '.*' \
-              -exec rm -rf {} +
-            
-            echo ""
-            echo "✅ Cleanup complete. Remaining files:"
-            ls -la
-          EOSSH
+          # Create SFTP batch script to remove old files/folders
+          # Note: Preserves api/ folder (important backend API)
+          cat > sftp_cleanup.txt << EOF
+          cd ${REMOTE_PROD_PATH}
+          -rm blog
+          -rm COPYRIGHT
+          -rm css
+          -rm favi
+          -rm font-awesome
+          -rm fonts
+          -rm img
+          -rm js
+          -rm pricing
+          -rm product-Item
+          -rm services
+          -rm solution-item
+          -rm templates
+          -rm LICENSE.txt
+          -rm phpinfo.php
+          -rm index.txt
+          -rm 404.html
+          -rmdir blog
+          -rmdir COPYRIGHT
+          -rmdir css
+          -rmdir favi
+          -rmdir font-awesome
+          -rmdir fonts
+          -rmdir img
+          -rmdir js
+          -rmdir pricing
+          -rmdir product-Item
+          -rmdir services
+          -rmdir solution-item
+          -rmdir templates
+          quit
+          EOF
+          
+          echo "🗑️ Cleaning old files via SFTP..."
+          echo "Target directory: ${REMOTE_PROD_PATH}"
+          echo "⚠️  Preserving: .htaccess, cgi-bin, .well-known, api/"
+          sftp -i ~/.ssh/id_ci -oBatchMode=yes -oStrictHostKeyChecking=no -P "${SSH_PORT}" -b sftp_cleanup.txt "${SSH_USER}@${SSH_HOST}" || true
+          echo "✅ Cleanup complete (errors for non-existent files are OK)"
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
