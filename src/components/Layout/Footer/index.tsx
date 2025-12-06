@@ -32,7 +32,7 @@ const Footer = () => {
               {SolutionsItems.map((item, index) => (
                 <li key={index} className="pb-3">
                   <Link
-                    href={`/solution-item/${item.id}`}
+                    href={`/solution/${item.id}`}
                     className="text-foottext text-16 hover:text-primary"
                   >
                     {item.title}

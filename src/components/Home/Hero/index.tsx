@@ -62,7 +62,7 @@ const Hero = () => {
           >
             <Image
               src="/images/hero/hero-image.webp"
-              alt="image"
+              alt="Ethery Tech secure radio communication systems for defense, UAV, and industrial applications"
               width={1260}
               height={1260}
               priority

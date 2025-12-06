@@ -84,7 +84,7 @@ const Products = () => {
               <SwiperSlide key={index}>
                 <motion.div {...bottomAnimation(index)} viewport={{ once: true }} >
                   <Link
-                    href={`/product-Item/${item.id}`}
+                    href={`/product/${item.id}`}
                     rel="noopener noreferrer"
                   >
                     <div className="py-4">

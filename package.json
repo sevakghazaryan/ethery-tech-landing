@@ -1,6 +1,23 @@
 {
   "name": "ethery-tech-landing",
   "version": "1.0.0",
+  "description": "Ethery Tech - Advanced secure radio communication systems for defense, UAV, and industrial applications",
+  "author": "Ethery Tech <info@ethery.tech> (https://ethery.tech)",
+  "homepage": "https://ethery.tech",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sevakghazaryan/ethery-tech-landing"
+  },
+  "keywords": [
+    "radio communication",
+    "secure radios",
+    "frequency hopping",
+    "encryption",
+    "UAV telemetry",
+    "industrial IoT",
+    "tactical radio",
+    "military communication"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev",
