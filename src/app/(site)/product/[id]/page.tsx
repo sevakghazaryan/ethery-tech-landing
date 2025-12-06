@@ -55,7 +55,7 @@ export async function generateMetadata({
 
   if (!productMeta || !product) {
     return {
-      title: "Product Not Found | Ethery Tech",
+      title: "Ethery Tech | Product Not Found",
       description: "The requested product could not be found.",
       robots: {
         index: false,

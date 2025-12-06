@@ -61,7 +61,7 @@ export async function generateMetadata({
 
     if (!meta || !solution) {
         return {
-            title: "Solution Not Found | Ethery Tech",
+            title: "Ethery Tech | Solution Not Found",
             description: "The requested solution could not be found.",
             robots: {
                 index: false,
