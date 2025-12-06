@@ -4,6 +4,7 @@ import Link from "next/link";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import { generateSEOMetadata, SITE_URL } from "@/utils/seo";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 
 const titles: Record<string, { title: string; description: string }> = {
@@ -103,14 +104,7 @@ export default async function ProductItemPage({ params }: ProductItemPageProps) 
   const product = ProductItems.find((p) => p.id === resolvedParams.id);
 
   if (!product) {
-    return (
-        <main className="p-10 text-center text-red-600">
-          <h1 className="text-2xl font-bold">Product not found</h1>
-          <Link href="/" className="mt-4 inline-block text-blue-600 underline">
-            ← Back to Home
-          </Link>
-        </main>
-    );
+    notFound();
   }
 
   return (
@@ -118,7 +112,7 @@ export default async function ProductItemPage({ params }: ProductItemPageProps) 
         <HeroSub
             title={product.title}
             description="Explore our innovative product lineup designed to meet your needs"
-            breadcrumbLinks={[]}
+            breadcrumbLinks={breadcrumbLinks}
             isBrodcurb={false}
         />
         <div className="py-10" />
