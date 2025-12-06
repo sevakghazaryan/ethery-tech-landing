@@ -20,12 +20,7 @@ const Header: FC = () => {
   const [mounted, setMounted] = useState(false);
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
-  const [isSignInOpen, setIsSignInOpen] = useState(false);
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
-  const navbarRef = useRef<HTMLDivElement>(null);
-  const signInRef = useRef<HTMLDivElement>(null);
-  const signUpRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
@@ -33,18 +28,6 @@ const Header: FC = () => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (
-      signInRef.current &&
-      !signInRef.current.contains(event.target as Node)
-    ) {
-      setIsSignInOpen(false);
-    }
-    if (
-      signUpRef.current &&
-      !signUpRef.current.contains(event.target as Node)
-    ) {
-      setIsSignUpOpen(false);
-    }
     if (
       mobileMenuRef.current &&
       !mobileMenuRef.current.contains(event.target as Node) &&
@@ -66,15 +49,15 @@ const Header: FC = () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [navbarOpen, isSignInOpen, isSignUpOpen]);
+  }, [navbarOpen]);
 
   useEffect(() => {
-    if (isSignInOpen || isSignUpOpen || navbarOpen) {
+    if (navbarOpen) {
       document.body.style.overflow = "hidden"; // Prevent scrolling
     } else {
       document.body.style.overflow = ""; // Reset scrolling
     }
-  }, [isSignInOpen, isSignUpOpen, navbarOpen]);
+  }, [navbarOpen]);
 
   return (
     <header
