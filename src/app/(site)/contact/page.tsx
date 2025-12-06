@@ -8,7 +8,7 @@ import ContactMain from "@/components/Contact/ContactMain";
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Ethery Tech | Contact Us",
-  description: "Get in touch with Ethery Tech for inquiries about our secure radio communication systems, request a demo, career opportunities, or technical support. We're here to help with your communication needs.",
+  description: "Contact Ethery Tech for inquiries about secure radio systems, request a demo, career opportunities, or technical support.",
   keywords: [
     "contact ethery tech",
     "radio communication inquiry",

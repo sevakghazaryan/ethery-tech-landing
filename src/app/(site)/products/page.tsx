@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Ethery Tech | Products",
-  description: "Explore Ethery Tech's innovative product lineup: integrated radio systems, UAV modules, industrial radios, smart metering, repeaters, and OEM solutions. Secure, encrypted communication for every mission.",
+  description: "Integrated radio systems, UAV modules, industrial radios, smart metering, repeaters, and OEM solutions. Secure encrypted communication.",
   keywords: [
     "radio communication products",
     "tactical radio systems",
