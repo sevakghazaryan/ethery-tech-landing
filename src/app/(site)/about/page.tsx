@@ -27,12 +27,12 @@ export default function AboutUs() {
 
   return (
     <main className="dark:bg-darkmode overflow-x-hidden pb-14">
-        <HeroSub
-          title="About Us"
-          description="Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing Variou"
-          breadcrumbLinks={breadcrumbLinks}
-          isBrodcurb={true}
-        />
+      <HeroSub
+        title="About Us"
+        description="Learn about Ethery Tech's mission to deliver innovative, secure radio communication technologies that keep you connected - anywhere, anytime."
+        breadcrumbLinks={breadcrumbLinks}
+        isBrodcurb={true}
+      />
       <Hero />
       <CommunicationCTASection />
     </main>
