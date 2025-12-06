@@ -6,7 +6,7 @@ import SolutionsComponent from "@/components/Home/Solutions";
 import { generateSEOMetadata, SITE_URL } from "@/utils/seo";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Ethery Tech | Home",
+  title: "Ethery Tech | Advanced Secure Radio Communication Systems",
   description:
     "Ethery Tech designs and develops advanced radio communication systems with intelligent hopping and reliable real-time performance in any environment. Secure, encrypted solutions for defense, UAVs, and industrial IoT.",
   keywords: [
