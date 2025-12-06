@@ -26,7 +26,7 @@ export async function generateMetadata({
   }
 
   return generateSEOMetadata({
-    title: `${member.name} - ${member.role}`,
+    title: `Ethery Tech | ${member.name}`,
     description: `${member.name}, ${member.role} at Ethery Tech. ${member.bio[0]}`,
     keywords: [
       member.name,

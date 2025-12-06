@@ -3,17 +3,17 @@ import { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
 import Products from "@/components/Home/Products";
 import SolutionsComponent from "@/components/Home/Solutions";
-import { generateSEOMetadata } from "@/utils/seo";
+import { generateSEOMetadata, SITE_URL } from "@/utils/seo";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Ethery Tech - Advanced Secure Radio Communication Systems",
+  title: "Ethery Tech | Advanced Secure Radio Communication Systems",
   description:
     "Ethery Tech designs and develops advanced radio communication systems with intelligent hopping and reliable real-time performance in any environment. Secure, encrypted solutions for defense, UAVs, and industrial IoT.",
   keywords: [
     "Ethery Tech",
     "secure radio systems",
     "frequency hopping radios",
-    "AES-256 encrypted radios",
+    "encrypted radios",
     "UAV telemetry modules",
     "industrial IoT radios",
     "OEM radio modules",
@@ -27,7 +27,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "industrial automation radio",
   ],
   canonicalPath: "/",
-  ogImage: "https://ethery.tech/images/hero/hero-image.webp",
+  ogImage: `${SITE_URL}/images/hero/hero-image.webp`,
 });
 
 export default function Home() {

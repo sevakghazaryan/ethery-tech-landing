@@ -1,11 +1,11 @@
 import IntroAbout from "@/components/Leadership/IntroAbout";
 import OurTeamComponent from "@/components/Leadership/OurTeam";
 import HeroSub from "@/components/SharedComponents/HeroSub";
-import { generateSEOMetadata } from "@/utils/seo";
+import { generateSEOMetadata, SITE_URL } from "@/utils/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Leadership Team",
+  title: "Ethery Tech | Leadership Team",
   description: "Meet the visionary team driving innovation and growth at Ethery Tech. Led by experts in radio engineering, software architecture, hardware design, and wireless system development.",
   keywords: [
     "ethery tech leadership",
@@ -16,7 +16,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "CTO Sargis Sargsyan",
   ],
   canonicalPath: "/leadership/",
-  ogImage: "https://ethery.tech/images/leadership/narek.webp",
+  ogImage: `${SITE_URL}/images/leadership/narek.webp`,
 });
 
 export default function Leadership() {

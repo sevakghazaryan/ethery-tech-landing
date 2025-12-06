@@ -4,10 +4,10 @@ import { generateSEOMetadata } from "@/utils/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Page Not Found - 404 Error",
+  title: "Ethery Tech | Page Not Found",
   description: "The page you're looking for doesn't exist. Return to Ethery Tech's homepage to explore our secure radio communication solutions.",
   canonicalPath: "/404/",
-  noIndex: true, // Don't index 404 pages
+  noIndex: true,
 });
 
 const ErrorPage = () => {

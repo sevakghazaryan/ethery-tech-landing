@@ -1,11 +1,11 @@
 import Intro from "@/components/Products/Intro";
 import ProductInfo from "@/components/Products/ProductInfo";
 import HeroSub from "@/components/SharedComponents/HeroSub";
-import { generateSEOMetadata } from "@/utils/seo";
+import { generateSEOMetadata, SITE_URL } from "@/utils/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Radio Communication Products",
+  title: "Ethery Tech | Products",
   description: "Explore Ethery Tech's innovative product lineup: integrated radio systems, UAV modules, industrial radios, smart metering, repeaters, and OEM solutions. Secure, encrypted communication for every mission.",
   keywords: [
     "radio communication products",
@@ -19,7 +19,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "OEM radio solutions",
   ],
   canonicalPath: "/products/",
-  ogImage: "https://ethery.tech/images/products/integrated-radio-systems-light.webp",
+  ogImage: `${SITE_URL}/images/products/integrated-radio-systems-light.webp`,
 });
 
 export default function Products() {

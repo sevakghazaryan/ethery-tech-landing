@@ -1,4 +1,3 @@
-// SEO utilities for consistent metadata generation across all pages
 import type { Metadata } from "next";
 
 export const SITE_NAME = "Ethery Tech";
@@ -33,7 +32,7 @@ export function generateSEOMetadata({
   author = SITE_NAME,
 }: SEOMetadataProps): Metadata {
   const canonicalUrl = `${SITE_URL}${canonicalPath}`;
-  const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  const fullTitle = title;
 
   return {
     title: fullTitle,
