@@ -18,9 +18,9 @@ export default function StructuredData({ type = "organization", data }: Structur
           "url": SITE_URL,
           "logo": {
             "@type": "ImageObject",
-            "url": `${SITE_URL}/images/logo/logo.svg`,
-            "width": 566,
-            "height": 321
+            "url": `${SITE_URL}/icon/favicon-512x512.png`,
+            "width": 512,
+            "height": 512
           },
           "image": DEFAULT_OG_IMAGE,
           "description": SITE_DESCRIPTION,
