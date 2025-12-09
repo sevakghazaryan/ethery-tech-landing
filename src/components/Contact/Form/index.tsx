@@ -107,7 +107,7 @@ const ContactForm = () => {
       body.append("message", formData.message);
       body.append("website", "");
 
-      const res = await fetch("https://ethery.tech/api/send-demo.php", {
+      const res = await fetch("/api/send-demo.php", {
         method: "POST",
         body,
       });

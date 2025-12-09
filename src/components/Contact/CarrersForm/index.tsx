@@ -124,9 +124,9 @@ const CareersForm = () => {
       body.append("linkedin", formData.linkedin || "");
       body.append("note", formData.note || "");
       body.append("consent", formData.consent ? "1" : "0");
-      body.append("website", ""); // honeypot
+      body.append("website", "");
 
-      const res = await fetch("https://ethery.tech/api/send-careers.php", {
+      const res = await fetch("/api/send-careers.php", {
         method: "POST",
         body,
       });

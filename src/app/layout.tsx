@@ -4,6 +4,8 @@ import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "next-themes";
 import ScrollToTop from "@/components/ScrollToTop";
+import StructuredData from "@/components/Common/StructuredData";
+import { SITE_URL } from "@/utils/seo";
 import type { Metadata, Viewport } from "next";
 
 const dmsans = DM_Sans({ 
@@ -26,25 +28,34 @@ export const viewport: Viewport = {
 
 // Root metadata configuration
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ethery.tech'),
+  metadataBase: new URL(SITE_URL),
   manifest: "/manifest.json",
   icons: {
     icon: [
+      { url: "/icon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon/favicon-192x192.png", sizes: "192x192", type: "image/png" },
       { url: "/icon/favicon-logo16x16.svg", sizes: "16x16", type: "image/svg+xml" },
       { url: "/icon/favicon-logo32x32.svg", sizes: "32x32", type: "image/svg+xml" },
     ],
+    shortcut: [{ url: "/favicon.ico" }],
     apple: [
-      { url: "/icon/logo-16x16.svg", sizes: "16x16", type: "image/svg+xml" },
+      { url: "/icon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
     other: [
       {
         rel: "mask-icon",
         url: "/icon/logo_vector.svg",
+        color: "#467FC1",
       },
     ],
   },
   verification: {
      google: "google-site-verification=xQZOqkrEqlUATyGM-PAR3CCqEuk_bTqCELvJsFqlIMI"
+  },
+  other: {
+    "msapplication-TileColor": "#467FC1",
+    "msapplication-config": "/browserconfig.xml",
   },
 };
 
@@ -56,6 +67,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={`${dmsans.className}`} suppressHydrationWarning>
+        <StructuredData type="organization" />
+        <StructuredData type="website" />
         <ThemeProvider
           attribute="class"
           enableSystem={false}
