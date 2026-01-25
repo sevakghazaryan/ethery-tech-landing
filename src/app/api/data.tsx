@@ -68,7 +68,7 @@ export const ProductItems = [
         features: [
             "UAV telemetry, control, and payload data transfer in one module",
             "Configurable modulation with support for single-band or frequency-hopping operation",
-            "Coverage up to 50 km",
+            "Coverage up to 100 km",
             "Data rates: 2.2 Mbps (single-band), 0.7 Mbps (frequency-hopping)",
             "Simultaneous support for telemetry, command, and file transfer (photos, video, etc.)",
             "Compact and efficient design for UAV integration"
