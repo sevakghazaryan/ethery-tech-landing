@@ -22,7 +22,7 @@ const titles: Record<string, { title: string; description: string }> = {
   },
   "et-air-100": {
     title: "Ethery Tech | Et Air 100",
-    description: "UAV module for telemetry, control, and payload data. Up to 50 km range, 2.2 Mbps single-band or 0.7 Mbps hopping; compact for easy integration.",
+    description: "UAV module for telemetry, control, and payload data. Up to 100 km range, 2.2 Mbps single-band or 0.7 Mbps hopping; compact for easy integration.",
   },
   "et-industrial-100": {
     title: "Ethery Tech | Et Industrial 100",
