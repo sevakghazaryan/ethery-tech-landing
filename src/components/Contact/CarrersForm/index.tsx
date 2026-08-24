@@ -3,6 +3,7 @@
 import React, { Fragment, useState, useRef } from "react";
 import Image from "next/image";
 import ModalDemo from "@/components/Modals/SuccesDemo";
+import { parseApiResponse } from "@/utils/parseApiResponse";
 
 const CareersForm = () => {
   /**
@@ -131,15 +132,17 @@ const CareersForm = () => {
         body,
       });
 
-      // Parse response (JSON preferred, else text)
-      const isJson = (res.headers.get("content-type") || "").includes("application/json");
-      const payload = isJson ? await res.json().catch(() => null) : await res.text().catch(() => "");
+      const payload = await parseApiResponse(res);
 
       if (!res.ok) {
-        const msg =
-            (payload && typeof payload === "object" && (payload.message || payload.error)) ||
-            (typeof payload === "string" && payload) ||
-            "Failed to send application";
+        const msg = payload.message || payload.error || "Failed to send application";
+
+        // The API returns per-field messages, so highlight the offending
+        // fields instead of only showing the banner under the button.
+        if (payload.errors && typeof payload.errors === "object") {
+          setErrors(payload.errors);
+        }
+
         throw new Error(String(msg));
       }
 

@@ -3,6 +3,7 @@
 import React, { Fragment, useState, useRef } from "react";
 import Image from "next/image";
 import ModalDemo from "@/components/Modals/SuccesDemo";
+import { parseApiResponse } from "@/utils/parseApiResponse";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -112,10 +113,18 @@ const ContactForm = () => {
         body,
       });
 
-      let data: any = {};
-      try { data = await res.json(); } catch { /* ignore parse errors */ }
+      const data = await parseApiResponse(res);
 
       if (!res.ok) {
+        // The API returns per-field messages, so point the visitor at the
+        // field that actually failed instead of only showing a banner.
+        const fieldErrors =
+            data?.errors && typeof data.errors === "object" ? data.errors : null;
+        if (fieldErrors) {
+          setErrors({ ...fieldErrors, _form: data?.message || "Please fill required fields correctly." });
+          sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+          return;
+        }
         throw new Error(data?.message || "Failed to send message");
       }
 

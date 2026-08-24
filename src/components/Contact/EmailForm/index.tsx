@@ -65,22 +65,29 @@ const EmailForm = () => {
         "pCvOyJF65oD7cM4kw" // Public Key
       );
 
-      if (result.status === 200) {
-        setErrors({});
-        setFormData({
-          full_name: "",
-          work_email: "",
-          subject: "",
-          message: "",
-          company: "",
-          phone: "",
-
-        });
+      if (result.status !== 200) {
+        throw new Error("Failed to send message");
       }
 
+      setErrors({});
+      setFormData({
+        full_name: "",
+        work_email: "",
+        subject: "",
+        message: "",
+        company: "",
+        phone: "",
+
+      });
       setModalOpen(true);
     } catch (err) {
+      // Never claim success on a failed send - tell the visitor instead.
       console.error("Failed to send email:", err);
+      setErrors((prev) => ({
+        ...prev,
+        _form: "We could not send your message right now. Please try again or email contact@ethery.tech.",
+      }));
+      sectionRef.current?.scrollIntoView({ behavior: "smooth" });
     } finally {
       setLoading(false);
     }
@@ -97,6 +104,9 @@ const EmailForm = () => {
                 className="flex flex-wrap w-full m-auto justify-between"
                 onSubmit={handleSubmit}
               >
+                {errors._form && (
+                  <p className="w-full text-red-500 text-sm mb-2">{errors._form}</p>
+                )}
                 <div className="mx-0 my-2.5 w-full">
                   <label htmlFor="full_name" className="pb-3 inline-block text-17">
                     Full Name*

@@ -14,8 +14,8 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
    */
 
   const [formData, setFormData] = useState({
-    from_name: "",
-    from_email: "",
+    name: "",
+    email: "",
     phone: "",
     note: "",
     cv: null as File | null,
@@ -45,18 +45,15 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    if (!formData.from_name.trim())
+    if (!formData.name.trim())
       newErrors.name = "Name & Surname is required.";
-    if (!formData.from_email.trim()) newErrors.email = "Email is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.from_email))
+    if (!formData.email.trim()) newErrors.email = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       newErrors.email = "Enter a valid email address.";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
     if (!formData.cv) newErrors.cv = "Please upload your CV.";
-    if (formData.cv && formData.cv.size > 5 * 1024 * 1024) {
-      setErrors((prev) => ({ ...prev, cv: "CV file is too large. Max 5MB." }));
-      setLoading(false);
-      return;
-    }
+    else if (formData.cv.size > 5 * 1024 * 1024)
+      newErrors.cv = "CV file is too large. Max 5MB.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -81,8 +78,8 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
       );
 
       setFormData({
-        from_name: "",
-        from_email: "",
+        name: "",
+        email: "",
         phone: "",
         note: "",
         cv: null,
@@ -109,7 +106,7 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
             <input
               type="text"
               name="name"
-              value={formData.from_name}
+              value={formData.name}
               onChange={handleChange}
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
                 errors.name
@@ -129,7 +126,7 @@ const FormHero = ({ onCancel }: FormHeroProps) => {
             <input
               type="email"
               name="email"
-              value={formData.from_email}
+              value={formData.email}
               onChange={handleChange}
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${
                 errors.email

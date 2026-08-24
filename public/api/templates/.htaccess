@@ -1,0 +1,4 @@
+# The email template is read from disk by PHP - never serve it over HTTP.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
