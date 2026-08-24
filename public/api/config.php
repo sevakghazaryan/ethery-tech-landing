@@ -6,8 +6,9 @@
  */
 
 return [
-    // Where submissions are delivered.
-    'to' => ['contact@ethery.tech'],
+    // Where submissions are delivered, per form.
+    'to_demo'    => ['contact@ethery.tech'],
+    'to_careers' => ['careers@ethery.tech'],
 
     // Envelope sender. Must be an @ethery.tech address so SPF/DKIM pass.
     // The visitor's address goes into Reply-To, never into From.

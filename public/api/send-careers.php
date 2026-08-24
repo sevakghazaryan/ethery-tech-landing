@@ -80,6 +80,7 @@ if ($errors) {
 }
 
 $sent = et_deliver(
+    $config['to_careers'],
     'New job application',
     $name . ' applied for: ' . $role,
     'Job application - ' . $name . ' (' . $role . ')',

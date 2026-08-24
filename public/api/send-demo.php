@@ -44,6 +44,7 @@ if ($errors) {
 }
 
 $sent = et_deliver(
+    et_config()['to_demo'],
     'New demo request',
     $fullName . ' from ' . $company . ' requested a demo.',
     'Demo request - ' . $fullName . ' (' . $company . ')',

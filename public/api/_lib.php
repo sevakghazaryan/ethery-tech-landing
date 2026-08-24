@@ -136,12 +136,14 @@ function et_render_template(string $name, array $vars): string
  * The same $fields drive the HTML table and the plain-text alternative, so the
  * two versions cannot drift apart. Empty values render as a dash.
  *
+ * @param string[] $to Recipients for this form.
  * @param array<string,string> $fields Ordered label => value pairs.
  * @param array{name:string,type:string,data:string}|null $attachment
  * @return bool False when the template is unreadable or mail() refused it;
  *              the reason is written to the PHP error log.
  */
 function et_deliver(
+    array $to,
     string $heading,
     string $intro,
     string $subject,
@@ -175,7 +177,7 @@ function et_deliver(
 
     $text = implode("\r\n", $lines) . "\r\n";
 
-    if (!et_send_mail(et_config()['to'], $subject, $html, $text, $replyToEmail, $replyToName, $attachment)) {
+    if (!et_send_mail($to, $subject, $html, $text, $replyToEmail, $replyToName, $attachment)) {
         error_log('[ethery-forms] mail() was refused for ' . $replyToEmail);
         return false;
     }
