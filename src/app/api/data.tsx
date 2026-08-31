@@ -587,9 +587,8 @@ export const address = "221b Baker St, London NW1 6XE, United Kingdom";
 export const phone = "+1 (123) 123 1234";
 export const email = "info@mobileapp.com";
 export const copyright = "© Copyright 2025. All rights reserved";
-export const facebook = "https://www.facebook.com/";
 export const twitter = "https://www.twitter.com/";
-export const linkedin = "https://www.linkedin.com/";
+export const linkedin = "https://www.linkedin.com/company/ethery-tech";
 
 export const aboutPerks = [
     {

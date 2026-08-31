@@ -4,7 +4,6 @@ import {
   companyLinks,
   supportLink,
   SolutionsItems,
-  facebook,
   linkedin,
 } from "@/app/api/data";
 
@@ -79,7 +78,7 @@ const Footer = () => {
         <div className="flex flex-col  md:justify-between md:flex-row items-center">
           <div className="flex items-center sm:flex-row flex-col justify-between md:py-10 ">
             <p className="text-16 text-foottext sm:mb-0 mb-4">
-              © 2025 Ethery Tech.{" "}
+              © {new Date().getFullYear()} Ethery Tech.{" "}
               <Link
                 href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailTech}`}
                 target="_blank"
@@ -95,16 +94,6 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex gap-4 my-4 lg:mt-0">
-            {facebook && (
-              <Link
-                href={facebook}
-                className="text-muted hover:text-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon icon="fe:facebook" width="32" height="32" />
-              </Link>
-            )}
             {linkedin && (
               <Link
                 href={linkedin}
