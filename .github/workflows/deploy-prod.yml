@@ -28,6 +28,15 @@ jobs:
       - name: Build application
         run: npm run build
 
+      - name: Verify static export and hosting configuration
+        run: |
+          npm run test:hosting
+          test -f build/index.html
+          test -f build/404.html
+          test -f build/.htaccess
+          test -f build/api/.user.ini
+          test -f build/api/templates/.htaccess
+
       - name: Prepare SSH key
         run: |
           mkdir -p ~/.ssh
@@ -36,14 +45,62 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Check existing production hosting configuration
+        run: |
+          # Fail before uploading anything if the server has unreviewed rules.
+          # A failed download must never be mistaken for an absent file.
+          if [[ -z "${REMOTE_PROD_PATH}" || "${REMOTE_PROD_PATH}" != /* || "${REMOTE_PROD_PATH}" == "/" || "${REMOTE_PROD_PATH}" == *[$'\r\n"\\']* ]]; then
+            echo "::error::REMOTE_PROD_PATH must be an existing absolute document-root path without quotes, backslashes, or line breaks."
+            exit 1
+          fi
+          {
+            echo "@cd \"${REMOTE_PROD_PATH}\""
+            echo "@ls -1a"
+          } | sftp -q -b - -i ~/.ssh/id_ci -oBatchMode=yes -oStrictHostKeyChecking=no -P "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}" > "${RUNNER_TEMP}/ethery-production-files.txt" 2> "${RUNNER_TEMP}/ethery-preflight-errors.txt"
+          # Some SFTP servers report readdir failure but still exit zero.
+          # Never treat an incomplete or failed listing as an absent file.
+          if [[ -s "${RUNNER_TEMP}/ethery-preflight-errors.txt" ]] || ! grep -Fxq '.' "${RUNNER_TEMP}/ethery-production-files.txt" || ! grep -Fxq '..' "${RUNNER_TEMP}/ethery-production-files.txt"; then
+            echo "::error::Could not verify the production directory contents. No files were uploaded. Check SFTP directory read permissions."
+            exit 1
+          fi
+
+          if grep -Fxq '.htaccess' "${RUNNER_TEMP}/ethery-production-files.txt"; then
+            {
+              echo "@cd \"${REMOTE_PROD_PATH}\""
+              echo "@get .htaccess \"${RUNNER_TEMP}/production-htaccess-backup.txt\""
+            } | sftp -b - -i ~/.ssh/id_ci -oBatchMode=yes -oStrictHostKeyChecking=no -P "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}"
+            if ! HOSTING_CONFIG_ACTION="$(node scripts/check-hosting-config.mjs "${RUNNER_TEMP}/production-htaccess-backup.txt" build/.htaccess .github/hosting/production-before.htaccess)"; then
+              echo "::error::Production .htaccess contains different hosting rules. No files were uploaded. Review the existing server configuration through the hosting control panel and merge required directives before deploying."
+              exit 1
+            fi
+            if [[ "${HOSTING_CONFIG_ACTION}" == "replace" ]]; then
+              echo "INSTALL_HOSTING_CONFIG=true" >> "${GITHUB_ENV}"
+            else
+              echo "INSTALL_HOSTING_CONFIG=false" >> "${GITHUB_ENV}"
+            fi
+          else
+            echo "INSTALL_HOSTING_CONFIG=true" >> "${GITHUB_ENV}"
+          fi
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          REMOTE_PROD_PATH: ${{ secrets.REMOTE_PROD_PATH }}
+
       - name: Deploy via SFTP (recursive put)
         run: |
-          LOCAL_DIR="./build"   # change to ./out if you used Next.js export
+          LOCAL_DIR="./build"
           {
-            echo "mkdir ${REMOTE_PROD_PATH}";
-            echo "cd ${REMOTE_PROD_PATH}";
+            echo "cd \"${REMOTE_PROD_PATH}\"";
             echo "put -r ${LOCAL_DIR}/*";
-          } | sftp -i ~/.ssh/id_ci -oBatchMode=yes -oStrictHostKeyChecking=no -P "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}"
+            # Upload dotfiles explicitly: the wildcard above excludes them.
+            # An identical existing root configuration is left in place.
+            if [[ "${INSTALL_HOSTING_CONFIG}" == "true" ]]; then
+              echo "put ${LOCAL_DIR}/.htaccess .htaccess";
+            fi
+            echo "put ${LOCAL_DIR}/api/.user.ini api/.user.ini";
+            echo "put ${LOCAL_DIR}/api/templates/.htaccess api/templates/.htaccess";
+          } | sftp -b - -i ~/.ssh/id_ci -oBatchMode=yes -oStrictHostKeyChecking=no -P "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}"
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}                 # e.g., host23.name.am
           SSH_PORT: ${{ secrets.SSH_PORT }}                 # 22

@@ -1,0 +1,23 @@
+# Hosting rules for the Next.js static export on Apache / LiteSpeed.
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+# Use one HTTPS hostname, preserving the path, query string, and request method.
+# Limit this redirect to production hostnames so local previews still work.
+RewriteCond %{HTTP_HOST} ^(?:www\.)?ethery\.tech(?::\d+)?$ [NC]
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.ethery\.tech(?::\d+)?$ [NC]
+RewriteRule ^ https://ethery.tech%{REQUEST_URI} [R=308,L]
+
+# Existing pages, assets, and PHP endpoints are served normally. Missing URLs
+# keep a 404 status while ErrorDocument displays the exported error page.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ - [R=404,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit

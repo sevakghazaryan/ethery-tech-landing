@@ -24,6 +24,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test:hosting": "node --test scripts/check-hosting-config.test.mjs",
     "generate-icons": "node scripts/generate-icons.js"
   },
   "dependencies": {

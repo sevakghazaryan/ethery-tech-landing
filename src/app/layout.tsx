@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     ],
   },
   verification: {
-     google: "google-site-verification=xQZOqkrEqlUATyGM-PAR3CCqEuk_bTqCELvJsFqlIMI"
+    google: "xQZOqkrEqlUATyGM-PAR3CCqEuk_bTqCELvJsFqlIMI",
   },
   other: {
     "msapplication-TileColor": "#467FC1",
